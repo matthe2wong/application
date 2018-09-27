@@ -1,0 +1,34 @@
+<?php $this->headTitle('增加页') ?>
+<?php $this->headTitle('住院就诊人信息') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/in-hospital/add.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/in-hospital/add.js') ?>
+<?php $this->headScript()->appendFile('/assets/admin/in-hospital/validate-config.js') ?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="/admin/in-hospital/manage">住院就诊人信息管理</a></li>
+        <li class="active"><a href="javascript:;">添加</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-plus-circle"></i> 添加新的住院就诊人信息 
+        <a href="javascript: history.go(-1)" class="btn btn-default pull-right">
+    	    <i class="fa fa-chevron-left"></i> 返回</a>
+    </h2>
+</div>
+
+<div class="container-fluid-md">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-plus"></i> 住院就诊人信息</h4>
+
+            <div class="panel-options">
+            </div>
+        </div>
+        <div class="panel-body">
+            <?php echo $this->form ?>
+        </div>
+    </div>
+</div>

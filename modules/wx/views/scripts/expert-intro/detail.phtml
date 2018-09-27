@@ -1,0 +1,14 @@
+<?php $this->headTitle('专家介绍') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/department/detail.css?t='.time()) ?>
+<?php $d = $this->data ?>
+
+<div class="page" id="data" style="opacity: 1;">
+    <div class="top_bg">
+        <img src="/assets/wx/department/img.png">
+    </div>
+    <div class="menu">
+        <p class="name"><?php echo $d->name ?></p>
+    </div>
+    <div class="content"><?php echo $d->intro ?></div>
+
+</div>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+table td, table th {
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+					<th>姓名 name</th>
+					<th>年龄 age</th>
+					<th>手机号 phone</th>
+					<th>主题 theme</th>
+					<th>内容 intro</th>
+					<th>答复 answer</th>
+					<th>日期 date</th>
+
+			</tr>
+		</thead>
+		<tbody>
+            <?php if ($this->data): foreach($this->data as $d):?>
+            <tr>
+					<td style="mso-number-format='\@'"><?php echo $d->name ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->age ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->phone ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->theme ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->intro ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->answer ?></td>
+					<td style="mso-number-format='yyyy-mm-dd h:i:s'"><?php echo $d->date ? date("Y-m-d H:i:s", strtotime($d->date)) : "" ?></td>
+			</tr>
+            <?php endforeach; endif; ?>
+        </tbody>
+	</table>
+</body>
+</html>

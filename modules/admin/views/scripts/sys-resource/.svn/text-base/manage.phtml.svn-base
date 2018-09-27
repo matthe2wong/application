@@ -1,0 +1,133 @@
+<?php $this->headTitle('管理列表页') ?>
+<?php $this->headTitle('系统资源') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-resource/manage.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-resource/manage.js') ?>
+
+<style type="text/css">
+.table > thead > tr > th, 
+.table > tbody > tr > td {
+   	vertical-align:middle;
+}
+.form-horizontal .control-label {
+	text-align:left !important;
+}
+</style>
+
+<div class="header">
+	<ul class="breadcrumb">
+		<li><a href="/admin">后台首页</a></li>
+		<li class="active">系统资源管理</li>
+	</ul>
+</div>
+
+<div class="col-md-12">
+    <?php if (false): ?>
+	<div class="well" style="margin-left: 0px;">
+		<form id="frmSearch" action="" method="post" class="form-horizontal row-border">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">标题</label>
+				<label class="col-sm-2 control-label">状态</label>
+				<label class="col-sm-2 control-label">发布人</label>
+				<label class="col-sm-2 control-label">发布时间</label>
+			</div>
+			<div class="form-group">
+			    <div class="col-sm-2">
+				    <input type="text" class="form-control" 
+                         placeholder="请输入要搜索的标题" id="" name="">
+				</div>
+			    <div class="col-sm-2">
+                     <select class="form-control">
+				        <option>sad</option>
+				        <option>sad</option>
+				        <option>sad</option>
+				    </select>
+				</div>
+			    <div class="col-sm-2">
+				    <input type="text" class="form-control"
+                         placeholder="请输入要搜索的发布人" id="" name="">
+				</div>
+			    <div class="col-sm-4">
+				    <div class="row">
+				        <div class="col-sm-5">
+				            <input type="text" class="form-control date" placeholder="请选择要搜索的时间段" name="" id="">
+				        </div>
+				        <div class="col-sm-1" style="width: 30px;padding:5px 0 0 0;">至</div>
+				        <div class="col-sm-5" style="padding-left:0">
+				            <input type="" class="form-control date"
+                         placeholder="请选择要搜索的时间段" id="" name="">
+				        </div>
+				    </div>
+				</div>
+				<div class="col-sm-2">
+				    <button class="btn btn-info btn-sm" type="submit" style="width:60px;margin-top:3px;">查询</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<?php endif; ?>
+    <div class="col-md-12" style="padding-left:0px">
+        <div class="btn-toolbar list-toolbar">
+        <?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-resource', 'add')):?>
+    		<a href="/admin/sys-resource/add" class="btn btn-info"><i class="fa fa-plus"></i> 添加</a>
+    		<?php endif;?>
+    		<?php if (false): ?>
+    		<a href="/admin/sys-resource/export" class="btn btn-warning"><i class="fa fa-download"></i> 导出</a>
+    		<a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i> 批量删除</a>
+    		<a href="" class="btn btn-warning"><i class="fa fa-download"></i> 导入</a>
+    		<?php endif; ?>
+        </div>
+        <div class="table-responsive">
+        	<table id="company" class="table table-hover table-striped table-bordered">
+        		<thead>
+        			<tr>
+        				<!-- <th width="80"><input type="checkbox"  id="checkAll" onclick="getAll()"></th> -->
+        						<th>数据ID</th>
+						<th>名称</th>
+						<th>模块</th>
+						<th>控制器</th>
+						<th>动作</th>
+        		        <th width="270">操作</th>
+        			</tr> 
+        		</thead>
+        		<tbody>
+        		    <?php if ($this->data): foreach($this->data as $d):?>
+                    <tr>
+        	            <!-- <td><input type="checkbox"></td> -->
+        						<td><?php echo $d->id ?></td>
+						<td><?php echo $d->title ?></td>
+						<td><?php echo $d->module ?></td>
+						<td><?php echo $d->controller ?></td>
+						<td><?php echo $d->action ?></td>
+        				<td>
+        				<?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-resource', 'view')):?>
+        				    <a href="/admin/sys-resource/view/id/<?php echo $d->id ?>" class="btn btn-info btn-sm">
+        				        <i class="fa fa-eye"></i> 查看
+        				    </a>
+        				    <?php endif;?>
+        				    <?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-resource', 'edit')):?>
+        				    &emsp;
+        				    <a href="/admin/sys-resource/edit/id/<?php echo $d->id ?>" class="btn btn-primary btn-sm">
+        				        <i class="fa fa-edit"></i> 编辑
+        				    </a>
+        				    <?php endif;?>
+        				    <?php if (false): ?>
+        				    &emsp;
+        				    <a class="btn btn-danger btn-sm btn-delete" data-id="<?php echo $d->id ?>" href="javascript:return false">
+        				        <i class="fa fa-trash-o"></i>
+        				        删除
+        				    </a>
+        				    <a href="" class="btn btn-warning btn-sm"><i class="fa fa-upload"></i> 导出</a>
+        				    <?php endif; ?>
+        				</td>
+        			</tr>
+        			<?php endforeach; endif; ?>
+                </tbody>
+        	</table>
+        </div>
+    </div>
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+</div>

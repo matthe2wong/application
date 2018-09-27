@@ -1,0 +1,49 @@
+<?php $this->headTitle('医技预约') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/booking/index.css') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/booking/affirm.css') ?>
+<?php //$this->headScript()->appendFile('/assets/wx/abouts/list.js') ?>
+
+
+<div class="page__bd">
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <label class="weui-form-preview__label"><i class="gi gi-user"></i>&nbsp;张三</label><br>
+                <p class="card">身份证：&emsp;124516196512154587</p>
+                <p class="jzk"> 就诊卡：&emsp;123456789</p>
+            </div>
+        </div>
+    </div>
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">预约项目</label>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">头部</label>
+                <span class="weui-form-preview__value">CT颅内平扫（横断）</span>
+                <span class="right">￥996</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">心脏</label>
+                <span class="weui-form-preview__value">常规心脏超声检测</span>
+                <span class="right">￥996</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">胸部  </label>
+                <span class="weui-form-preview__value">负荷超声心动图</span>
+                <span class="right">￥996</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">腰部</label>
+                <span class="weui-form-preview__value">DR腰椎正测位片</span>
+                <span class="right">￥996</span> 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui-tabbar">
+    <a href="/wx/booking/sub-apply" class="weui-btn weui-btn_primary">确认信息</a>
+</div>

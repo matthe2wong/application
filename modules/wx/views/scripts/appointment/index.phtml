@@ -1,0 +1,23 @@
+<?php $this->headTitle('列表页') ?>
+<?php $this->headTitle('在线预约') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/list.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/appointment/index.js') ?>
+
+
+<header class="mui-bar mui-bar-nav">
+	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+</header>
+<div class="mui-content">
+	关系：<select  name="relation">
+	   <option value="1">他人</option>
+	   <option value="2">自己</option>
+	</select><br>
+	姓名：<input type="text" name="name" value="" /><br>
+	证件：<input type="text" name="card_no" value="" /><br>
+	手机号：<input type="text" name="phone" value="" /><br>
+	就诊卡号：
+	<input type="radio" name="is_patient_card" checked="checked">有就诊卡
+	<input type="radio" name="is_patient_card">无就诊卡<br>
+	<input type="text" name="patient_card" value="" />
+	<button type="button" id="sub">提交</button>
+</div>

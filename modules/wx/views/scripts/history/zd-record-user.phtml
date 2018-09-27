@@ -1,0 +1,23 @@
+<?php $this->headTitle('账单记录 - 用户列表') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/go-doctor/often.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/abouts/list.js') ?>
+<style>
+.weui-cells__title {margin-bottom: 0;}
+</style>
+
+<div class="weui-cells__title">选中用户查看历史账单记录</div>
+<div class="weui-panel__bd">
+<?php if($this->data): foreach ($this->data as $d): ?>
+    <a href="/wx/history/zd-record/hisid/<?php echo $d->hisid ?>" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+            <img class="weui-media-box__thumb" src="/assets/wx/go-doctor/icon.png" alt="">
+        </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title"  style="padding-top:14px"><?php echo $d->name ?></h4>
+            <p class="weui-media-box__desc"><?php echo $d->identity_card ?></p>
+        </div>
+        <span class="weui-cell__ft"><i class="fa fa-angle-right"></i></span>
+    </a>
+<?php endforeach;endif;?>
+</div>
+

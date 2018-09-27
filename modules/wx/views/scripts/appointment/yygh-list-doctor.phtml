@@ -1,0 +1,93 @@
+<?php $this->headTitle('预约挂号') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/yygh-list.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/appointment/yygh-list-doctor.js?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/appointment/collect.js?t='.time()) ?>
+
+<input type="hidden" id="doctor_id" value="<?php echo $this->doctor_id ?>">
+<input type="hidden" id="pid" value="<?php echo $this->pid ?>">
+<input type="hidden" id="time" value="<?php echo date('H:i:s') ?>">
+
+<div class="page__hd">
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <img src="/assets/wx/appointment/doctor.png" style="width: 50px;display: block">
+            </div>
+            <div class="weui-cell__bd">
+                <p class="name" style="font-size:16px;color:#39393a"></p>
+                <p class="org_name" style="font-size: 13px;color: #888888;"></p>
+                <p class="profession" style="font-size: 13px;color: #888888;"></p>
+            </div>
+            <?php if($this->count > 0):?>
+            <div class="weui-cell__hd collect">
+                <img src="/assets/wx/appointment/collect-yes.svg" id="collect-img" width="29px">
+                <p class="collect-text" style="font-size:13px;color:#f9981b">已收藏</p>
+                <input type="hidden" id="collect" value="2">
+            </div>
+            <?php else:?>
+            <div class="weui-cell__hd collect">
+                <img src="/assets/wx/appointment/collect.svg" id="collect-img" width="29px"/>
+                <p class="collect-text" style="font-size:13px;color:#8e8b8b">未收藏</p>
+                <input type="hidden" id="collect" value="1">
+            </div>
+            <?php endif;?>
+            <div class="weui-cell__hd code">
+                <img src="/assets/wx/appointment/code.svg" id="code-img" />
+                <p class="code-text">二维码</p>
+                <input type="hidden" id="code" value="2">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui-skin_android" id="androidActionsheet" style="opacity: 0; display: none;">
+    <div class="weui-mask"></div>
+    <div class="weui-actionsheet">
+        <div class="weui-actionsheet__menu">
+            <p class="ysxm" style="padding-top:20px;"></p>
+            <p class="keshi" ></p>
+            <img src="/assets/wx/img/code.jpg" />
+            <p style="color:#ea7e2f">长按二维码保存</p>
+            <a class="weui-btn weui-btn_plain-primary close">关闭</a>
+        </div>
+    </div>
+</div>
+<div class="page__bd">
+    <div class="weui-flex">
+        <div class="weui-flex__item guahao"><div class="placeholder"><span class="select">挂号</span></div></div>
+        <div class="weui-flex__item intro"><div class="placeholder"><span>介绍</span></div></div>
+    </div>
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label"><?php echo $this->date ?></label>
+                <em class="weui-form-preview__value">更多日期&nbsp;<i class="fa fa-caret-up"></i></em>
+            </div>
+            <input type="hidden" id="status" value="1">
+        </div>
+       <div class="weui-form-preview__bd">
+            <div class="weui-flex" style="border-bottom: 1px solid #eee">
+            <?php if($this->data): foreach ($this->data as $k=>$d): ?>
+                <div class="weui-flex__item"><div class="placeholder"><?php echo $d["week"] ?></div></div>
+            <?php endforeach;endif;?>
+            </div>
+            <div class="weui-flex date" style="line-height:1.5;margin: 5px 0px 5px 0px;">
+            <?php if($this->data): foreach ($this->data as $k=>$d): ?>
+                <div class="weui-flex__item " data-date="<?php echo $d["date"] ?>" style="pointer-events:none;">
+                    <div class="placeholder">
+                        <p class="day"><?php echo $d["day"] ?></p>
+                        <p class="is_num">无号</p>
+                    </div>
+                </div>
+            <?php endforeach;endif;?>
+            </div>
+        </div>
+        <div class="weui-cells main">
+        </div>
+    </div>
+    <article class="weui-article">
+        <h2>擅长</h2>
+        <section>
+            <p class="skill"></p>
+        </section>
+    </article>
+</div>

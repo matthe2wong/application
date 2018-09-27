@@ -1,0 +1,141 @@
+<?php $this->headTitle('管理列表页') ?>
+<?php $this->headTitle('专家介绍') ?>
+<link rel="stylesheet" type="text/css" href=""/>
+<?php $this->headLink()->appendStylesheet('/libs/datatables/datatables.css') ?>
+<?php $this->headScript()->appendFile('/libs/datatables/datatables.js') ?>
+<?php $this->headLink()->appendStylesheet('/libs/datetimepicker/css/bootstrap-datetimepicker.min.css') ?>
+<?php $this->headScript()->appendFile('/libs/datetimepicker/js/bootstrap-datetimepicker.min.js') ?>
+<?php $this->headScript()->appendFile('/libs/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js') ?>
+<?php $this->headScript()->appendFile('/libs/datetimepicker/js/bootstrap-datetimepicker.szkj.extend.js') ?>
+
+<?php $this->headScript()->appendFile('/assets/admin/common.manage.admin.szkj.js') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/specialist/manage.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/specialist/manage.js?t='.time()) ?>
+
+<div style="display: none">
+    <input type="hidden" id="current_base_url" value="/admin/specialist/manage" />
+    <input type="hidden" id="ajax_delete_url" value="/admin/specialist/delete" />
+    <input type="hidden" id="columns-sort-serialized" value='<?php echo $this->columnsSortSerialized ?>' />
+</div>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="javascript:;">专家介绍管理</a></li>
+        <li class="active"><a href="javascript:;">专家介绍列表</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-gear"></i> 专家介绍管理 
+        
+        <span class="pull-right">
+            <a href="/admin/specialist/add" id="add_button" 
+                szkj-resource="/admin/specialist/add" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-plus"></i> 添加</a>
+            <button id="edit_button" 
+                szkj-resource="/admin/specialist/edit" 
+                class="btn btn-primary szkj-acl disabled"><i class="fa fa-pencil"></i> 编辑</button>
+            <button id="view_button" 
+                szkj-resource="/admin/specialist/view" 
+                class="btn btn-primary szkj-acl disabled"><i class="fa fa-eye"></i> 详情</button>
+            <button id="delete_button" 
+                szkj-resource="/admin/specialist/delete" 
+                class="btn btn-danger szkj-acl disabled"><i class="fa fa-trash-o"></i> 删除</button>
+            <button id="toggle-search-panel" class="btn btn-primary">
+                <i class="fa fa-search"></i> 查询</button>
+            <a href="/admin/specialist/import" id="import_button"
+                szkj-resource="/admin/specialist/import" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-cloud-upload"></i> 导入</a>
+            <a href="/admin/specialist/export" id="export_button"
+                szkj-resource="/admin/specialist/export" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-cloud-download"></i> 导出</a>
+            <a href="/admin/specialist/statistics" id="statistics_button"
+                szkj-resource="/admin/specialist/statistics" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-bar-chart-o"></i> 数据统计</a>
+        </span>
+    </h2>
+</div>
+
+<div class="container-fluid-md" style="display:none" id="search-panel">
+    <div class="panel panel-primary panel-sm">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-search"></i> 查询</h4>
+        </div>
+        <div class="panel-body">
+            <form class="form-inline" role="form" id="search_form">
+
+				<div class="form-group">
+					<label class="control-label" for="type_search">类型</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_type ?>"
+						name="type" id="type_search" placeholder="类型">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="name_search">姓名</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_name ?>"
+						name="name" id="name_search" placeholder="姓名">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="intro_search">简介</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_intro ?>"
+						name="intro" id="intro_search" placeholder="简介">
+				</div>
+
+			    <div class="form-group">
+			        <label class="control-label" for="date_search">日期</label>
+			        <div class="input-group">
+				        <input type="text" class="form-control search-form-input datetimepicker" data-date-format="yyyy-mm-dd"
+				        	value="<?php echo $this->search_value_date_min ?>"
+				        	name="date_min" id="date_min_search" placeholder="起始日期">
+				        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+				    </div>
+				    <span></span>
+				    <div class="input-group">
+				        <input type="text" class="form-control search-form-input datetimepicker" data-date-format="yyyy-mm-dd"
+				        	value="<?php echo $this->search_value_date_max ?>"
+				        	name="date_max" id="date_max_search" placeholder="结束日期">
+				        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+				    </div>
+			    </div>
+
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
+                <button type="button" class="btn btn-primary" id="search_form_reset_btn"><i class="fa fa-times"></i> 重置</button>
+            </form>
+        </div><!-- END panel-body -->
+    </div><!-- END panel -->
+</div><!-- END container-fluid-md -->
+
+<div class="container-fluid-md">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table id="query-result-data-table" class="table table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th data-column="type">类型</th>
+                    <th data-column="name">姓名</th>
+					<th>照片</th>
+                    <th data-column="date">日期</th>
+                </tr>
+                </thead>
+                <tbody>
+            <?php if ($this->data): $counter = 1; foreach($this->data as $d):?>
+                <tr data-id="<?php echo $d->id ?>">
+					<td><?php echo $d->type ?></td>
+					<td><?php echo $d->name ?></td>
+					<td>
+                    <?php if ($d->photo): ?>
+                    <a href="<?php echo $d->photo ?>" target="_blank">
+                        <img src="<?php echo Szkj_Helper_Thumb::getSpecifiedThumb($d->photo, "s") ?>" class="thumbnail" style="max-height:80px" />
+                    </a>
+                    <?php endif; ?>
+					</td>
+					<td><?php echo $d->date ? date("Y-m-d", strtotime($d->date)) : "" ?></td>
+                </tr>
+                <?php endforeach; endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div><!-- END container-fluid-md -->

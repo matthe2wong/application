@@ -1,0 +1,35 @@
+<?php $this->headTitle('科室介绍') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/department/details.css?t='.time()) ?>
+
+<div class="page" style="opacity: 1;">
+    <ul class="office-list" style="display: block; overflow-y: scroll;">
+       <!--  <li>全部</li> -->
+        <?php if($this->data): foreach ($this->data as $d):?>
+        <li data-id="<?php echo $d->id?>"><?php echo $d->name?></li>
+        <?php endforeach;endif;?>
+    </ul>
+    <div class="office">
+        <div class="officeblock">
+            <h4>科室介绍</h4>
+            <div>
+                <div class="office-text intro">
+                
+                </div>
+                <div class="redmore">
+                    查看全部&gt;
+                </div>
+            </div>
+        </div>
+        <div class="officeblock">
+            <h4>技术团队</h4>
+            <div class="office-text team"> </div>
+        </div>
+        <div class="officeblock">
+            <h4>诊疗项目</h4>
+            <div class="error_min">
+                <div class="icon-error-min"></div>
+                <p>抱歉,暂无项目介绍</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<?php $this->headTitle('预约来诊') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/section.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/nocard-appointment/section.js?t='.time()) ?>
+
+<div class="page" style="opacity: 1;">
+    <ul class="office-list" style="display: block; overflow-y: scroll;">
+    <?php if($this->data): foreach ($this->data as $d):?>
+        <li data-id="<?php echo $d->sid?>"><?php echo $d->data_name ?></li>
+    <?php endforeach;endif;?>
+    </ul> 
+    <div class="office">
+        <ul class="office-list-child">
+          
+        </ul>
+    </div>
+    <input type="hidden" value="2" id="status">
+</div>

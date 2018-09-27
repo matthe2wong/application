@@ -1,0 +1,76 @@
+<?php 
+/**
+ * 微信端布局
+ * @author [此处填写开发人员姓名]
+ * @copyright  Copyright (c) 2014-2015 SZ Technologies China Inc. (http://www.jnszkj.com)
+ * @version 1.0
+ */
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<?php echo $this->headTitle('临沂市人民医院') ?>
+
+		<!-- MUI core CSS -->
+        
+        <link href="/libs/weui/dist/style/weui.min.css" rel="stylesheet">
+        <link href="/libs/mui/css/mui.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/template/dist/assets/font-awesome/css/font-awesome.css">
+        <!-- Custom styles -->
+        <?php echo $this->headLink() ?>
+	</head>
+	<body>
+		<!-- middle begin -->
+        <?php echo $this->layout()->content ?>
+         
+        
+        <!-- middle end -->
+            
+	    <!-- dialog -->
+        <div id="dialog" style="display:none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title"></strong></div>
+                <div class="weui-dialog__bd"></div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn">确定</a>
+                </div>
+            </div>
+        </div>
+        <!-- toast -->
+        <div id="toast" style="display:none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+                <p class="weui-toast__content"></p>
+            </div>
+        </div>   
+        <!-- loadingToast -->
+        <div id="loadingToast" style="display: none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-loading weui-icon_toast"></i>
+                <p class="weui-toast__content">正在加载...</p>
+            </div>
+        </div>
+	
+	<!-- MUI core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	
+	<script src="/libs/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+<!-- 	<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script> -->
+	<script src="/libs/mui/js/mui.min.js"></script>
+	<script>
+		$(".weui-dialog__btn").click(function(){
+			$("#dialog").hide();
+		})
+	</script>
+	<?php echo $this->headScript();?>
+	</body>
+</html>

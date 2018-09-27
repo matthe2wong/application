@@ -1,0 +1,13 @@
+<?php $this->headTitle('温馨提示') ?>
+<?php // $this->headLink()->appendStylesheet('/assets/css/wx/sys-error/warning.css') ?>
+<?php // $this->headScript()->appendFile('/assets/js/wx/sys-error/warning.js') ?>
+
+<div class="mui-content">
+    <div class=mui-content-padded>
+        <p style="font-size:1.1em; color: #000; line-height: 1.5em">
+        <?php echo $this->msg ?>
+        </p>
+	    <button type="button" onclick="location.href='<?php echo $this->redirectUri ?>'" 
+	       class="mui-btn mui-btn-block mui-btn-red">返回</button>
+    </div>
+</div>

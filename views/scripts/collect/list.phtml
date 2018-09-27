@@ -1,0 +1,39 @@
+<?php $this->headTitle('列表页') ?>
+<?php $this->headTitle('我的收藏') ?>
+<?php $this->headLink()->appendStylesheet('/assets/default/collect/list.css') ?>
+<?php $this->headScript()->appendFile('/assets/default/collect/list.js') ?>
+
+
+<div class="container">
+    
+    <div class="page-header">
+    <h1>我的收藏列表页 <small>List of Collect</small></h1>
+    </div>
+    
+    <div class="list-group">
+        <?php if ($this->data): foreach ($this->data as $d): ?>
+        <a href="/collect/detail/id/<?php echo $d->id ?>" class="list-group-item">
+            <h4 class="list-group-item-heading">［此处填写数据标题］</h4>
+            <p class="list-group-item-text">
+					<span class="label label-default"><?php echo $d->id ?></span>
+					<span class="label label-default"><?php echo $d->user_id ?></span>
+					<span class="label label-default"><?php echo $d->openid ?></span>
+					<span class="label label-default"><?php echo $d->doctor_id ?></span>
+					<span class="label label-default"><?php echo $d->doctor_name ?></span>
+					<span class="label label-default"><?php echo $d->doctor_call ?></span>
+					<span class="label label-default"><?php echo $d->department ?></span>
+					<span class="label label-default"><?php echo date("Y-m-d", strtotime($d->date)) ?></span>
+            </p>
+        </a>
+        <?php endforeach; endif; ?>
+    </div>
+    
+    <div class="col-xs-12">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+    
+</div>

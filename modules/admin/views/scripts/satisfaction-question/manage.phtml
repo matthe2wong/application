@@ -1,0 +1,107 @@
+<?php $this->headTitle('管理列表页') ?>
+<?php $this->headTitle('满意度调查问题') ?>
+<link rel="stylesheet" type="text/css" href=""/>
+<?php $this->headLink()->appendStylesheet('/libs/datatables/datatables.css') ?>
+<?php $this->headScript()->appendFile('/libs/datatables/datatables.js') ?>
+
+<?php $this->headScript()->appendFile('/assets/admin/common.manage.admin.szkj.js') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/satisfaction-question/manage.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/satisfaction-question/manage.js?t='.time()) ?>
+
+<div style="display: none">
+    <input type="hidden" id="current_base_url" value="/admin/satisfaction-question/manage" />
+    <input type="hidden" id="ajax_delete_url" value="/admin/satisfaction-question/delete" />
+    <input type="hidden" id="columns-sort-serialized" value='<?php echo $this->columnsSortSerialized ?>' />
+</div>
+<input type="hidden" id="sid" value="<?php echo $this->sid ?>">
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="javascript:;">满意度调查问题管理</a></li>
+        <li class="active"><a href="javascript:;">满意度调查问题列表</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-gear"></i> 满意度调查问题管理 
+        
+        <span class="pull-right">
+            <a href="/admin/satisfaction-question/add/sid/<?php echo $this->sid ?>" id="add_button" 
+                szkj-resource="/admin/satisfaction-question/add" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-plus"></i> 添加</a>
+            <button id="edit_button" 
+                szkj-resource="/admin/satisfaction-question/edit" 
+                class="btn btn-primary szkj-acl disabled"><i class="fa fa-pencil"></i> 编辑</button>
+            <button id="view_button" 
+                szkj-resource="/admin/satisfaction-question/view" 
+                class="btn btn-primary szkj-acl disabled"><i class="fa fa-eye"></i> 详情</button>
+            <button id="delete_button" 
+                szkj-resource="/admin/satisfaction-question/delete" 
+                class="btn btn-danger szkj-acl disabled"><i class="fa fa-trash-o"></i> 删除</button>
+            <button id="toggle-search-panel" class="btn btn-primary">
+                <i class="fa fa-search"></i> 查询</button>
+            <a href="/admin/satisfaction-question/import" id="import_button"
+                szkj-resource="/admin/satisfaction-question/import" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-cloud-upload"></i> 导入</a>
+            <a href="/admin/satisfaction-question/export" id="export_button"
+                szkj-resource="/admin/satisfaction-question/export" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-cloud-download"></i> 导出</a>
+            <a href="/admin/satisfaction-question/statistics" id="statistics_button"
+                szkj-resource="/admin/satisfaction-question/statistics" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-bar-chart-o"></i> 数据统计</a>
+        </span>
+    </h2>
+</div>
+
+<div class="container-fluid-md" style="display:none" id="search-panel">
+    <div class="panel panel-primary panel-sm">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-search"></i> 查询</h4>
+        </div>
+        <div class="panel-body">
+            <form class="form-inline" role="form" id="search_form">
+<!-- 				<div class="form-group">
+					<label class="control-label" for="question_search">问题名称</label>
+					<input type="text" class="form-control search-form-input" value="<?php //echo $this->search_value_question ?>"
+						name="question" id="question_search" placeholder="问题名称">
+				</div> 
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
+                <button type="button" class="btn btn-primary" id="search_form_reset_btn"><i class="fa fa-times"></i> 重置</button>
+           --> </form>
+        </div><!-- END panel-body -->
+    </div><!-- END panel -->
+</div><!-- END container-fluid-md -->
+
+<div class="container-fluid-md">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table id="query-result-data-table" class="table table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th data-column="question"><b>问题名称</b></th>
+                    <th>很满意</th>
+                    <th>满意</th>
+                    <th>一般</th>
+                    <th>不满意</th>
+                    <th>很不满意</th>
+                    <th>不了解</th>
+                </tr>
+                </thead>
+                <tbody>
+            <?php if ($this->data): $counter = 1; foreach($this->data as $d):?>
+                <tr data-id="<?php echo $d->id ?>">
+                	<td><b><?php echo $d->question ?></b></td>
+					<td><?php echo Application_Model_SatisfactionInfo::statistics($d->id, $d->satisfaction_id, "很满意") ?></td>
+					<td><?php echo Application_Model_SatisfactionInfo::statistics($d->id, $d->satisfaction_id, "满意") ?></td>
+					<td><?php echo Application_Model_SatisfactionInfo::statistics($d->id, $d->satisfaction_id, "一般") ?></td>
+					<td><?php echo Application_Model_SatisfactionInfo::statistics($d->id, $d->satisfaction_id, "不满意")  ?></td>
+					<td><?php echo Application_Model_SatisfactionInfo::statistics($d->id, $d->satisfaction_id, "很不满意")  ?></td>
+					<td><?php echo Application_Model_SatisfactionInfo::statistics($d->id, $d->satisfaction_id, "不了解") ?></td>
+					<!-- <td><a href="/admin/satisfaction-info/manage/qid/<?php echo $d->id?>/sid/<?php echo $d->satisfaction_id?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> 查看满意度情况</a></td> -->
+                </tr>
+                <?php endforeach; endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div><!-- END container-fluid-md -->

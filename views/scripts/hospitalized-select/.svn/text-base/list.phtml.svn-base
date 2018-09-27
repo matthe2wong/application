@@ -1,0 +1,35 @@
+<?php $this->headTitle('列表页') ?>
+<?php $this->headTitle('住院查询') ?>
+<?php $this->headLink()->appendStylesheet('/assets/default/hospitalized-select/list.css') ?>
+<?php $this->headScript()->appendFile('/assets/default/hospitalized-select/list.js') ?>
+
+
+<div class="container">
+    
+    <div class="page-header">
+    <h1>住院查询列表页 <small>List of HospitalizedSelect</small></h1>
+    </div>
+    
+    <div class="list-group">
+        <?php if ($this->data): foreach ($this->data as $d): ?>
+        <a href="/hospitalized-select/detail/id/<?php echo $d->id ?>" class="list-group-item">
+            <h4 class="list-group-item-heading">［此处填写数据标题］</h4>
+            <p class="list-group-item-text">
+					<span class="label label-default"><?php echo $d->id ?></span>
+					<span class="label label-default"><?php echo $d->name ?></span>
+					<span class="label label-default"><?php echo $d->card_no ?></span>
+					<span class="label label-default"><?php echo date("Y-m-d", strtotime($d->date)) ?></span>
+            </p>
+        </a>
+        <?php endforeach; endif; ?>
+    </div>
+    
+    <div class="col-xs-12">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+    
+</div>

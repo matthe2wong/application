@@ -1,0 +1,26 @@
+
+<div class="col-xs-12">
+    <div class="row">
+    
+        <hr />
+        
+        <label for="<?php echo $this->element->getName(); ?>" 
+            class="col-xs-2 element <?php if ($this->element->hasErrors()): ?> error<?php endif; ?>" id="label_<?php echo $this->element->getName(); ?>"> 
+            <span><?php echo $this->element->getLabel(); ?></span>
+        </label>
+        
+        <div class="col-xs-10 form-group">
+        <?php echo $this->content; ?>
+        </div>
+        
+        <?php if ($this->element->hasErrors()): ?>
+        
+            <span class="error">
+                <?php echo $this->formErrors($this->element->getMessages()); ?>
+            </span>
+        
+        <?php endif; ?>
+
+
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<?php $this->headTitle('编辑页') ?>
+<?php $this->headTitle('访问控制') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-acl/edit.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-acl/edit.js') ?>
+
+<div class="header">
+	<ul class="breadcrumb">
+		<li><a href="/admin">后台首页</a></li>
+		<li><a href="/admin/sys-acl/manage">访问控制管理</a></li>
+		<li class="active">编辑</li>
+	</ul>
+</div>
+<div class="row col-md-12">
+    <div class="btn-toolbar list-toolbar">
+        <a href="javascript: history.go(-1)" class="btn btn-info">
+    	    <i class="fa fa-chevron-left"></i> 返回</a>
+    </div>
+	<div class="well">
+        <?php if (true): ?>
+        <!-- Zend Form -->
+    	<div class="row">
+    		<div class="col-md-12">
+    			<br>
+    			<div id="myTabContent" class="tab-content">
+    				<div class="tab-pane active in" id="home">
+                        <?php echo $this->form ?>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+        <!-- End Zend Form -->
+        <?php else: ?>
+    	<!-- HTML FORM -->
+    	<?php $d = $this->data ?>
+        <!-- HTML FORM -->
+    	<form class="form-horizontal" enctype="multipart/form-data" method="post" id="frmsubmit" 
+    	   action="" >
+    	<div class="form-group">
+            <label for="RoleId" class="col-sm-2 col-xs-12 control-label">角色ID</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="role_id" id="role_id" 
+               		value="<?php echo $d->role_id ?>" placeholder="请输入角色ID">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="ResourceId" class="col-sm-2 col-xs-12 control-label">资源ID</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="resource_id" id="resource_id" 
+               		value="<?php echo $d->resource_id ?>" placeholder="请输入资源ID">
+            </div>
+        </div>
+
+            <!-- 保存发布按钮组 -->
+			<div class="row">
+				<div class="col-sm-12 col-sm-offset-2 col-xs-12" style="padding-left:0px; ">
+					<button class="btn btn-success"><i class="fa fa-send"></i> 保存并发布</button>
+					<button class="btn btn-warning btn-hd"><i class="fa fa-disk"></i> 保存</button>
+				</div>
+			</div>
+        </form>
+        <!-- END HTML FORM -->
+        <?php endif; ?>
+        
+	</div>
+</div>

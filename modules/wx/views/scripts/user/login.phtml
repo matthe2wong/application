@@ -1,0 +1,24 @@
+<?php $this->headTitle('登录') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/user/login.css?t='.time()) ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/user/login2.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/user/login.js?t='.time()) ?>
+
+<div class="page" style="opacity: 1;">
+    <form>
+        <div style="border-bottom: 1px solid #eceaea">
+            <input class="tel" type="text" placeholder="手机号" maxlength="11" name="phone"  id="phone">
+            <p class="phone active">请输入正确的手机号码</p>
+        </div>
+        <div>
+            <input class="pwd" type="password" placeholder="密码" name="password"  id="password">
+            <p class="eye active">请输入六位以上密码</p>
+        </div>
+    </form>
+    <button type="button" class="error" id="login">登录</button>
+    <div class="register"> 
+        <a href="/wx/user/register">快速注册</a>
+    </div>
+    <div class="forget">
+        <a href="/wx/user/forgetpwd">忘记密码</a>
+    </div>
+</div>

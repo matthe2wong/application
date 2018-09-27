@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+table td, table th {
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+						<th>数据ID</th>
+						<th>菜单名称</th>
+						<th>图标</th>
+						<th>显示顺序</th>
+						<th>菜单级别</th>
+						<th>上级菜单ID</th>
+						<th>菜单类型</th>
+						<th>链接地址</th>
+						<th>角色ID</th>
+						<th>菜单状态</th>
+						<th>备注</th>
+			</tr>
+		</thead>
+		<tbody>
+            <?php if ($this->data): foreach($this->data as $d):?>
+            <tr>
+						<td><?php echo $d->id ?></td>
+						<td><?php echo $d->title ?></td>
+						<td><?php echo $d->icon ?></td>
+						<td><?php echo $d->order_no ?></td>
+						<td><?php echo $d->level ?></td>
+						<td><?php echo $d->parent_id ?></td>
+						<td><?php echo $d->type ?></td>
+						<td><?php echo $d->url ?></td>
+						<td><?php echo $d->role_id ?></td>
+						<td><?php echo $d->status ?></td>
+						<td><?php echo $d->note ?></td>
+			</tr>
+            <?php endforeach; endif; ?>
+        </tbody>
+	</table>
+</body>
+</html>

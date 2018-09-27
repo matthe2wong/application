@@ -1,0 +1,22 @@
+<?php $this->headTitle('无卡预约') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/go-doctor/nocard-bind.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/go-doctor/nocard-bind.js?t='.time()) ?>
+<style>
+*, body {
+    background: none; 
+}
+</style>
+
+<input type="hidden" id="JLXH" value="<?php echo $this->JLXH ?>">
+<div class="page" id="data" style="opacity: 1;">
+    <form>
+        <input type="hidden" id="bind_type" name="bind_type" value="1">
+        <input class="input" type="text" id="paientName" name="paientName" placeholder="姓名">
+        <input class="input" type="text" id="relationTel" name="relationTel"  placeholder="手机号">
+        <input class="input" type="text" id="card" name="card"  placeholder="身份证号（含字母需大写）">
+        <p class="hospital" style="line-height: normal;">发卡医院：济南市第三人民医院<br>签约信息须在本院的信息库内方可签约</p>
+    </form>
+    <div>
+        <a href="javascript:;" class="weui-btn weui-btn_primary bindBtn">立即预约</a>
+    </div>
+</div>

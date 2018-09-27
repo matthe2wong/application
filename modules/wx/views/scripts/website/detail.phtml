@@ -1,0 +1,21 @@
+<?php $this->headTitle('医院介绍') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/website/detail.css?t='.time()) ?>
+
+<?php $d = $this->data ?>
+<div class="mui-navigate-rights">
+	<img style="width:100%" src="/assets/wx/website/banner.jpg">
+</div>
+<div class="mui-content">
+    <div class="main">
+        <div class="abouts">
+            <div class="title"><?php echo $d->title?></div>
+            <div class="title"><?php echo $d->class?></div>
+            <div class="title"><?php echo $d->phone?><a href="tel:<?php echo $d->phone?>" class="right"><i class="fa fa-phone"></i></a></div>
+            <div class="title"><?php echo $d->address?><a href="/wx/website/map" class="right"><i class="fa fa-map-marker""></i></a></div>
+        </div>
+        <div class="content" > 
+           <?php echo $d->intro?>
+        </div>
+    </div>
+    
+</div>

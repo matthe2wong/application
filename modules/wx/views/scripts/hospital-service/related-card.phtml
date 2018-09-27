@@ -1,0 +1,22 @@
+<?php $this->headTitle('预约挂号') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/treat-service/related-card/related-card.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/treat-service/related-card/related-card.js') ?>
+
+<div class="page" id="data" style="opacity: 1;">
+    <ul class="filtrate-box">
+        <li class="active select" data-type="1">
+            <p>就诊卡</p>
+        </li>
+        <li  data-type="2">
+            <p>身份证/社保卡</p>
+        </li>
+    </ul>
+    <form>
+        <input type="hidden" id="type" name="type" value="1">
+        <input class="input" type="text" id="name" name="name" placeholder="姓名">
+        <input class="input" type="text" id="card" name="card"  placeholder="身份证号码">
+        <input class="input" type="text" id="cardNo" name="cardNo"  placeholder="卡号">
+        <p class="hospital">发卡医院:济南市第三人民医院</p>
+    </form>
+    <button type="button" class="green_btn">确认添加</button>
+</div>

@@ -1,0 +1,85 @@
+<?php $this->headTitle('接口文档') ?>
+<?php $this->headTitle('系统用户') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-user/api-docs.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-user/api-docs.js') ?>
+
+<?php $d = $this->data ?>
+
+<div class="header">
+	<h1 class="page-title">系统用户 － 数据接口文档说明</h1>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">数据列表接口文档</div>
+            <div class="panel-body">
+                <p>说明：以JSON格式返回系统用户列表数据。</p>
+            </div>
+            
+            <!-- Table -->
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>接口访问地址</th>
+                        <td>
+                            <a href="http://hospital.jnszkj.com/api/sys-user/list" target="_blank">
+                                http://hospital.jnszkj.com/api/sys-user/list</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>接口传入参数</th>
+                        <td>
+                            <span class="label label-warning">可选参数</span>
+                            <span class="label label-success">page</span> 
+                            <span class="label label-primary">分页，默认值为1</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>返回参数说明</th>
+                        <td>
+<p><span class="label label-success">realname</span>&emsp;<span class="label label-primary">显示名称</span></p><p><span class="label label-success">username</span>&emsp;<span class="label label-primary">用户账户</span></p><p><span class="label label-success">password</span>&emsp;<span class="label label-primary">用户密码加密后</span></p><p><span class="label label-success">salt</span>&emsp;<span class="label label-primary">加密标识</span></p><p><span class="label label-success">associate_type</span>&emsp;<span class="label label-primary">关联类型(1:商家2:顾问3:供应商4:分销商)</span></p><p><span class="label label-success">associate_name</span>&emsp;<span class="label label-primary">关联名称</span></p><p><span class="label label-success">create_time</span>&emsp;<span class="label label-primary">创建时间</span></p><p><span class="label label-success">status</span>&emsp;<span class="label label-primary">用户状态</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">数据详情接口文档</div>
+            <div class="panel-body">
+                <p>说明：以JSON格式返回系统用户单条详情数据。</p>
+            </div>
+            
+            <!-- Table -->
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>接口访问地址</th>
+                        <td>
+                            <a href="http://hospital.jnszkj.com/api/sys-user/detail" target="_blank">
+                                http://hospital.jnszkj.com/api/sys-user/detail/id/1</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>接口传入参数</th>
+                        <td>
+                            <span class="label label-danger">必选参数</span>
+                            <span class="label label-success">id</span> 
+                            <span class="label label-primary">数据ID</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>返回参数说明</th>
+                        <td>
+<p><span class="label label-success">realname</span>&emsp;<span class="label label-primary">显示名称</span></p><p><span class="label label-success">username</span>&emsp;<span class="label label-primary">用户账户</span></p><p><span class="label label-success">password</span>&emsp;<span class="label label-primary">用户密码加密后</span></p><p><span class="label label-success">salt</span>&emsp;<span class="label label-primary">加密标识</span></p><p><span class="label label-success">associate_type</span>&emsp;<span class="label label-primary">关联类型(1:商家2:顾问3:供应商4:分销商)</span></p><p><span class="label label-success">associate_name</span>&emsp;<span class="label label-primary">关联名称</span></p><p><span class="label label-success">create_time</span>&emsp;<span class="label label-primary">创建时间</span></p><p><span class="label label-success">status</span>&emsp;<span class="label label-primary">用户状态</span></p>                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>

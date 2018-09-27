@@ -1,0 +1,133 @@
+<?php $this->headTitle('管理列表页') ?>
+<?php $this->headTitle('系统角色') ?>
+<?php //$this->headLink()->appendStylesheet('/assets/admin/sys-role/manage.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-role/manage.js') ?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="javascript:;">系统角色管理</a></li>
+        <li class="active"><a href="javascript:;">系统角色列表</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-gear"></i> 系统角色管理 
+        <?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-role', 'add')):?>
+		<a href="/admin/sys-role/add" class="btn btn-info"><i class="fa fa-plus"></i> 添加</a>
+		<?php endif;?>
+    </h2>
+</div>
+
+<div style="display: none">
+    <input type="hidden" id="current_base_url" value="/admin/sys-role/manage" />
+</div>
+
+<div class="container-fluid-md">
+    <form role="form" id="search_form" load_datetimepicker="true">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><i class="fa fa-search"></i> 查询</h4>
+    
+                <div class="panel-options">
+                    <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                    <a href="" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                    <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label class="control-label" for="name_search">角色名称</label>
+                            <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_name ?>"
+                            	name="name" id="name_search" placeholder="角色名称">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
+                    <button type="button" id="search_form_reset_btn" class="btn btn-danger"><i class="fa fa-times"></i> 重置</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid-md" style="margin-bottom:1em">
+    <div role="toolbar" class="btn-toolbar pull-right">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+</div>
+
+<div class="container-fluid-md">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-list"></i> 系统角色列表</h4>
+            <div class="panel-options">
+                <a href="" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="query-result-data-table" class="table table-striped">
+                <thead>
+                <tr>
+					<th>角色名称</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if ($this->data): foreach($this->data as $d):?>
+                <tr>
+						<td><?php echo $d->name ?></td>
+                    <td>
+                        <?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-role', 'view')):?>
+        				    <a href="/admin/sys-role/view/id/<?php echo $d->id ?>" class="btn btn-info btn-sm">
+        				        <i class="fa fa-eye"></i> 查看
+        				    </a>
+    				    <?php endif;?>
+    				    <?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-role', 'edit')):?>
+    				    &emsp;
+        				    <a href="/admin/sys-role/edit/id/<?php echo $d->id ?>" class="btn btn-primary btn-sm">
+        				        <i class="fa fa-edit"></i> 编辑
+        				    </a>
+    				    <?php endif;?>
+    				    <?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-acl', 'manage')):?>
+    				    &emsp;
+        				    <a href="/admin/sys-acl/manage/role-id/<?php echo $d->id ?>" class="btn btn-success btn-sm">
+        				        <i class="fa fa-flag"></i> 权限管理
+        				    </a>
+    				    <?php endif;?>
+    				    <?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-menu', 'edit')):?>
+    				    &emsp;
+        				    <a href="/admin/sys-menu/edit/role_id/<?php echo $d->id ?>" class="btn btn-success btn-sm">
+        				        <i class="fa fa-flag"></i> 菜单管理
+        				    </a>
+    				    <?php endif;?>
+                    </td>
+                </tr>
+                <?php endforeach; endif; ?>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid-md">
+    <div role="toolbar" class="btn-toolbar pull-right">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+</div>

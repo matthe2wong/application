@@ -1,0 +1,42 @@
+<?php $this->headTitle('无卡预约') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/yygh.css?t='.time()) ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/satisfaction/warn.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/nocard-appointment/yygh.js?t='.time()) ?>
+<style>
+.weui-icon_msg-primary.weui-icon-warn {
+    color: #FFBE00;
+}
+</style>
+<div class="mui-content">
+    <div class="page__hd">
+        <h1 class="page__title">预约挂号</h1>
+    </div>
+    <?php if($this->data): foreach ($this->data as $d):?>
+    <input type="hidden" id="ksdm" value="<?php echo $d['KSDM']?>">
+	<ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell1 mui-media">
+    		<div class="mui-media-body">
+        		<img class="mui-media-object mui-pull-left" src="/assets/wx/appointment/doctor.png">
+        		<div class="mui-pull-left">
+        		    <p class="mui-ellipsis name"> <?php echo $d['YSXM']?></p>
+        		    <p class="position"><?php echo $d['KSMC']?></p>
+        		</div>
+    		</div>
+	   </li>
+	   <li class="mui-media info" data-ysdm="<?php echo $d['YSDM']?>">
+	       <ul class="mui-table-view-chevron main">
+    	   </ul>
+	   </li>
+	</ul>
+	<?php endforeach;else:?>
+	
+	<div class="page icons js_show">
+        <div class="page__bd page__bd_spacing">
+    		<i class="weui-icon-warn weui-icon_msg-primary"></i>
+            <div class="icon-box__ctn">
+                <p class="icon-box__desc">暂无预约信息。</p>
+            </div>
+        </div>
+    </div>
+	<?php endif;?>
+</div>

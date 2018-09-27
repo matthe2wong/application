@@ -1,0 +1,239 @@
+<?php 
+/**
+ * 框架页
+ * @author liujin
+ * @copyright  Copyright (c) 2014-2017 SZ Technologies China Inc. (http://www.jnszkj.com)
+ * @version 1.0
+ */
+?>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <title>临沂市人民医院服务窗后台管理系统</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="stylesheet" href="/template/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/template/dist/css/iriy-admin.min.css">
+        <link rel="stylesheet" href="/template/demo/css/demo.css">
+        <link rel="stylesheet" href="/template/dist/assets/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="/assets/layout/layout-admin-theme-blue.css">
+        <link rel="stylesheet" href="/assets/admin/index/index.css">
+        <!--[if lt IE 9]>
+        <script src="/template/dist/assets/libs/html5shiv/html5shiv.min.js"></script>
+        <script src="/template/dist/assets/libs/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top no-margin" role="navigation">
+                <div class="navbar-brand-group">
+                    <a class="navbar-sidebar-toggle navbar-link" data-sidebar-toggle
+                        data-placement="bottom" data-toggle="tooltip" data-original-title="收缩边栏">
+                        <i class="fa fa-lg fa-fw fa-bars"></i>
+                    </a>
+                    <a class="navbar-brand hidden-xs" href="/admin">
+                        <span class="sc-visible">
+                            S
+                        </span>
+                        <span class="sc-hidden">
+                            <span class="semi-bold"></span>
+                            临沂市人民医院服务窗后台管理系统
+                        </span>
+                    </a>
+                </div>
+                <ul class="nav navbar-nav navbar-nav-expanded pull-left margin-md-right hidden-xs">
+                    <li id="szkj-history-back" data-placement="bottom" data-toggle="tooltip" data-original-title="后退">
+                        <a href="javascript:history.go(-1)">
+                            <i class="fa fa-lg fa-fw fa-chevron-left"></i>
+                        </a>
+                    </li>
+                    <li id="szkj-history-forward" data-placement="bottom" data-toggle="tooltip" data-original-title="前进">
+                        <a href="javascript:history.go(1)">
+                            <i class="fa fa-lg fa-fw fa-chevron-right"></i>
+                        </a>
+                    </li>
+                	<li id="szkj-refresh-frame" data-placement="bottom" data-toggle="tooltip" data-original-title="刷新">
+                        <a href="javascript:;">
+                            <i class="fa fa-lg fa-fw fa-refresh"></i>
+                        </a>
+                    </li>
+                    <li id="szkj-loading-indicator" data-placement="bottom" data-toggle="tooltip" data-original-title="加载中...">
+                        <a href="javascript:;">
+                            <i class="fa fa-lg fa-fw fa-spinner fa-spin"></i>
+                        </a>
+                    </li>
+                    <li id="szkj-frame-url" data-placement="bottom" data-toggle="tooltip" data-original-title="当前网址">
+                        <a class="text-muted" contenteditable="true"
+                            style="color:#88888f;" href="javascript:;">
+                        </a>
+                    </li>
+                    <li id="szkj-open-new-window" data-placement="bottom" data-toggle="tooltip" data-original-title="在新窗口中打开">
+                        <a href="javascript:;">
+                            <i class="fa fa-lg fa-fw fa-external-link"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-nav-expanded pull-right margin-md-right">
+                    <li class="hidden-xs" style="display:none">
+                        <form class="navbar-form">
+                            <div class="navbar-search">
+                                <input type="text" placeholder="搜索 &hellip;" class="form-control">
+                                <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>   
+                    </li>
+                    <li class="dropdown dropdown-xs-center hidden-xs">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                            <span class="badge badge-up badge-dark badge-small"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages pull-right">
+                            <li class="dropdown-title bg-inverse">新的消息</li>
+                            <li class="unread">
+                                <?php if ($this->latestMessages): foreach ($this->latestMessages as $message): ?>
+                                <a href="/admin/sys-message/inbox"  target="main-frame" class="message">
+                                    <img class="message-image img-circle" src="<?php echo $message->sender_user_avatar ?>">
+                                    <div class="message-body">
+                                        <strong><?php echo $message->sender_user_name ?></strong><br>
+                                        <?php echo $message->title ?><br>
+                                        <small class="text-muted">8分钟前</small>
+                                    </div>
+                                </a>
+                                <?php endforeach; endif; ?>
+                            </li>         
+                            <li class="dropdown-footer">
+                                <a href="javascript:;"><i class="fa fa-share"></i> 查看所有消息</a>
+                            </li>
+                        </ul>          
+                    </li>
+                    <li class="dropdown dropdown-xs-center hidden-xs">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                            <i class="glyphicon glyphicon-globe"></i>
+                            <span class="badge badge-up badge-danger badge-small">3</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-notifications pull-right">
+                            <li class="dropdown-title bg-inverse">新的通知 (3)</li>
+                            <li>
+                                <a href="javascript:;" class="notification">
+                                    <div class="notification-thumb pull-left">
+                                        <i class="fa fa-clock-o fa-2x text-info"></i>
+                                    </div>
+                                    <div class="notification-body">
+                                        <strong>联系物料中心赵国振</strong><br>
+                                        <small class="text-muted">8分钟前</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-footer">
+                                <a href="javascript:;"><i class="fa fa-share"></i> 查看所有通知</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-user" href="javascript:;">
+                            <img class="img-circle" src="<?php echo $this->sysUser->headimg ?>">
+                            <span class="hidden-xs"><?php echo $this->sysUser->realname ?></span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu pull-right-xs">
+                            <li class="arrow"></li>
+                            <li><a href="javascript:;">个人中心</a></li>
+                            <li><a href="/admin/personal/editpwd" target="main-frame">修改密码</a></li>
+                            <li><a href="/admin/sys-message/inbox" target="main-frame"><span class="badge badge-danger pull-right"></span> 收件箱</a></li>
+                            <li><a href="javascript:;">消息</a></li>
+                            <li><a href="javascript:;">设置</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/admin/auth/sign-out">退出系统</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="page-wrapper">
+            <aside class="sidebar sidebar-default">
+                <div class="sidebar-profile">
+                    <img class="img-circle profile-image" src="<?php echo $this->sysUser->headimg ?>">
+
+                    <div class="profile-body">
+                        <h4><?php echo $this->sysUser->realname ?></h4>
+
+                        <div class="sidebar-user-links">
+                            <a class="btn btn-link btn-xs" href="javascript:;" data-placement="bottom" data-toggle="tooltip" data-original-title="个人中心"><i class="fa fa-user"></i></a>
+                            <a class="btn btn-link btn-xs" href="javascript:;"       data-placement="bottom" data-toggle="tooltip" data-original-title="消息"><i class="fa fa-envelope"></i></a>
+                            <a class="btn btn-link btn-xs" href="javascript:;"       data-placement="bottom" data-toggle="tooltip" data-original-title="设置"><i class="fa fa-cog"></i></a>
+                            <a class="btn btn-link btn-xs" href="/admin/auth/sign-out" data-placement="bottom" data-toggle="tooltip" data-original-title="退出系统"><i class="fa fa-sign-out"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                        <?php
+                        if ($this->sysUser):
+                            $modelSysMenu = new Application_Model_SysMenu();
+                            $rootMenuList = $modelSysMenu->getList(
+                                array(
+                                'parent_id' => 0,
+                                'role_id' => $this->sysUser->role_id
+                                ), array("order_no ASC"));
+                            if ($rootMenuList): foreach ($rootMenuList as $i=>$rm): 
+                                $subMenuList = $modelSysMenu->getList(
+                                    array('parent_id'=>$rm->id,'role_id'=>$this->sysUser->role_id),
+                                    array("order_no ASC"));
+                                if (count($subMenuList) == 0): 
+                        ?>
+                        <li>
+                            <a href="<?php echo $rm->url ?>" title="<?php echo $rm->title ?>" 
+                                target="<?php echo $rm->target == '_blank' ? '_blank' : 'main-frame' ?>">
+                                <i class="fa fa-lg fa-fw fa-<?php echo $rm->icon ? $rm->icon : 'home' ?>"></i> <?php echo $rm->title ?>
+                            </a>
+                        </li>
+                    	<?php else: ?>
+                    	<li class="nav-dropdown">
+                    	    <a href="#" title="<?php echo $rm->title ?>">
+                                <i class="fa fa-lg fa-fw fa-<?php echo $rm->icon ? $rm->icon : 'home' ?>"></i> <?php echo $rm->title ?>
+                            </a>
+                            <ul class="nav-sub">
+                                <?php if ($subMenuList):foreach ($subMenuList as $sm):?>
+                        		<li> 
+            						<a href="<?php echo $sm->url ?>" 
+            						    title="<?php echo $sm->title?>" 
+            						    target="<?php echo $sm->target == '_blank' ? '_blank' : 'main-frame' ?>">
+            							<i class="fa fa-fw fa-caret-right"></i> <?php echo $sm->title?>
+            					    </a>
+            					</li>
+                    	        <?php endforeach; endif;?>
+                            </ul> 
+            			</li>
+            			<?php endif; ?>
+                        <?php endforeach; endif; endif; ?>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="page-content">
+                <div class="embed-responsive embed-responsive-4by3">
+                   <iframe id="main-frame" name="main-frame" class="embed-responsive-item" src="/admin/index/welcome"></iframe>
+                </div>
+                <div class="text-center">                 
+                    <a href="javascript:;" data-style="success" 
+                        data-original-title="" type="button" 
+                        class="text-muted"
+                        tabindex="0" data-trigger="focus"
+                        data-container="body" data-toggle="popover" 
+                        data-placement="top" data-title="技术支持"
+                        data-content="0531 - 6865 5969">山东舜知信息科技有限公司 &copy; 2014-2017</a>
+                </div>
+            </div>           
+        </div>
+        <script src="/template/dist/assets/libs/jquery/jquery.min.js"></script>
+        <script src="/template/dist/assets/bs3/js/bootstrap.min.js"></script>
+        <script src="/template/dist/assets/plugins/jquery-navgoco/jquery.navgoco.js"></script>
+        <script src="/template/dist/js/main.js"></script>
+        <script src="/assets/layout/layout-admin.js"></script>
+        <script src="/assets/layout/page-component-acl.szkj.js"></script>
+        <script src="/assets/admin/index/index.js"></script>
+    </body>
+</html>

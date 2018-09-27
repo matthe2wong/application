@@ -1,0 +1,54 @@
+<?php $this->headTitle('查看页') ?>
+<?php $this->headTitle('满意度调查') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/satisfaction/view.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/satisfaction/view.js') ?>
+
+<?php $d = $this->data ?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="/admin/satisfaction/manage">满意度调查管理</a></li>
+        <li class="active"><a href="javascript:;">查看</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-info-circle"></i> 满意度调查详情 
+        <a href="javascript: history.go(-1)" class="btn btn-default pull-right">
+    	    <i class="fa fa-chevron-left"></i> 返回</a>
+    </h2>
+</div>
+
+<div class="container-fluid-md">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-detail-view">
+                    <tbody>
+				<tr>
+					<th>是否开启   1是 2否</th>
+					<td><?php echo $d->is_open ?></td>
+				</tr>
+				<tr>
+					<th>标题</th>
+					<td><?php echo $d->title ?></td>
+				</tr>
+				<tr>
+					<th>开始时间</th>
+					<td><?php echo $d->start_time ?></td>
+				</tr>
+				<tr>
+					<th>结束时间</th>
+					<td><?php echo $d->end_time ?></td>
+				</tr>
+				<tr>
+					<th>日期</th>
+					<td><?php echo $d->date ?></td>
+				</tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

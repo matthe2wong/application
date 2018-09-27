@@ -1,0 +1,92 @@
+<?php $this->headTitle('历史账单记录') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/history/zd-record.css') ?>
+<link rel="stylesheet" href="https://v3.bootcss.com/dist/css/bootstrap.css"> 
+
+<?php $this->headLink()->appendStylesheet('/libs/datetimepicker/css/bootstrap-datetimepicker.min.css') ?>
+<?php $this->headScript()->appendFile('/libs/datetimepicker/js/bootstrap-datetimepicker.min.js') ?>
+<?php $this->headScript()->appendFile('/libs/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js') ?>
+<?php $this->headScript()->appendFile('/libs/datetimepicker/js/bootstrap-datetimepicker.szkj.extend.js') ?>
+
+<div class="page__bd"> 
+    <div class="weui-form-preview">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>2018年5月</p>
+                <p style="font-size: 14px;color: #888888;">账单记录</p>
+            </div>
+            <div class="weui-cell__ft">
+                <div class="input-group">
+                   <input type="text" name="date" id="date"  placeholder="年/月" 
+                   class="form-control szkj-form-control datetimepicker valid" 
+                   colspan="3-4-6-12" data-date-format="yyyy-mm" 
+                   data-start-view="year" data-min-view="year" data-max-view="decade" aria-invalid="false">
+                   <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="weui-panel__bd">
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="/assets/wx/history/index.png" alt="">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">脑CT</h4>
+                    <p class="weui-media-box__desc">2018-05-02 14:20</p>
+                </div>
+                <div class="weui-cell__ft">￥299</div>
+            </a>
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="/assets/wx/history/index.png" alt="">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">中药</h4>
+                    <p class="weui-media-box__desc">2018-05-02 14:20</p>
+                </div>
+                <div class="weui-cell__ft">￥1299</div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+(function (window, undefined) {
+    var resizeTimeout = 0,
+
+    // html元素
+    html = window.document.documentElement,
+
+    // 设计图尺寸大小
+    designWidth = 750,
+
+    // 最大允许的窗体大小
+    maxWidth = 750;
+    function setBaseFontSize() {
+        // 获取当前窗体宽度
+        var windowWidth = html.getBoundingClientRect().width;
+        // 当窗体大小大于最大允许的窗体大小时，限制大小
+        if (windowWidth > maxWidth) {
+            windowWidth = maxWidth;
+        }
+        // 计算当前窗体宽度相对于设计图的倍率
+        var ratio = windowWidth / designWidth;
+        // 计算当前的基础字体大小
+        var baseFontSize = ratio * 100;
+        // 将基础字体大小赋值给html元素
+        html.style.fontSize = baseFontSize + 'px';
+        html.ratio = ratio;
+        html.bfs = baseFontSize;
+    }
+    // 窗口大小改变时重新计算基础字体大小
+    window.addEventListener('resize', function () {
+        // 为了避免频繁计算，通过timeout进行节流
+        if (resizeTimeout) {
+            clearTimeout(resizeTimeout);
+        }
+        resizeTimeout = setTimeout(setBaseFontSize, 300);
+    }, false);
+
+    setBaseFontSize();
+
+})(window);
+</script>

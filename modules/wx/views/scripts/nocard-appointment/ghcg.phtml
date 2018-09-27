@@ -1,0 +1,78 @@
+<?php $this->headTitle('预约成功') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/dzf.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/appointment/my-reservation.js?t='.time()) ?>
+<?php $value = $this->data ?>
+<?php $d = $this->goDoctor ?>
+<style>
+.weui-btn_default{
+    width: 90%;
+    font-size: 15px;
+}
+</style>
+<div class="weui-panel__bd">
+    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+            <i class="weui-icon-success weui-icon_msg"></i>
+        </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title"  style="padding-top: 10px;">预约成功</h4>
+            <p class="weui-media-box__desc">请您在就诊当天携带身份证原件、就诊卡、病历本到医院直接就诊。</p>
+        </div>
+    </a>
+</div>
+
+<div class="page__bd">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item item">
+                <label class="weui-form-preview__label">详细信息</label>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊时段</label>
+                <span class="weui-form-preview__value red"><?php echo $value->RegiDate ?></span>
+                <span class="weui-form-preview__value red"><?php echo $value->WEEK ?> <?php echo $value->RegiIndoZblb == 1 ? "上午" : "下午" ?><?php echo $value->KYYSJ ?></span>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医院名称</label>
+                <span class="weui-form-preview__value">济南市立三院</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊科室</label>
+                <span class="weui-form-preview__value black"><?php echo $value->KSMC ?></span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医生姓名</label>
+                <span class="weui-form-preview__value black"><?php echo $value->YSXM ?></span>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊人</label>
+                <span class="weui-form-preview__value"><?php echo $value->yy_name ?></span>
+                <span class="weui-form-preview__value"><?php echo !$d->card_no ? $d->card_no : "无卡" ?></span>
+            </div>
+        </div>
+        <?php if($this->flag == 1):?>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">预约序号</label>
+                <span class="weui-form-preview__value red" style="font-size:16px"><b><?php echo $value->yyxh ?></b></span>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd" style="text-align:center">
+             <button type="button" style="width:90%" class="weui-btn weui-btn_default cancelYygh" YYXH="<?php echo $value->yyxh ?>"
+            BRXM="<?php echo $value["yy_name"]?>" YYKS="<?php echo $value["KSMC"]?>" YYYS="<?php echo $value["YSXM"]?>"
+        	 QSSJ="<?php echo $value["RegiDate"] ?>" kyysj="<?php echo $value["KYYSJ"]?>" week="<?php echo $value["WEEK"]?>">取消预约</button>
+        </div>
+        <?php else:?>
+        <div class="weui-form-preview__bd" style="text-align:center">
+             <button type="button" onclick="window.location.href='/wx/nocard-appointment/nsection'" style="width:100%" class="weui-btn weui-btn_default">返回</button>
+        </div>
+        <?php endif;?>
+    </div>
+    
+</div>

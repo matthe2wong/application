@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+table td, table th {
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+					<th>类型 department</th>
+					<th>职位 position</th>
+					<th>姓名 name</th>
+					<th>照片 photo</th>
+					<th>擅长 skill</th>
+					<th>简介 intro</th>
+					<th>日期 date</th>
+
+			</tr>
+		</thead>
+		<tbody>
+            <?php if ($this->data): foreach($this->data as $d):?>
+            <tr>
+					<td style="mso-number-format='\@'"><?php echo $d->department ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->position ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->name ?></td>
+					<td style="mso-number-format='\@'">
+                    <?php if ($d->photo): ?>
+                    <?php echo "http://".$_SERVER["HTTP_HOST"].$d->photo ?>
+                    <?php endif; ?>
+					</td>
+					<td style="mso-number-format='\@'"><?php echo $d->skill ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->intro ?></td>
+					<td style="mso-number-format='yyyy-mm-dd'"><?php echo $d->date ? date("Y-m-d", strtotime($d->date)) : "" ?></td>
+			</tr>
+            <?php endforeach; endif; ?>
+        </tbody>
+	</table>
+</body>
+</html>

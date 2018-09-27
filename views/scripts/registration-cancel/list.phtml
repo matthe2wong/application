@@ -1,0 +1,50 @@
+<?php $this->headTitle('列表页') ?>
+<?php $this->headTitle('预约挂号取消信息') ?>
+<?php $this->headLink()->appendStylesheet('/assets/default/registration-cancel/list.css') ?>
+<?php $this->headScript()->appendFile('/assets/default/registration-cancel/list.js') ?>
+
+
+<div class="container">
+    
+    <div class="page-header">
+    <h1>预约挂号取消信息列表页 <small>List of RegistrationCancel</small></h1>
+    </div>
+    
+    <div class="list-group">
+        <?php if ($this->data): foreach ($this->data as $d): ?>
+        <a href="/registration-cancel/detail/id/<?php echo $d->id ?>" class="list-group-item">
+            <h4 class="list-group-item-heading">［此处填写数据标题］</h4>
+            <p class="list-group-item-text">
+					<span class="label label-default"><?php echo $d->id ?></span>
+					<span class="label label-default"><?php echo $d->user_id ?></span>
+					<span class="label label-default"><?php echo $d->openid ?></span>
+					<span class="label label-default"><?php echo $d->time ?></span>
+					<span class="label label-default"><?php echo $d->type ?></span>
+					<span class="label label-default"><?php echo $d->hospital_name ?></span>
+					<span class="label label-default"><?php echo $d->department ?></span>
+					<span class="label label-default"><?php echo $d->address ?></span>
+					<span class="label label-default"><?php echo $d->doctor_name ?></span>
+					<span class="label label-default"><?php echo $d->doctor_call ?></span>
+					<span class="label label-default"><?php echo $d->name ?></span>
+					<span class="label label-default"><?php echo $d->is_patient_card ?></span>
+					<span class="label label-default"><?php echo $d->hospital_number ?></span>
+					<span class="label label-default"><?php echo $d->platform_number ?></span>
+					<span class="label label-default"><?php echo $d->price ?></span>
+					<span class="label label-default"><?php echo $d->pay_status ?></span>
+					<span class="label label-default"><?php echo date("Y-m-d", strtotime($d->appointment_time)) ?></span>
+					<span class="label label-default"><?php echo date("Y-m-d", strtotime($d->cancel_time)) ?></span>
+					<span class="label label-default"><?php echo $d->cancel_cause ?></span>
+            </p>
+        </a>
+        <?php endforeach; endif; ?>
+    </div>
+    
+    <div class="col-xs-12">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+    
+</div>

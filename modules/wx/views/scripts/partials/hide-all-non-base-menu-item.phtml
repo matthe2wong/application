@@ -1,0 +1,15 @@
+<?php
+/**
+ * 使能微信JS调用
+ */
+$jsApiList = array(
+    'hideAllNonBaseMenuItem'
+);
+$debug = false;
+echo Szkj_Helper_WXBiz::getJsConfigDefineScript($jsApiList, $debug);
+?>
+<script type="text/javascript">
+wx.ready(function(){
+	wx.hideAllNonBaseMenuItem();
+});
+</script>

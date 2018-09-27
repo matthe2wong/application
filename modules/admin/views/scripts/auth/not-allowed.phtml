@@ -1,0 +1,15 @@
+<div class="text-center">
+    <p>
+        <?php if (true): // 默认使用字体图标 ?>
+        <span class="glyphicon glyphicon-ban-circle" 
+            style="color:#d00; font-size:18em; margin:20px 0;"></span>
+        <?php else: ?>
+        <img src="/assets/admin/auth/not-allowed/access_denied.png"
+            style="width:20%;margin:20px 0;" />
+        <?php endif; ?>
+    </p>
+    <h1>对不起，您无权访问此页面！</h1>
+    <h1><small>Sorry, you are not authorized to access this page.</small></h1>
+    <button class="btn btn-default btn-lg" onclick="javascript:history.go(-1);" 
+        style="margin-top:2em">返回</button>
+</div>

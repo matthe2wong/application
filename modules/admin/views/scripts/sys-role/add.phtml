@@ -1,0 +1,32 @@
+<?php $this->headTitle('增加页') ?>
+<?php $this->headTitle('系统角色') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-role/add.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-role/add.js') ?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="/admin/sys-role/manage">系统角色管理</a></li>
+        <li class="active"><a href="javascript:;">添加</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2><i class="fa fa-plus-circle"></i> 添加新的系统角色 <a href="javascript: history.go(-1)" class="btn btn-default">
+    	    <i class="fa fa-chevron-left"></i> 返回</a></h2>
+</div>
+
+<div class="container-fluid-md">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-plus"></i> 系统角色</h4>
+
+            <div class="panel-options">
+                <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <?php echo $this->form ?>
+        </div>
+    </div>
+</div>

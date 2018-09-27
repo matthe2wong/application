@@ -1,0 +1,22 @@
+<?php $this->headTitle('专家介绍') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/specialist/detail.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/specialist/detail.js') ?>
+
+<?php $d = $this->data ?>
+
+<div class="weui-panel">
+    <div class="weui-panel__bd">
+        <div class="weui-media-box weui-media-box_text">
+            <h4 class="weui-media-box__title"><?php echo $d->title ?></h4>
+            <ul class="weui-media-box__info">
+                <li class="weui-media-box__info__meta"><?php echo date("Y-m-d",strtotime($d->date))?></li>
+                <?php if($d->photo):?>
+                <li class="weui-media-box__info__meta img">
+                    <img src="<?php echo $d->photo ?>" />
+                </li>
+                <?php endif;?>
+                <li class="weui-media-box__info__meta weui-media-box__info__meta_extra"><?php echo $d->intro     ?></li>
+            </ul>
+        </div>
+    </div>
+</div>

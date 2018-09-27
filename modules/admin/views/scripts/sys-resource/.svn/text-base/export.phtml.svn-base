@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+table td, table th {
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+						<th>数据ID</th>
+						<th>名称</th>
+						<th>模块</th>
+						<th>控制器</th>
+						<th>动作</th>
+			</tr>
+		</thead>
+		<tbody>
+            <?php if ($this->data): foreach($this->data as $d):?>
+            <tr>
+						<td><?php echo $d->id ?></td>
+						<td><?php echo $d->title ?></td>
+						<td><?php echo $d->module ?></td>
+						<td><?php echo $d->controller ?></td>
+						<td><?php echo $d->action ?></td>
+			</tr>
+            <?php endforeach; endif; ?>
+        </tbody>
+	</table>
+</body>
+</html>

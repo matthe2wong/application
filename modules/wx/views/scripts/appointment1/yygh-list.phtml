@@ -1,0 +1,90 @@
+<?php $this->headTitle('预约挂号') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/yygh-list.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/appointment/yygh-list.js?t='.time()) ?>
+
+<input type="hidden" id="doctor_id" value="<?php echo $this->doctor_id ?>">
+<input type="hidden" id="pid" value="<?php echo $this->pid ?>">
+<input type="hidden" id="duty_id" value="<?php echo $this->duty_id ?>">
+<input type="hidden" id="duty_id2" value="<?php echo $this->duty_id2 ?>">
+<input type="hidden" id="clinic_price" value="<?php echo $this->clinic_price ?>">
+<input type="hidden" id="name" value="<?php echo $this->doctor_name ?>">
+<input type="hidden" id="profession" value="<?php echo $this->profession ?>">
+<input type="hidden" id="section_name" value="<?php echo $this->section_name ?>">
+<input type="hidden" id="date" value="<?php echo $this->date ?>">
+
+<div class="page__hd">
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <img src="/assets/wx/appointment/doctor.png" style="width: 50px;display: block">
+            </div>
+            <div class="weui-cell__bd">
+                <p style="font-size:16px;color:#39393a"><?php echo $this->doctor_name ?></p>
+                <p style="font-size: 13px;color: #888888;"><?php echo $this->section_name ?></p>
+                <p style="font-size: 13px;color: #888888;"><?php echo $this->profession ?></p>
+            </div>
+            <div class="weui-cell__hd collect">
+                <img src="/assets/wx/appointment/collect.svg" id="collect-img" />
+                <p class="collect-text">未收藏</p>
+                <input type="hidden" id="collect" value="1">
+            </div>
+            <div class="weui-cell__hd code">
+                <img src="/assets/wx/appointment/code.svg" id="code-img" />
+                <p class="code-text">二维码</p>
+                <input type="hidden" id="code" value="1">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui-skin_android" id="androidActionsheet" style="opacity: 0; display: none;">
+    <div class="weui-mask"></div>
+    <div class="weui-actionsheet">
+        <div class="weui-actionsheet__menu">
+            <p style="padding-top:20px;"><?php echo $this->doctor_name." | ".$this->profession ?></p>
+            <p><?php echo $this->section_name ?></p>
+            <img src="/assets/wx/img/code.jpg" />
+            <p style="color:#ea7e2f">长按二维码保存</p>
+            <a onclick="javascript:$('.weui-skin_android').css('display','none');$('.weui-mask').css('opacity','0')" class="weui-btn weui-btn_plain-primary close">关闭</a>
+        </div>
+    </div>
+</div>
+<div class="page__bd">
+    <div class="weui-flex">
+        <div class="weui-flex__item guahao"><div class="placeholder"><span class="select">挂号</span></div></div>
+        <div class="weui-flex__item intro"><div class="placeholder"><span>介绍</span></div></div>
+    </div>
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label"><?php echo $this->date ?></label>
+                <em class="weui-form-preview__value">更多日期&nbsp;<i class="fa fa-caret-up"></i></em>
+            </div>
+            <input type="hidden" id="status" value="1">
+        </div>
+       <div class="weui-form-preview__bd">
+            <div class="weui-flex" style="border-bottom: 1px solid #eee">
+            <?php if($this->data): foreach ($this->data as $k=>$d): ?>
+                <div class="weui-flex__item"><div class="placeholder"><?php echo $d["week"] ?></div></div>
+            <?php endforeach;endif;?>
+            </div>
+            <div class="weui-flex date" style="line-height:1.5;margin: 5px 0px 5px 0px;">
+            <?php if($this->data): foreach ($this->data as $k=>$d): ?>
+                <div class="weui-flex__item <?php if($k == 0){echo "active"; }?>" data-date="<?php echo $d["date"] ?>">
+                    <div class="placeholder">
+                        <p class="<?php if($k == 0){echo "class='no'"; }?> "><?php echo $d["day"] ?></p>
+                        <p class="<?php if($k == 0){echo 'no'; }?>">无号</p>
+                    </div>
+                </div>
+            <?php endforeach;endif;?>
+            </div>
+        </div>
+        <div class="weui-cells main">
+        </div>
+    </div>
+    <article class="weui-article">
+        <h2>擅长</h2>
+        <section>
+            <p class="skill"><?php echo $this->diseases ?></p>
+        </section>
+    </article>
+</div>

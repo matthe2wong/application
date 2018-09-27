@@ -1,0 +1,63 @@
+<?php $this->headTitle('详情页') ?>
+<?php $this->headTitle('住院查询') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/hospitalized-select/detail.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/hospitalized-select/detail.js') ?>
+
+<?php $d = $this->data ?>
+
+<div class="container" style="margin-top:40px">
+    
+    <div class="row">
+    
+        <div class="col-xs-9">
+        
+            <div class="page-header">
+              <h1>住院查询详情页 <small>{ACTION} of {MODEL_NAME}</small></h1>
+            </div>
+        
+            <table class="table table-hover table-bordered table-rounded table-striped">
+                <tr>
+				<tr>
+					<th>数据ID</th>
+					<td><?php echo $d->id ?></td>
+				</tr>
+				<tr>
+					<th>姓名</th>
+					<td><?php echo $d->name ?></td>
+				</tr>
+				<tr>
+					<th>身份证号</th>
+					<td><?php echo $d->card_no ?></td>
+				</tr>
+				<tr>
+					<th>日期</th>
+					<td><?php echo $d->date ?></td>
+				</tr>
+                </tr>
+            </table>
+        
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">[面板模板]</h3>
+                </div>
+                <div class="panel-body">
+                    ［面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容］
+                </div>
+            </div>
+        
+        </div>
+        
+        
+        <div class="col-xs-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">推荐住院查询</a>
+                <?php if ($this->topData): foreach ($this->topData as $t): ?>
+                <a href="/hospitalized-select/detail/id/<?php echo $t->id ?>" class="list-group-item">推荐住院查询<?php echo $t->id ?></a>
+                <?php endforeach; endif; ?>
+            </div>
+            
+        </div>
+    
+    </div>
+
+</div>

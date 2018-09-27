@@ -1,0 +1,30 @@
+<?php $this->headTitle('就诊人信息') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/user-info/often.css') ?>
+<?php //$this->headScript()->appendFile('/assets/wx/abouts/list.js') ?>
+
+<div class="weui-panel__bd">
+<?php if($this->data): foreach ($this->data as $d): ?>
+    <a href="/wx/user-info/detail" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+            <img class="weui-media-box__thumb" src="/assets/wx/user-info/icon.png" alt="">
+        </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title"  style="padding-top:14px">张三</h4>
+            <p class="weui-media-box__desc">370784199605215478</p>
+        </div>
+        <span class="weui-cell__ft" style="font-size:15px">无卡&nbsp;<i class="fa fa-angle-right"></i></span>
+    </a>
+<?php endforeach;endif;?>
+    <a href="/wx/user-info/related-card" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+            <img class="weui-media-box__thumb" src="/assets/wx/user-info/jiahao.png" alt="">
+        </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title" style="padding-top:14px">添加就诊人</h4>
+            <p class="weui-media-box__desc">还可添加<?php echo 5-count($this->data)?>人</p>
+        </div>
+        <span class="weui-cell__ft"><i class="fa fa-angle-right"></i></span>
+    </a>
+    <p>* 无卡账户请于窗口办理后重新进行绑定</p>
+</div>
+

@@ -1,0 +1,32 @@
+<?php $this->headTitle('新增就诊人') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/in-hospital/add.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/in-hospital/add.js') ?>
+
+<div class="page" id="data" style="opacity: 1;margin-top: 5px;">
+    <form action="" method="">
+        <input type="hidden" id="type" name="type" value="1">
+        <div>
+            <span><i class="gi gi-user"></i></span>
+            <input class="input" type="text" id="name" name="name" placeholder="就诊人姓名">
+        </div>
+        <div>
+            <span><i class="gi gi-credit-card"></i></span>
+            <input class="input" type="text" id="identityCard" name="identityCard"  placeholder="就诊人身份证号码">
+        </div>
+        <div>
+            <span><i class="fa fa-list-alt"></i></span>
+            <input class="input" type="text" id="patientCard" name="patientCard"  placeholder="就诊人卡号">
+        </div>
+        <div>
+            <span><i class="gi gi-phone"></i></span>
+            <input class="input" type="text" id="phone" name="phone"  placeholder="就诊人手机号">
+        </div>
+        <p class="hospital">请您填写真实信息，以免影响您就诊</p>
+        <button type="button" class="weui-btn weui-btn_primary subAdd" >确认添加</button>
+    </form>
+    <div class="main">
+        <span>没有就诊卡号？</span>
+        <p>您再也不用担心啦，医院已开通在线建卡功能，建卡后提供虚拟就诊卡号，您照样轻松预约挂号。首次就诊即可凭借虚拟就诊卡好领取实体卡哦~</p>
+        <button type="button" onclick="location.href='/wx/in-hospital/online-card'" class="weui-btn weui-btn_default">在线建卡</button>
+    </div>
+</div>

@@ -1,0 +1,212 @@
+<?php $this->headTitle('编辑页')?>
+<?php $this->headTitle('系统菜单')?>
+
+<?php $this->headLink()->appendStylesheet('/libs/zTree_v3/css/zTreeStyle/zTreeStyle.css')?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-menu/edit.css?t='.time())?>
+<?php $this->headLink()->appendStylesheet('/libs/bootstrap-select/dist/css/bootstrap-select.min.css')?>
+
+<?php $this->headScript()->appendFile('/libs/bootstrap-select/dist/js/bootstrap-select.min.js') ?> 
+<?php $this->headScript()->appendFile('/libs/zTree_v3/js/jquery.ztree.core-3.5.min.js')?>
+<?php $this->headScript()->appendFile('/libs/zTree_v3/js/jquery.ztree.excheck-3.5.min.js')?>
+<?php $this->headScript()->appendFile('/libs/zTree_v3/js/jquery.ztree.exedit-3.5.min.js')?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-menu/edit.js')?>
+<?php
+$modelSysResource = new Application_Model_SysResource();
+$modelSysAcl = new Application_Model_SysAcl();
+?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li class="active"><a href="javascript:;">系统菜单管理</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2><i class="fa fa-edit"></i> 编辑系统菜单 <a href="javascript: history.go(-1)" class="btn btn-default">
+    	    <i class="fa fa-chevron-left"></i> 返回</a></h2>
+</div>
+
+
+<div class="container-fluid-md">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-pencil"></i> 系统菜单</h4>
+
+            <div class="panel-options">
+                <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+    				<h4 class="panel-title"><i class="fa fa-plus"></i> 添加一级菜单</h4>
+                    <hr />
+    				<input type="text" id="root_title" class="form-control" placeholder="输入一级菜单标题">
+    				<br />
+    				<?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-menu', 'ajax-add-root')):?>
+					<button class="btn btn-success" type="button" id="add_root" 
+					   data-role_id="<?php echo $this->roleId?>"><i class="fa fa-check"></i> 确认添加</button>
+					<?php endif;?>
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    <h4 class="panel-title"><i class="fa fa-cogs"></i> 菜单预览</h4>
+                    <hr />
+                    <input type="hidden" id="role_id" value="<?php echo $this->roleId?>" />
+			        <ul id="sys_menu" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addMenuModal" tabindex="-1" role="dialog" aria-labelledby="addMenuModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="addMenuModalLabel">添加菜单</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12">
+						<form class="form-horizontal">
+							<div class="form-group form-group-lg">
+								<label class="col-sm-3 control-label" for="sys_resource">选择对应资源</label>
+								<div class="col-sm-9">
+									<select id="sys_resource" class="selectpicker show-tick form-control" data-live-search="true">
+										<option value="1">选择资源</option>
+                                    	<?php foreach ($this->groupNameList as $gnl):?>
+                                    	<!--   <option value="/<?php echo $rl->module?>/<?php echo $rl->controller?>/<?php echo $rl->action?>"><?php echo $rl->title?></option> -->
+                                    	<?php $groupNameMenuResource = $modelSysResource->getGroupNameMenuResource($gnl->group_name);?>
+                                    	<?php if ($groupNameMenuResource):?>
+                                    		<optgroup label="<?php echo $gnl->group_name?>">
+                                    		<?php foreach ($groupNameMenuResource as $menuResource):?>
+                                    			<option value="/<?php echo $menuResource->module?>/<?php echo $menuResource->controller?>/<?php echo $menuResource->action?>"><?php echo $menuResource->title?></option>
+                                    		<?php endforeach;?>
+                                    		</optgroup>
+                                    	<?php endif;?>
+                                    	<?php endforeach;?>
+									</select>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<form class="form-horizontal">
+							<div class="form-group form-group-lg">
+								<label class="col-sm-3 control-label" for="menu_title">菜单标题</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="menu_title" placeholder="输入菜单标题" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<form class="form-horizontal">
+							<div class="form-group form-group-lg">
+								<label class="col-sm-3 control-label" for="menu_link">菜单链接</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="menu_link" placeholder="输入菜单链接" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-menu', 'ajax-add-submenu')):?>
+				<button id="add_menu" data-role_id="<?php echo $this->roleId?>" type="button" class="btn btn-primary">添加菜单</button>
+				<?php endif;?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 编辑菜单 -->
+<div class="modal fade" id="editMenuModal" tabindex="-1" role="dialog" aria-labelledby="editMenuModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="editMenuModalLabel">编辑菜单</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12">
+						<form class="form-horizontal">
+							<div class="form-group form-group-lg">
+								<label class="col-sm-3 control-label" for="edit_sys_resource">选择对应资源</label>
+								<div class="col-sm-9">
+									<select id="edit_sys_resource" class="selectpicker show-tick form-control" data-live-search="true">
+										<option value="1">选择资源</option>
+                                    	<?php foreach ($this->groupNameList as $gnl):?>
+                                    	<!--   <option value="/<?php echo $rl->module?>/<?php echo $rl->controller?>/<?php echo $rl->action?>"><?php echo $rl->title?></option> -->
+                                    	<?php $groupNameMenuResource = $modelSysResource->getGroupNameMenuResource($gnl->group_name);?>
+                                    	<?php if ($groupNameMenuResource):?>
+                                    		<optgroup label="<?php echo $gnl->group_name?>">
+                                    		<?php foreach ($groupNameMenuResource as $menuResource):?>
+                                    		<?php $acl=$modelSysAcl->getList(array("role_id"=>$this->roleId,"resource_id"=>$menuResource->id))?>
+                                    		<?php if ($acl):?>
+                                    			<option value="/<?php echo $menuResource->module?>/<?php echo $menuResource->controller?>/<?php echo $menuResource->action?>"><?php echo $menuResource->title?></option>
+                                    			<?php endif;?>
+                                    		<?php endforeach;?>
+                                    		<?php if ($gnl->group_name == '产品权限管理'):?>
+                                    			<option value="/admin/product/manage/is_distribution/1">可分销产品管理</option>
+                                    		<?php endif;?>
+                                    		</optgroup>
+                                    	<?php endif;?>
+                                    	<?php endforeach;?>
+                                    </select>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<form class="form-horizontal">
+							<div class="form-group form-group-lg">
+								<label class="col-sm-3 control-label" for="edit_menu_title">菜单标题</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="edit_menu_title" placeholder="输入菜单标题" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<form class="form-horizontal">
+							<div class="form-group form-group-lg">
+								<label class="col-sm-3 control-label" for="edit_menu_link">菜单链接</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="edit_menu_link" placeholder="输入菜单链接" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<?php if (Szkj_Helper_OperatingChecker::check('admin', 'sys-menu', 'ajax-edit-menu')):?>
+				<button id="edit_menu" data-role_id="<?php echo $this->roleId?>" type="button" class="btn btn-primary">修改菜单</button>
+				<?php endif;?>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

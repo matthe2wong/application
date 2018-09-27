@@ -1,0 +1,34 @@
+<?php $this->headTitle('编辑页') ?>
+<?php $this->headTitle('医院坐标') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/map/edit.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/map/edit.js') ?>
+<?php $this->headScript()->appendFile('/assets/admin/map/validate-config.js') ?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="/admin/map/manage">医院坐标管理</a></li>
+        <li class="active"><a href="javascript:;">编辑</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-edit"></i> 编辑医院坐标 
+        <a href="javascript: history.go(-1)" class="btn btn-default pull-right">
+    	    <i class="fa fa-chevron-left"></i> 返回</a>
+    </h2>
+</div>
+
+<div class="container-fluid-md">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-pencil"></i> 医院坐标</h4>
+
+            <div class="panel-options">
+            </div>
+        </div>
+        <div class="panel-body">
+            <?php echo $this->form ?>
+        </div>
+    </div>
+</div>

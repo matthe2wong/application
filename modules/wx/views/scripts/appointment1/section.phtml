@@ -1,0 +1,18 @@
+<?php $this->headTitle('预约来诊') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment1/section.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/appointment11/section.js?t='.time()) ?>
+
+<div class="page" style="opacity: 1;">
+    <ul class="office-list" style="display: block; overflow-y: scroll;">
+            <li data-id="2" class="active">总院</li>
+            <li data-id="12">南医疗区</li>
+            <li data-id="13">东医疗区</li>
+            <li data-id="14">北医疗区</li>
+            <li data-id="15">博爱眼科</li>
+            <li data-id="16">北部新城</li>
+        </ul> 
+    <div class="office">
+        <ul class="office-list-child"><li dept-id="lyrm_center_nkmz">内科门诊<i class="fa fa-chevron-circle-right"></i><ul class="three-level"><a href="/wx/appointment1/yygh-date/pid/53/name/心血管内科门诊"><li>心血管内科门诊</li></a><a href="/wx/appointment1/yygh-date/pid/54/name/肾内科门诊"><li>肾内科门诊</li></a><a href="/wx/appointment1/yygh-date/pid/57/name/呼吸内科门诊"><li>呼吸内科门诊</li></a><a href="/wx/appointment1/yygh-date/pid/50/name/消化内科门诊"><li>消化内科门诊</li></a><a href="/wx/appointment1/yygh-date/pid/55/name/内分泌科门诊"><li>内分泌科门诊</li></a><a href="/wx/appointment1/yygh-date/pid/56/name/血液内科门诊"><li>血液内科门诊</li></a><a href="/wx/appointment1/yygh-date/pid/52/name/老年病科门诊"><li>老年病科门诊</li></a><a href="/wx/appointment1/yygh-date/pid/58/name/肿瘤内科门诊"><li>肿瘤内科门诊</li></a></ul></li><li dept-id="lyrm_center_wkmz">外科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_fckmz">妇产科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_szyxkmz">生殖医学不孕不育专科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_rkmz">儿科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_pfkmz">皮肤科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_ebhmz">耳鼻喉科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_zykmz">中医门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_xlzxmz">心理科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_ttkmz">疼痛科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_grkmz">感染科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_yxmrkmz">医学美容科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_yykmz">营养科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_kqkmz">口腔科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_llkmz">理疗科门诊<i class="fa fa-chevron-circle-right"></i></li><li dept-id="lyrm_center_blmz">病理科门诊<i class="fa fa-chevron-circle-right"></i></li></ul>
+    </div>
+    <input type="hidden" value="1" id="status">
+</div>  

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+table td, table th {
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+					<th>openid openid</th>
+					<th>就诊时段 time</th>
+					<th>费用类型 type</th>
+					<th>医院名称 hospital_name</th>
+					<th>就诊科室 department</th>
+					<th>科室位置 address</th>
+					<th>医生姓名 doctor_name</th>
+					<th>医生职称 doctor_call</th>
+					<th>就诊人 name</th>
+					<th>是否有就诊卡 is_patient_card</th>
+					<th>医院单号 hospital_number</th>
+					<th>平台单号 platform_number</th>
+					<th>交易金额 price</th>
+					<th>支付状态 pay_status</th>
+					<th>预约时间 appointment_time</th>
+					<th>取消时间 cancel_time</th>
+					<th>取消原因 cancel_cause</th>
+
+			</tr>
+		</thead>
+		<tbody>
+            <?php if ($this->data): foreach($this->data as $d):?>
+            <tr>
+					<td style="mso-number-format='\@'"><?php echo $d->openid ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->time ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->type ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->hospital_name ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->department ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->address ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->doctor_name ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->doctor_call ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->name ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->is_patient_card ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->hospital_number ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->platform_number ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->price ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->pay_status ?></td>
+					<td style="mso-number-format='yyyy-mm-dd h:i:s'"><?php echo $d->appointment_time ? date("Y-m-d H:i:s", strtotime($d->appointment_time)) : "" ?></td>
+					<td style="mso-number-format='yyyy-mm-dd h:i:s'"><?php echo $d->cancel_time ? date("Y-m-d H:i:s", strtotime($d->cancel_time)) : "" ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->cancel_cause ?></td>
+			</tr>
+            <?php endforeach; endif; ?>
+        </tbody>
+	</table>
+</body>
+</html>

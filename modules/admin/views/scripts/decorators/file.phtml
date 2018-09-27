@@ -1,0 +1,18 @@
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="form-group">
+        <label for="<?php echo $this->element->getName(); ?>" 
+            class="control-label<?php if ($this->element->hasErrors()): ?> error<?php endif; ?>" id="label_<?php echo $this->element->getName(); ?>"> 
+            <?php echo $this->element->getLabel(); ?>
+        </label>
+        
+        <?php echo $this->content; ?>
+        
+        <?php if ($this->element->hasErrors()): ?>
+        
+            <span class="error">
+                <?php echo $this->formErrors($this->element->getMessages()); ?>
+            </span>
+        
+        <?php endif; ?>
+    </div>
+</div>

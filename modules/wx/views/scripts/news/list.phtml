@@ -1,0 +1,27 @@
+<?php if($this->type == 3):$this->headTitle('注意事项');elseif($this->type == 2): $this->headTitle('就诊流程');elseif($this->type == 1): $this->headTitle('周边服务');endif;?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/specialist/list.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/news/list.js') ?>
+<style>
+.page__hd {
+    border-bottom: 2px solid #eee;
+}
+</style>
+
+<div class="page__hd">
+    <h1 class="page__title"><?php if($this->type == 1):echo "周边服务";elseif($this->type == 2):echo "就诊流程";else:echo "注意事项";endif;?></h1>
+</div>
+<input type="hidden" id="type" value="<?php echo $this->type ?>">
+<div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+        <div class="weui-media-box weui-media-box_small-appmsg">
+            <div class="weui-cells">
+            
+            </div>
+            <div class="weui-panel__ft" style="text-align: center">
+                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                    <div class="weui-cell__bd more">暂无信息</div>
+                </a>    
+            </div>
+        </div>
+    </div>
+</div>

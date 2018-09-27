@@ -1,0 +1,31 @@
+<?php $this->headTitle('我的收藏') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/person/index/index.css?t='.time()) ?>
+<style>
+.weui-panel {
+    margin-top: 3px !important;
+}
+</style>
+<div class="page__hd">
+    <h1 class="page__title">我的收藏</h1>
+</div>
+
+<div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+        <a href="/wx/person/news-collect" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb" src="/assets/wx/person/zx.png" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title">资讯收藏</h4>
+            </div>
+        </a>
+        <a href="/wx/person/physician-collect" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb" src="/assets/wx/person/ys.png" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title">医师收藏</h4>
+            </div>
+        </a>
+    </div>
+</div>

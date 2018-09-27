@@ -1,0 +1,63 @@
+<?php $this->headTitle('预约挂号') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/yygh.css?t='.time()) ?>
+<?php //$this->headScript()->appendFile('/assets/wx/abouts/list.js') ?>
+
+<div class="mui-content">
+    <!-- <div class="weui-form-preview">
+        <div class="weui-form-preview__ft">
+            <a class="weui-form-preview__btn weui-form-preview__btn_default active" href="/wx/appointment/yygh">专家号</a>
+            <a class="weui-form-preview__btn weui-form-preview__btn_default" href="">普通号</a>
+        </div>
+    </div> -->
+    <div class="page__hd">
+        <h1 class="page__title">预约挂号</h1>
+    </div>
+	<ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell1 mui-media">
+    		<div class="mui-media-body">
+        		<img class="mui-media-object mui-pull-left" src="/assets/wx/img/doctor.jpg">
+        		<div class="mui-pull-left">
+        		    <p class="mui-ellipsis name"> 张继科</p>
+        		    <p class="position">主任医师</p>
+        		</div>
+    		</div>
+    		<div class="skill">
+        		<img class="mui-media-object mui-pull-left" src="/assets/wx/img/sc.png">
+        		<p>擅长：消化内镜常规开展胃镜、十二脂肠镜...消化内镜常规开展胃镜、十二脂肠镜... </p>
+    		</div>
+	   </li>
+	   <li class=" mui-media">
+	       <ul class="mui-table-view-chevron main">
+        	    <li class="mui-media"><p>04-18</p><p>周三</p><button type="reset" onclick="location.href='/wx/appointment/yygh-list'" class="weui-btn weui-btn_primary">预约</button></li>
+        	    <li class="mui-media"><p>04-19</p><p>周四</p><button type="button" onclick="location.href='/wx/appointment/ghcg'" class="weui-btn weui-btn_warn">挂号</button></li>
+        	    <li class="mui-media"><p>04-20</p><p>周五</p><button type="button" class="weui-btn weui-btn_default">停诊</button></li>
+        	    <li class="mui-media"><p>04-21</p><p>周六</p><button type="button" class="weui-btn weui-btn_default">无号</button></li>
+        	    <li class="mui-media"><p>04-22</p><p>周末</p><button type="button" class="weui-btn weui-btn_default">无号</button></li>
+    	   </ul>
+	   </li>
+	</ul>
+	<ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell1 mui-media">
+    		<div class="mui-media-body">
+        		<img class="mui-media-object mui-pull-left" src="/assets/wx/img/doctor.jpg">
+        		<div class="mui-pull-left">
+        		    <p class="mui-ellipsis name"> 张继科</p>
+        		    <p class="position">主任医师</p>
+        		</div>
+    		</div>
+    		<div class="skill">
+        		<img class="mui-media-object mui-pull-left" src="/assets/wx/img/sc.png">
+        		<p>擅长：消化内镜常规开展胃镜、十二脂肠镜...消化内镜常规开展胃镜、十二脂肠镜... </p>
+    		</div>
+	   </li>
+	   <li class=" mui-media">
+	       <ul class="mui-table-view-chevron main">
+        	    <li class="mui-media"><p>04-18</p><p>周三</p><button type="reset" class="weui-btn weui-btn_primary">预约</button></li>
+        	    <li class="mui-media"><p>04-19</p><p>周四</p><button type="button" class="weui-btn weui-btn_warn">挂号</button></li>
+        	    <li class="mui-media"><p>04-20</p><p>周五</p><button type="button" class="weui-btn weui-btn_default">停诊</button></li>
+        	    <li class="mui-media"><p>04-21</p><p>周六</p><button type="button" class="weui-btn weui-btn_default">无号</button></li>
+        	    <li class="mui-media"><p>04-22</p><p>周末</p><button type="button" class="weui-btn weui-btn_default">无号</button></li>
+    	   </ul>
+	   </li>
+	</ul>
+</div>

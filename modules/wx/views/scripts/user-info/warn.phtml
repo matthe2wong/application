@@ -1,0 +1,21 @@
+<?php $this->headTitle('友情提示') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/satisfaction/warn.css?t='.time()) ?>
+<style>
+.weui-icon_msg-primary.weui-icon-warn{
+	color:#FFBE00
+}.icon-box__ctn {
+    margin-top: 5%;
+}
+</style>
+
+<div class="page icons js_show">
+    <div class="page__bd page__bd_spacing">
+		<i class="weui-icon-warn weui-icon_msg-primary"></i>
+        <div class="icon-box__ctn">
+            <p class="icon-box__desc">您好，您暂未绑定<?php if($this->type):?>本人<?php endif;?>就诊信息。</p>
+        </div>
+    </div>
+    <div class="page__ft">
+    	<a href="/wx/user-info/related-card" class="weui-btn weui-btn_default">去绑定</a>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+table td, table th {
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+					<th>城市 city</th>
+					<th>医院名称 name</th>
+					<th>地址 address</th>
+					<th>横坐标 lng</th>
+					<th>纵坐标 lat</th>
+
+			</tr>
+		</thead>
+		<tbody>
+            <?php if ($this->data): foreach($this->data as $d):?>
+            <tr>
+					<td style="mso-number-format='\@'"><?php echo $d->city ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->name ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->address ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->lng ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->lat ?></td>
+			</tr>
+            <?php endforeach; endif; ?>
+        </tbody>
+	</table>
+</body>
+</html>

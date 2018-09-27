@@ -1,0 +1,18 @@
+<?php $this->headTitle('常用就诊人') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/in-hospital/often.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/abouts/list.js') ?>
+
+<div class="mui-content">
+	<ul class="mui-table-view mui-table-view-chevron">
+	<?php if($this->data): foreach ($this->data as $d): ?>
+        <li class="mui-table-view-cell mui-media">
+    		<div class="mui-media-body">
+		        <i class="gi gi-user"></i><span>&nbsp;<?php echo $d->name ?></span> 
+    		    <p class="mui-ellipsis"> 身份证号：&emsp;<?php echo $d->identity_card ?> </p>
+    			<a href="/wx/in-hospital/edit/id/<?php echo $d->id ?>"><img class="mui-media-object mui-pull-right" src="/assets/wx/in-hospital/edit.png"></a>
+    		</div>
+        </li>
+    <?php endforeach;endif;?>
+	</ul>
+	<button type="button" onclick="location.href='/wx/in-hospital/add'" class="weui-btn weui-btn_primary" >添加就诊人</button>
+</div>

@@ -1,0 +1,57 @@
+<?php $this->headTitle('管理列表页') ?>
+<?php $this->headTitle('访问控制') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-acl/manage.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-acl/manage.js') ?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="javascript:;">访问控制管理</a></li>
+        <li class="active"><a href="javascript:;">访问控制列表</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-gear"></i> 访问控制管理 
+    </h2>
+</div>
+
+<div style="display: none">
+    <input type="hidden" id="current_base_url" value="/admin/sys-acl/manage" />
+</div>
+
+<div class="container-fluid-md">
+	<?php
+    $modelSysResource = new Application_Model_SysResource();
+    $modelSysAcl = new Application_Model_SysAcl();
+    ?>
+    <?php if ($this->groupNameList):foreach ($this->groupNameList as $i=>$g):?>
+		<?php $resourceList = $modelSysResource->getList(array('group_name'=>$g->group_name,'status'=>1))?>
+    	<?php  if ($resourceList):?>
+    	<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><?php echo $g->group_name?><label><span style="display: none;"><input type="checkbox" name="resource<?php echo $i?>" data-type="all" data-i="<?php echo $i?>" data-role_id="<?php echo $this->roleId?>" /></span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue;cursor: pointer;">反选</span></label>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f00;" id="all<?php echo $i?>"></span></h3>
+				</div>
+				<div class="panel-body">	
+				<?php foreach ($resourceList as $r): ?>
+                <div class="col-md-3">
+						<div class="checkbox">
+							<label>
+                                <?php $acl=$modelSysAcl->getList(array("role_id"=>$this->roleId,"resource_id"=>$r->id)) ?>
+                                <input name="resource<?php echo $i ?>" id="resource<?php echo $r->id ?>" 
+                                    class="checkbox" type="checkbox" data-type="one" 
+                                    data-role_id="<?php echo $this->roleId ?>" data-resource_id="<?php echo $r->id ?>" 
+                                    <?php if ($acl):echo 'checked';endif; ?>> <?php echo $r->title ?>
+                                <span style="color: #f00;" id="result<?php echo $r->id ?>"></span>
+                                <br /><?php echo '/'.$r->module.'/'.$r->controller.'/'.$r->action ?>
+							</label>
+						</div>
+					</div>
+                <?php endforeach;  ?>
+			</div>
+			</div>
+		</div>
+    <?php endif;?>
+    <?php endforeach; endif;?>
+</div>

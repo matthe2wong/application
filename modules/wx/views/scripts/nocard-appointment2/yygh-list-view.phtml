@@ -1,0 +1,63 @@
+<?php $this->headTitle('无卡预约') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/nocard-appointment/yygh-list-view.css?t='.time()) ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/nocard-appointment/nocard-bind.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/nocard-appointment/yygh-list-view.js?t='.time()) ?>
+<div class="page__hd">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医生姓名</label>
+                <span class="weui-form-preview__value">刘长美</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医生职称</label>
+                <span class="weui-form-preview__value">主任医师</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊科室</label>
+                <span class="weui-form-preview__value">计划生育门诊</span>
+            </div>
+            <div class="weui-form-preview__item" style="line-height: 2;">
+                <label class="weui-form-preview__label">就诊时段</label>
+                <span class="weui-form-preview__value red">2018-08-16 星期四<br>上午 08:24</span>
+            </div>
+        </div>
+    </div>
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">挂号金额</label>
+                <span class="weui-form-preview__value red">￥24</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page__bd">
+    <div class="weui-cells weui-cells_form">
+    <input type="hidden" id="bind_type" name="bind_type" value="1">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="text" id="paientName" name="paientName" placeholder="请输入姓名">
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd"><label class="weui-label">手机号</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="text" id="relationTel" name="relationTel" placeholder="请输入手机号">
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd"><label class="weui-label">身份证号</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="text" id="card" name="card" placeholder="请输入身份证号（含字母需大写）">
+            </div>
+        </div>
+        <div>
+            <a href="/wx/nocard-appointment2/ghcg" class="weui-btn weui-btn_primary ">立即预约</a>
+        </div>
+    </div>
+    <p class="hospital" style="line-height: normal;margin-top:10px;text-align:center">注：需持与输入的身份证号匹配的身份证就诊</p>
+    <input type="hidden" id="user_id" value="">
+    <input type="hidden" id="jlxh" value="">
+</div>

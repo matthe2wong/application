@@ -1,0 +1,59 @@
+[production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+includePaths.library = APPLICATION_PATH "/../library"
+bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
+bootstrap.class = "Bootstrap"
+appnamespace = "Application"
+resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
+resources.frontController.params.displayExceptions = 1
+
+resources.db.adapter = PDO_MYSQL
+resources.db.params.host = "115.28.174.51"
+resources.db.params.username = "lyphservice"
+resources.db.params.password = "db5of5cakidd"
+resources.db.params.dbname = "lyphservice"
+resources.db.params.prefix = 
+resources.db.params.charset = utf8
+resources.db.isDefaultTableAdapter = true
+resources.db.params.driver_options.1002 = "SET NAMES UTF8;"
+
+
+;resources.db.adapter = Oracle
+;resources.db.params.host = localhost
+;resources.db.params.port = 1521
+;resources.db.params.dbname = xe
+;resources.db.params.username = baoan
+;resources.db.params.password = 12345678
+;resources.db.params.charset = UTF8
+;resources.db.params.persistent = true
+
+
+resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts/"
+resources.modules[] = ""
+
+;插件
+autoloaderNamespaces[] = "Szkj_"
+autoloaderNamespaces[] = "RMYY_"
+;resources.frontController.plugins.layout = "Szkj_Controller_Plugin_Layout"
+resources.frontController.plugins.layout = "Szkj_Controller_Plugin_Acl"
+resources.frontController.plugins.log = "Szkj_Controller_Plugin_Log"
+
+
+;缓存
+;resources.cachemanager.page.backend.options.public_dir = APPLICATION_PATH "/../public/cache"
+;resources.cachemanager.pagetag.backend.options.cache_dir = APPLICATION_PATH "/../data/cache/tags"
+;resources.frontController.params.disableOutputBuffering = true
+
+resources.frontController.moduleDirectory = APPLICATION_PATH "/modules"
+[staging : production]
+
+[testing : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+
+[development : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+resources.frontController.params.displayExceptions = 1
+resources.cacheManager.page.backend.options.disable_caching = true

@@ -1,0 +1,6 @@
+<!--
+See http://developer.yahoo.com/ypatterns/pattern.php?pattern=itempagination
+-->
+<span style="font-size:12px">
+    当前显示第 <?php echo $this->firstItemNumber ?> 条至第 <?php echo $this->lastItemNumber ?> 条，共 <?php echo $this->totalItemCount ?> 条
+</span>

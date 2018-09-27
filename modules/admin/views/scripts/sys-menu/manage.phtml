@@ -1,0 +1,205 @@
+<?php $this->headTitle('管理列表页') ?>
+<?php $this->headTitle('系统菜单') ?>
+<?php $this->headLink()->appendStylesheet('/template/dist/css/plugins/jquery-select2.min.css') ?>
+<?php $this->headScript()->appendFile('/template/dist/assets/plugins/jquery-select2/select2.min.js') ?>
+<?php $this->headScript()->appendFile('/template/dist/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') ?>
+<?php $this->headLink()->appendStylesheet('/template/dist/assets/plugins/jquery-icheck/skins/all.css') ?>
+<?php $this->headLink()->appendStylesheet('/template/dist/css/plugins/jquery-icheck.min.css') ?>
+<?php $this->headScript()->appendFile('/template/dist/assets/plugins/jquery-icheck/icheck.min.js') ?>
+<?php $this->headScript()->appendFile('/template/dist/js/icheck.js') ?>
+<?php $this->headScript()->appendFile('/assets/admin/common.manage.admin.szkj.js') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-menu/manage.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-menu/manage.js') ?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="javascript:;">系统菜单管理</a></li>
+        <li class="active"><a href="javascript:;">系统菜单列表</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-gear"></i> 系统菜单管理 
+        <a href="/admin/sys-menu/add" class="btn btn-success"><i class="fa fa-plus"></i> 添加</a>
+        <a href="/admin/sys-menu/export" class="btn btn-warning"><i class="fa fa-download"></i> 导出</a>
+    </h2>
+</div>
+
+<div style="display: none">
+    <input type="hidden" id="current_base_url" value="/admin/sys-menu/manage" />
+</div>
+
+<div class="container-fluid-md">
+    <form role="form" id="search_form" load_datetimepicker="true">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><i class="fa fa-search"></i> 查询</h4>
+    
+                <div class="panel-options">
+                    <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                    <a href="" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                    <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+<div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="id_search">数据ID</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_id ?>"
+        	name="id" id="id_search" placeholder="数据ID">
+    </div>
+</div><div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="title_search">菜单名称</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_title ?>"
+        	name="title" id="title_search" placeholder="菜单名称">
+    </div>
+</div><div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="icon_search">图标</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_icon ?>"
+        	name="icon" id="icon_search" placeholder="图标">
+    </div>
+</div><div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="order_no_search">显示顺序</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_order_no ?>"
+        	name="order_no" id="order_no_search" placeholder="显示顺序">
+    </div>
+</div><div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="level_search">菜单级别</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_level ?>"
+        	name="level" id="level_search" placeholder="菜单级别">
+    </div>
+</div><div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="type_search">菜单类型</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_type ?>"
+        	name="type" id="type_search" placeholder="菜单类型">
+    </div>
+</div><div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="url_search">链接地址</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_url ?>"
+        	name="url" id="url_search" placeholder="链接地址">
+    </div>
+</div><div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="status_search">菜单状态</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_status ?>"
+        	name="status" id="status_search" placeholder="菜单状态">
+    </div>
+</div><div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="note_search">备注</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_note ?>"
+        	name="note" id="note_search" placeholder="备注">
+    </div>
+</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
+                    <button type="button" id="search_form_reset_btn" class="btn btn-danger"><i class="fa fa-times"></i> 重置</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid-md" style="margin-bottom:1em">
+    <div role="toolbar" class="btn-toolbar pull-right">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+</div>
+
+<div class="container-fluid-md">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-list"></i> 系统菜单列表</h4>
+            <div class="panel-options">
+                <a href="" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="query-result-data-table" class="table table-striped">
+                <thead>
+                <tr>
+						<th>数据ID</th>
+						<th>菜单名称</th>
+						<th>图标</th>
+						<th>显示顺序</th>
+						<th>菜单级别</th>
+						<th>菜单类型</th>
+						<th>链接地址</th>
+						<th>菜单状态</th>
+						<th>备注</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if ($this->data): foreach($this->data as $d):?>
+                <tr>
+						<td><?php echo $d->id ?></td>
+						<td><?php echo $d->title ?></td>
+						<td><?php echo $d->icon ?></td>
+						<td><?php echo $d->order_no ?></td>
+						<td><?php echo $d->level ?></td>
+						<td><?php echo $d->type ?></td>
+						<td><?php echo $d->url ?></td>
+						<td><?php echo $d->status ?></td>
+						<td><?php echo $d->note ?></td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="dropdown-toggle btn btn-link btn-link-dark no-padding" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li>
+                                    <a href="/admin/sys-menu/view/id/<?php echo $d->id ?>">
+                                        <i class="fa fa-eye"></i> 详情
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/sys-menu/edit/id/<?php echo $d->id ?>">
+            				            <i class="fa fa-edit"></i> 编辑
+            				        </a>
+            				    </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="btn-delete" data-id="<?php echo $d->id ?>" 
+                                        href="javascript:return false">
+            				            <i class="fa fa-trash-o"></i>&nbsp; 删除
+            				        </a>
+            				    </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <?php endforeach; endif; ?>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid-md">
+    <div role="toolbar" class="btn-toolbar pull-right">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+</div>

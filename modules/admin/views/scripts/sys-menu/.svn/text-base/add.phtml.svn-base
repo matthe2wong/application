@@ -1,0 +1,120 @@
+<?php $this->headTitle('增加页') ?>
+<?php $this->headTitle('微信菜单') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-menu/add.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-menu/add.js') ?>
+
+<div class="header">
+	<ul class="breadcrumb">
+		<li><a href="/admin">后台首页</a></li>
+		<li><a href="/admin/sys-menu/manage">微信菜单管理</a></li>
+		<li class="active">添加</li>
+	</ul>
+</div>
+<div class="row col-md-12">
+    <div class="btn-toolbar list-toolbar">
+        <a href="javascript: history.go(-1)" class="btn btn-info">
+    	    <i class="fa fa-chevron-left"></i> 返回</a>
+    </div>
+	<div class="well">
+			
+		<?php if (true): ?>
+        <!-- Zend Form -->
+    	<div class="row">
+    		<div class="col-md-12">
+    			<br>
+    			<div id="myTabContent" class="tab-content">
+    				<div class="tab-pane active in" id="home">
+                        <?php echo $this->form ?>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+        <!-- End Zend Form -->
+        <?php else: ?>
+    	<!-- HTML FORM -->
+    	<form class="form-horizontal" enctype="multipart/form-data" method="post" id="frmsubmit" 
+    	   action="" >
+    		<div class="form-group">
+            <label for="Title" class="col-sm-2 col-xs-12 control-label">菜单名称</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="title" id="title" 
+               		 placeholder="请输入菜单名称">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="Icon" class="col-sm-2 col-xs-12 control-label">图标</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="icon" id="icon" 
+               		 placeholder="请输入图标">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="OrderNo" class="col-sm-2 col-xs-12 control-label">显示顺序</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="order_no" id="order_no" 
+               		 placeholder="请输入显示顺序">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="Level" class="col-sm-2 col-xs-12 control-label">菜单级别</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="level" id="level" 
+               		 placeholder="请输入菜单级别">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="ParentId" class="col-sm-2 col-xs-12 control-label">上级菜单ID</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="parent_id" id="parent_id" 
+               		 placeholder="请输入上级菜单ID">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="Type" class="col-sm-2 col-xs-12 control-label">菜单类型</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="type" id="type" 
+               		 placeholder="请输入菜单类型">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="Url" class="col-sm-2 col-xs-12 control-label">链接地址</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="url" id="url" 
+               		 placeholder="请输入链接地址">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="RoleId" class="col-sm-2 col-xs-12 control-label">角色ID</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="role_id" id="role_id" 
+               		 placeholder="请输入角色ID">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="Status" class="col-sm-2 col-xs-12 control-label">菜单状态</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="status" id="status" 
+               		 placeholder="请输入菜单状态">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="Note" class="col-sm-2 col-xs-12 control-label">备注</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="note" id="note" 
+               		 placeholder="请输入备注">
+            </div>
+        </div>
+
+            <!-- 保存发布按钮组 -->
+			<div class="row">
+				<div class="col-sm-12 col-sm-offset-2 col-xs-12" style="padding-left:0px; ">
+					<button class="btn btn-success"><i class="fa fa-send"></i> 保存并发布</button>
+					<button class="btn btn-warning btn-hd"><i class="fa fa-disk"></i> 保存</button>
+				</div>
+			</div>
+        </form>
+        <!-- END HTML FORM -->
+        <?php endif; ?>
+        
+	</div>
+</div>

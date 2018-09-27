@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+table td, table th {
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+					<th>标题 title</th>
+					<th>等级 class</th>
+					<th>电话 phone</th>
+					<th>地址 address</th>
+					<th>介绍 intro</th>
+
+			</tr>
+		</thead>
+		<tbody>
+            <?php if ($this->data): foreach($this->data as $d):?>
+            <tr>
+					<td style="mso-number-format='\@'"><?php echo $d->title ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->class ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->phone ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->address ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->intro ?></td>
+			</tr>
+            <?php endforeach; endif; ?>
+        </tbody>
+	</table>
+</body>
+</html>

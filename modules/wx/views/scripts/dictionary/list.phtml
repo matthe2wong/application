@@ -1,0 +1,31 @@
+<?php $this->headTitle('列表页') ?>
+<?php $this->headTitle('数据字典表') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/dictionary/list.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/dictionary/list.js') ?>
+
+
+<header class="mui-bar mui-bar-nav">
+	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	<h1 class="mui-title">数据字典表列表</h1>
+</header>
+<div class="mui-content">
+    <?php if ($this->data): ?>
+	<ul class="mui-table-view mui-table-view-chevron">
+	    <?php foreach ($this->data as $d): ?>
+        <li class="mui-table-view-cell mui-media">
+        	<a class="mui-navigate-right">
+        		<img class="mui-media-object mui-pull-left" src="/assets/images/common/icon-128.png">
+        		<div class="mui-media-body">
+        			<?php echo $d->title ?>
+        			<p class="mui-ellipsis">
+        			    <?php echo trim(mb_substr(str_replace(array('&nbsp;'),array(''),strip_tags($d->body, '')), 0, 130, 'utf-8')).'...' ?>
+        			</p>
+        		</div>
+        	</a>
+        </li>
+		<?php endforeach; ?>
+	</ul>
+	<?php else: ?>
+	
+	<?php endif; ?>
+</div>

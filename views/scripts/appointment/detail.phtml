@@ -1,0 +1,85 @@
+<?php $this->headTitle('详情页') ?>
+<?php $this->headTitle('在线预约') ?>
+<?php $this->headLink()->appendStylesheet('/assets/default/appointment/detail.css') ?>
+<?php $this->headScript()->appendFile('/assets/default/appointment/detail.js') ?>
+
+<?php $d = $this->data ?>
+
+<div class="container" style="margin-top:40px">
+    
+    <div class="row">
+    
+        <div class="col-lg-9 col-lg-9 col-sm-12 col-xs-12">
+        
+            <div class="page-header">
+              <h1>在线预约详情页 <small>Detail of Appointment</small></h1>
+            </div>
+        
+            <table class="table table-hover table-bordered table-rounded table-striped">
+				<tr>
+					<th>数据ID</th>
+					<td><?php echo $d->id ?></td>
+				</tr>
+				<tr>
+					<th>用户ID</th>
+					<td><?php echo $d->user_id ?></td>
+				</tr>
+				<tr>
+					<th>OPENID</th>
+					<td><?php echo $d->openid ?></td>
+				</tr>
+				<tr>
+					<th>关系</th>
+					<td><?php echo $d->relation ?></td>
+				</tr>
+				<tr>
+					<th>姓名</th>
+					<td><?php echo $d->name ?></td>
+				</tr>
+				<tr>
+					<th>身份证号码</th>
+					<td><?php echo $d->card_no ?></td>
+				</tr>
+				<tr>
+					<th>手机号</th>
+					<td><?php echo $d->phone ?></td>
+				</tr>
+				<tr>
+					<th>是否有就诊卡号</th>
+					<td><?php echo $d->is_patient_card ?></td>
+				</tr>
+				<tr>
+					<th>就诊卡号码</th>
+					<td><?php echo $d->patient_card ?></td>
+				</tr>
+				<tr>
+					<th>日期</th>
+					<td><?php echo $d->date ?></td>
+				</tr>
+            </table>
+        
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">[面板模板]</h3>
+                </div>
+                <div class="panel-body">
+                    ［面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容］
+                </div>
+            </div>
+        
+        </div>
+        
+        
+        <div class="col-lg-3 col-lg-3 col-sm-12 col-xs-12">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">其它在线预约</a>
+                <?php if ($this->topData): foreach ($this->topData as $t): ?>
+                <a href="/appointment/detail/id/<?php echo $t->id ?>" class="list-group-item">在线预约<?php echo $t->id ?></a>
+                <?php endforeach; endif; ?>
+            </div>
+            
+        </div>
+    
+    </div>
+
+</div>

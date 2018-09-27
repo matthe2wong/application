@@ -1,0 +1,222 @@
+<?php $this->headTitle('数据统计') ?>
+<?php $this->headTitle('医院坐标') ?>
+<?php $this->headLink()->appendStylesheet('/template/dist/css/plugins/jquery-dataTables.min.css') ?>
+<?php $this->headScript()->appendFile('/template/dist/assets/plugins/jquery-datatables/js/jquery.dataTables.js') ?>
+<?php $this->headScript()->appendFile('/template/dist/assets/plugins/jquery-datatables/js/dataTables.tableTools.js') ?>
+<?php $this->headScript()->appendFile('/template/dist/assets/plugins/jquery-datatables/js/dataTables.bootstrap.js') ?>
+<?php //$this->headScript()->appendFile('http://cdn.hcharts.cn/highcharts/highcharts.js') ?>
+<?php //$this->headScript()->appendFile('http://cdn.hcharts.cn/highcharts/modules/exporting.js') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/map/statistics.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/map/statistics.js') ?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="/admin/map/manage">医院坐标管理</a></li>
+        <li class="active"><a href="javascript:;">数据统计</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-bar-chart-o"></i> 医院坐标数据统计 
+        <a href="javascript: history.go(-1)" class="btn btn-default pull-right">
+    	    <i class="fa fa-chevron-left"></i> 返回</a>
+    </h2>
+</div>
+
+<div class="container-fluid-md">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-fw fa-bar-chart-o"></i> 数据占比统计</h4>
+
+            <div class="panel-options">
+            </div>
+        </div>
+        <ul class="nav nav-tabs">
+			<li class="active"><a data-toggle="tab" href="#tab-city">城市</a></li>
+			<li><a data-toggle="tab" href="#tab-name">医院名称</a></li>
+			<li><a data-toggle="tab" href="#tab-address">地址</a></li>
+			<li><a data-toggle="tab" href="#tab-lng">横坐标</a></li>
+			<li><a data-toggle="tab" href="#tab-lat">纵坐标</a></li>
+
+        </ul>
+        <div class="tab-content">
+			<div id="tab-city" class="tab-pane active">
+                <table class="table table-striped datatable">
+                    <thead>
+                    <tr>
+                        <th>城市</th>
+                        <th>数量</th>
+                        <th>占比</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if ($this->dataCity): 
+                    foreach ($this->dataCity as $d): 
+                        $percent = sprintf('%.2f', 100 * $d->count / $this->totalRowsCount);
+                    ?>
+                    <tr>
+                        <td><?php echo $d->city ?></td>
+                        <td><?php echo $d->count ?></td>
+                        <td><?php echo $percent ?>%</td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar" role="progressbar" 
+                                    aria-valuenow="<?php echo $percent ?>" aria-valuemin="0" 
+                                    aria-valuemax="100" style="width: <?php echo $percent ?>%;">
+                                    <span class="sr-only"><?php echo $percent ?>%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; endif; ?>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+			<div id="tab-name" class="tab-pane">
+                <table class="table table-striped datatable">
+                    <thead>
+                    <tr>
+                        <th>医院名称</th>
+                        <th>数量</th>
+                        <th>占比</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if ($this->dataName): 
+                    foreach ($this->dataName as $d): 
+                        $percent = sprintf('%.2f', 100 * $d->count / $this->totalRowsCount);
+                    ?>
+                    <tr>
+                        <td><?php echo $d->name ?></td>
+                        <td><?php echo $d->count ?></td>
+                        <td><?php echo $percent ?>%</td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar" role="progressbar" 
+                                    aria-valuenow="<?php echo $percent ?>" aria-valuemin="0" 
+                                    aria-valuemax="100" style="width: <?php echo $percent ?>%;">
+                                    <span class="sr-only"><?php echo $percent ?>%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; endif; ?>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+			<div id="tab-address" class="tab-pane">
+                <table class="table table-striped datatable">
+                    <thead>
+                    <tr>
+                        <th>地址</th>
+                        <th>数量</th>
+                        <th>占比</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if ($this->dataAddress): 
+                    foreach ($this->dataAddress as $d): 
+                        $percent = sprintf('%.2f', 100 * $d->count / $this->totalRowsCount);
+                    ?>
+                    <tr>
+                        <td><?php echo $d->address ?></td>
+                        <td><?php echo $d->count ?></td>
+                        <td><?php echo $percent ?>%</td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar" role="progressbar" 
+                                    aria-valuenow="<?php echo $percent ?>" aria-valuemin="0" 
+                                    aria-valuemax="100" style="width: <?php echo $percent ?>%;">
+                                    <span class="sr-only"><?php echo $percent ?>%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; endif; ?>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+			<div id="tab-lng" class="tab-pane">
+                <table class="table table-striped datatable">
+                    <thead>
+                    <tr>
+                        <th>横坐标</th>
+                        <th>数量</th>
+                        <th>占比</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if ($this->dataLng): 
+                    foreach ($this->dataLng as $d): 
+                        $percent = sprintf('%.2f', 100 * $d->count / $this->totalRowsCount);
+                    ?>
+                    <tr>
+                        <td><?php echo $d->lng ?></td>
+                        <td><?php echo $d->count ?></td>
+                        <td><?php echo $percent ?>%</td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar" role="progressbar" 
+                                    aria-valuenow="<?php echo $percent ?>" aria-valuemin="0" 
+                                    aria-valuemax="100" style="width: <?php echo $percent ?>%;">
+                                    <span class="sr-only"><?php echo $percent ?>%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; endif; ?>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+			<div id="tab-lat" class="tab-pane">
+                <table class="table table-striped datatable">
+                    <thead>
+                    <tr>
+                        <th>纵坐标</th>
+                        <th>数量</th>
+                        <th>占比</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if ($this->dataLat): 
+                    foreach ($this->dataLat as $d): 
+                        $percent = sprintf('%.2f', 100 * $d->count / $this->totalRowsCount);
+                    ?>
+                    <tr>
+                        <td><?php echo $d->lat ?></td>
+                        <td><?php echo $d->count ?></td>
+                        <td><?php echo $percent ?>%</td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar" role="progressbar" 
+                                    aria-valuenow="<?php echo $percent ?>" aria-valuemin="0" 
+                                    aria-valuemax="100" style="width: <?php echo $percent ?>%;">
+                                    <span class="sr-only"><?php echo $percent ?>%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; endif; ?>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

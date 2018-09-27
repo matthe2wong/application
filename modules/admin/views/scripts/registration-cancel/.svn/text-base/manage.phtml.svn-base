@@ -1,0 +1,224 @@
+<?php $this->headTitle('管理列表页') ?>
+<?php $this->headTitle('预约挂号取消信息') ?>
+<link rel="stylesheet" type="text/css" href=""/>
+<?php $this->headLink()->appendStylesheet('/libs/datatables/datatables.css') ?>
+<?php $this->headScript()->appendFile('/libs/datatables/datatables.js') ?>
+
+<?php $this->headScript()->appendFile('/assets/admin/common.manage.admin.szkj.js') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/registration-cancel/manage.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/registration-cancel/manage.js?t='.time()) ?>
+
+<div style="display: none">
+    <input type="hidden" id="current_base_url" value="/admin/registration-cancel/manage" />
+    <input type="hidden" id="ajax_delete_url" value="/admin/registration-cancel/delete" />
+    <input type="hidden" id="columns-sort-serialized" value='<?php echo $this->columnsSortSerialized ?>' />
+</div>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="javascript:;">预约挂号取消信息管理</a></li>
+        <li class="active"><a href="javascript:;">预约挂号取消信息列表</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-gear"></i> 预约挂号取消信息管理 
+        
+        <span class="pull-right">
+            <a href="/admin/registration-cancel/add" id="add_button" 
+                szkj-resource="/admin/registration-cancel/add" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-plus"></i> 添加</a>
+            <button id="edit_button" 
+                szkj-resource="/admin/registration-cancel/edit" 
+                class="btn btn-primary szkj-acl disabled"><i class="fa fa-pencil"></i> 编辑</button>
+            <button id="view_button" 
+                szkj-resource="/admin/registration-cancel/view" 
+                class="btn btn-primary szkj-acl disabled"><i class="fa fa-eye"></i> 详情</button>
+            <button id="delete_button" 
+                szkj-resource="/admin/registration-cancel/delete" 
+                class="btn btn-danger szkj-acl disabled"><i class="fa fa-trash-o"></i> 删除</button>
+            <button id="toggle-search-panel" class="btn btn-primary">
+                <i class="fa fa-search"></i> 查询</button>
+            <a href="/admin/registration-cancel/import" id="import_button"
+                szkj-resource="/admin/registration-cancel/import" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-cloud-upload"></i> 导入</a>
+            <a href="/admin/registration-cancel/export" id="export_button"
+                szkj-resource="/admin/registration-cancel/export" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-cloud-download"></i> 导出</a>
+            <a href="/admin/registration-cancel/statistics" id="statistics_button"
+                szkj-resource="/admin/registration-cancel/statistics" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-bar-chart-o"></i> 数据统计</a>
+        </span>
+    </h2>
+</div>
+
+<div class="container-fluid-md" style="display:none" id="search-panel">
+    <div class="panel panel-primary panel-sm">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-search"></i> 查询</h4>
+        </div>
+        <div class="panel-body">
+            <form class="form-inline" role="form" id="search_form">
+
+				<div class="form-group">
+					<label class="control-label" for="openid_search">openid</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_openid ?>"
+						name="openid" id="openid_search" placeholder="openid">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="time_search">就诊时段</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_time ?>"
+						name="time" id="time_search" placeholder="就诊时段">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="type_search">费用类型</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_type ?>"
+						name="type" id="type_search" placeholder="费用类型">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="hospital_name_search">医院名称</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_hospital_name ?>"
+						name="hospital_name" id="hospital_name_search" placeholder="医院名称">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="department_search">就诊科室</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_department ?>"
+						name="department" id="department_search" placeholder="就诊科室">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="address_search">科室位置</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_address ?>"
+						name="address" id="address_search" placeholder="科室位置">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="doctor_name_search">医生姓名</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_doctor_name ?>"
+						name="doctor_name" id="doctor_name_search" placeholder="医生姓名">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="doctor_call_search">医生职称</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_doctor_call ?>"
+						name="doctor_call" id="doctor_call_search" placeholder="医生职称">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="name_search">就诊人</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_name ?>"
+						name="name" id="name_search" placeholder="就诊人">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="is_patient_card_search">是否有就诊卡</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_is_patient_card ?>"
+						name="is_patient_card" id="is_patient_card_search" placeholder="是否有就诊卡">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="hospital_number_search">医院单号</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_hospital_number ?>"
+						name="hospital_number" id="hospital_number_search" placeholder="医院单号">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="platform_number_search">平台单号</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_platform_number ?>"
+						name="platform_number" id="platform_number_search" placeholder="平台单号">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="price_search">交易金额</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_price ?>"
+						name="price" id="price_search" placeholder="交易金额">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="pay_status_search">支付状态</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_pay_status ?>"
+						name="pay_status" id="pay_status_search" placeholder="支付状态">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="appointment_time_search">预约时间</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_appointment_time ?>"
+						name="appointment_time" id="appointment_time_search" placeholder="预约时间">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="cancel_time_search">取消时间</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_cancel_time ?>"
+						name="cancel_time" id="cancel_time_search" placeholder="取消时间">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="cancel_cause_search">取消原因</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_cancel_cause ?>"
+						name="cancel_cause" id="cancel_cause_search" placeholder="取消原因">
+				</div>
+
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
+                <button type="button" class="btn btn-primary" id="search_form_reset_btn"><i class="fa fa-times"></i> 重置</button>
+            </form>
+        </div><!-- END panel-body -->
+    </div><!-- END panel -->
+</div><!-- END container-fluid-md -->
+
+<div class="container-fluid-md">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table id="query-result-data-table" class="table table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th data-column="openid">openid</th>
+                    <th data-column="time">就诊时段</th>
+                    <th data-column="type">费用类型</th>
+                    <th data-column="hospital_name">医院名称</th>
+                    <th data-column="department">就诊科室</th>
+                    <th data-column="address">科室位置</th>
+                    <th data-column="doctor_name">医生姓名</th>
+                    <th data-column="doctor_call">医生职称</th>
+                    <th data-column="name">就诊人</th>
+                    <th data-column="is_patient_card">是否有就诊卡</th>
+                    <th data-column="hospital_number">医院单号</th>
+                    <th data-column="platform_number">平台单号</th>
+                    <th data-column="price">交易金额</th>
+                    <th data-column="pay_status">支付状态</th>
+                    <th data-column="appointment_time">预约时间</th>
+                    <th data-column="cancel_time">取消时间</th>
+                    <th data-column="cancel_cause">取消原因</th>
+                </tr>
+                </thead>
+                <tbody>
+            <?php if ($this->data): $counter = 1; foreach($this->data as $d):?>
+                <tr data-id="<?php echo $d->id ?>">
+					<td><?php echo $d->openid ?></td>
+					<td><?php echo $d->time ?></td>
+					<td><?php echo $d->type ?></td>
+					<td><?php echo $d->hospital_name ?></td>
+					<td><?php echo $d->department ?></td>
+					<td><?php echo $d->address ?></td>
+					<td><?php echo $d->doctor_name ?></td>
+					<td><?php echo $d->doctor_call ?></td>
+					<td><?php echo $d->name ?></td>
+					<td><?php echo $d->is_patient_card ?></td>
+					<td><?php echo $d->hospital_number ?></td>
+					<td><?php echo $d->platform_number ?></td>
+					<td><?php echo $d->price ?></td>
+					<td><?php echo $d->pay_status ?></td>
+					<td><?php echo $d->appointment_time ? date("Y-m-d H:i:s", strtotime($d->appointment_time)) : "" ?></td>
+					<td><?php echo $d->cancel_time ? date("Y-m-d H:i:s", strtotime($d->cancel_time)) : "" ?></td>
+					<td><?php echo $d->cancel_cause ?></td>
+                </tr>
+                <?php endforeach; endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div><!-- END container-fluid-md -->

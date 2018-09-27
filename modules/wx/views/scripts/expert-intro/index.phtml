@@ -1,0 +1,40 @@
+<?php $this->headTitle('专家介绍') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/specialist/list.css?t='.time()) ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/specialist/detail.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/expert-intro/iscroll.js?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/expert-intro/list.js?t='.time()) ?>
+<style>
+p{font-size: 14px;color: #8f8f94;}
+.weui-skin_android .weui-actionsheet{width: 90%;height: 90%;background: #fff;left: 50%;top: 50%;overflow:auto;}
+.weui-media-box__info{font-size:14px}
+</style>
+
+<div class="page__hd">
+    <h1 class="page__title">专家介绍</h1>
+</div>
+<div class="weui-cells">
+
+</div>
+<div class="weui-panel__ft">
+    <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd more" style="text-align: center"></div>
+    </a>    
+</div>
+
+<div class="weui-skin_android" id="androidActionsheet" style="opacity: 0; display: none;">
+    <div class="weui-mask"></div>
+    <div class="weui-panel weui-actionsheet">
+         <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_text">
+                <h4 class="weui-media-box__title title" style="font-size:16px !important;"></h4>
+                <ul class="weui-media-box__info">
+                    <li class="weui-media-box__info__meta position"></li>
+                    <li class="weui-media-box__info__meta img"></li>
+                    <li class="weui-media-box__info__meta weui-media-box__info__meta_extra intro"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+

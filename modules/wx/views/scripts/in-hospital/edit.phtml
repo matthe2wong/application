@@ -1,0 +1,33 @@
+<?php $this->headTitle('编辑就诊人') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/in-hospital/edit.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/in-hospital/edit.js') ?>
+<?php $value = $this->data?>
+<style>
+button{
+	width:50%
+}
+</style>
+<div class="page" id="data" style="opacity: 1;margin-top: 5px;">
+    <form>
+        <input type="hidden" id="id" name="id" value="<?php echo $this->id ?>">
+        <div>
+            <span><i class="gi gi-user"></i></span>
+            <input class="input" type="text" id="name" name="name" placeholder="就诊人姓名" value="<?php echo $value->name ?>">
+        </div>
+        <div>
+            <span><i class="gi gi-credit-card"></i></span>
+            <input class="input" type="text" id="identityCard" name="identityCard"  placeholder="就诊人身份证号码" value="<?php echo $value->identity_card ?>">
+        </div>
+        <div>
+            <span><i class="fa fa-list-alt"></i></span>
+            <input class="input" type="text" id="patientCard" name="patientCard"  placeholder="就诊人卡号" value="<?php echo $value->patient_card ?>">
+        </div>
+        <div>
+            <span><i class="gi gi-phone"></i></span>
+            <input class="input" type="text" id="phone" name="phone"  placeholder="就诊人手机号" value="<?php echo $value->phone ?>">
+        </div>
+        <p class="hospital">请您填写真实信息，以免影响您就诊</p>
+        <button type="reset" class="weui-btn weui-btn_default">删除信息</button>
+        <button type="button" class="weui-btn weui-btn_primary save">保存修改</button>
+    </form>
+</div>

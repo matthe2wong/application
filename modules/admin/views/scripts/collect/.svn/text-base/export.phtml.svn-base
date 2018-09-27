@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+table td, table th {
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+					<th>openid openid</th>
+					<th>医生姓名 doctor_name</th>
+					<th>医生职称 doctor_call</th>
+					<th>所在科室 department</th>
+					<th>日期 date</th>
+
+			</tr>
+		</thead>
+		<tbody>
+            <?php if ($this->data): foreach($this->data as $d):?>
+            <tr>
+					<td style="mso-number-format='\@'"><?php echo $d->openid ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->doctor_name ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->doctor_call ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->department ?></td>
+					<td style="mso-number-format='yyyy-mm-dd h:i:s'"><?php echo $d->date ? date("Y-m-d H:i:s", strtotime($d->date)) : "" ?></td>
+			</tr>
+            <?php endforeach; endif; ?>
+        </tbody>
+	</table>
+</body>
+</html>

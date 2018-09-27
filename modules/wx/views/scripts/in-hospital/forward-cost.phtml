@@ -1,0 +1,34 @@
+<?php $this->headTitle('预交住院费用') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/in-hospital/forward-cost.css') ?>
+<div class="page badge js_show">
+    <div class="page__bd">
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <label class="weui-form-preview__label"><i class="gi gi-user"></i>&nbsp;<b>张三</b></label><br>
+                    <p class="card">身份证：&emsp;124516196512154587</p>
+                    <p class="jzk"> 住院号：&emsp;123456789</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item item">
+                <label class="weui-form-preview__label">预缴住院费用</label>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd main">
+            <div class="weui-form-preview__item">
+                <span style="text-align: left;color:#3b3b3b;font-size:14px;"><i class="fa fa-sun-o"></i>&nbsp;预缴金额：</span>
+                <input class="input" type="text" id="name" name="name" placeholder="请输入充值金额">
+                <div class="weui-flex">
+                    <div class="weui-flex__item"><div class="placeholder">500元</div></div>
+                    <div class="weui-flex__item"><div class="placeholder">1000元</div></div>
+                    <div class="weui-flex__item"><div class="placeholder">3000元</div></div>
+                </div>
+            </div>
+        </div>
+        <a href="/wx/in-hospital/cost-list" class="weui-btn weui-btn_primary">去支付（不支持医保）</a>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<?php $this->headTitle('专家介绍') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/specialist/list.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/specialist/list.js') ?>
+
+<div class="page__hd">
+    <h1 class="page__title">专家介绍</h1>
+</div>
+<div class="weui-cells">
+<?php if($this->data): foreach ($this->data as $d): ?>
+    <a href="/wx/specialist/detail/id/<?php echo $d->id ?>">
+        <div class="weui-cell" style="border-bottom:1px solid #eee">
+            <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <img src="<?php echo $d->photo ?>" style="width: 50px;display: block">
+                <span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;"></span>
+            </div>
+            <div class="weui-cell__bd">
+                <p class="name"><?php echo $d->name ?></p>
+                <p><?php echo $d->department ?>&emsp;<?php echo $d->position ?></p>
+                <p style="font-size: 13px;color: #888888;"><?php echo $d->brief ?></p>
+            </div>
+        </div>
+    </a>
+<?php endforeach;endif;?>   
+</div>
+<div class="weui-panel__ft" style="text-align: center">
+    <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd more"></div>
+    </a>    
+</div>

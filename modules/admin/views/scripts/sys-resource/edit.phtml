@@ -1,0 +1,79 @@
+<?php $this->headTitle('编辑页') ?>
+<?php $this->headTitle('系统资源') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-resource/edit.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-resource/edit.js') ?>
+
+<div class="header">
+	<ul class="breadcrumb">
+		<li><a href="/admin">后台首页</a></li>
+		<li><a href="/admin/sys-resource/manage">系统资源管理</a></li>
+		<li class="active">编辑</li>
+	</ul>
+</div>
+<div class="row col-md-12">
+    <div class="btn-toolbar list-toolbar">
+        <a href="javascript: history.go(-1)" class="btn btn-info">
+    	    <i class="fa fa-chevron-left"></i> 返回</a>
+    </div>
+	<div class="well">
+        <?php if (true): ?>
+        <!-- Zend Form -->
+    	<div class="row">
+    		<div class="col-md-12">
+    			<br>
+    			<div id="myTabContent" class="tab-content">
+    				<div class="tab-pane active in" id="home">
+                        <?php echo $this->form ?>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+        <!-- End Zend Form -->
+        <?php else: ?>
+    	<!-- HTML FORM -->
+    	<?php $d = $this->data ?>
+        <!-- HTML FORM -->
+    	<form class="form-horizontal" enctype="multipart/form-data" method="post" id="frmsubmit" 
+    	   action="" >
+    		<div class="form-group">
+            <label for="Title" class="col-sm-2 col-xs-12 control-label">名称</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="title" id="title" 
+               		value="<?php echo $d->title ?>" placeholder="请输入名称">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="Module" class="col-sm-2 col-xs-12 control-label">模块</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="module" id="module" 
+               		value="<?php echo $d->module ?>" placeholder="请输入模块">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="Controller" class="col-sm-2 col-xs-12 control-label">控制器</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="controller" id="controller" 
+               		value="<?php echo $d->controller ?>" placeholder="请输入控制器">
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="Action" class="col-sm-2 col-xs-12 control-label">动作</label>
+            <div class="col-sm-10 col-xs-12">
+                <input type="text" class="form-control" name="action" id="action" 
+               		value="<?php echo $d->action ?>" placeholder="请输入动作">
+            </div>
+        </div>
+
+            <!-- 保存发布按钮组 -->
+			<div class="row">
+				<div class="col-sm-12 col-sm-offset-2 col-xs-12" style="padding-left:0px; ">
+					<button class="btn btn-success"><i class="fa fa-send"></i> 保存并发布</button>
+					<button class="btn btn-warning btn-hd"><i class="fa fa-disk"></i> 保存</button>
+				</div>
+			</div>
+        </form>
+        <!-- END HTML FORM -->
+        <?php endif; ?>
+        
+	</div>
+</div>

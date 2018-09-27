@@ -1,0 +1,24 @@
+<?php $this->headTitle('预约挂号') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/yygh-doctor.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/nocard-appointment/yygh-doctor.js?t='.time()) ?>
+
+<input type="hidden" id="pid" value="<?php echo $this->pid?>">
+<div class="page badge js_show">
+   <div class="weui-form-preview__hd">
+        <div class="weui-form-preview__item">
+            <em class="weui-form-preview__value">
+                <div class="weui-flex sort">
+                    <a href="/wx/nocard-appointment/yygh-date/pid/<?php echo $this->pid?>/name/<?php echo $this->name ?>"><div class="weui-flex__item"><div class="placeholder">按日期挂号</div></div></a>
+                    <div class="weui-flex__item select"><div class="placeholder">按医生挂号</div></div>
+                </div>
+            </em>
+        </div>
+    </div>
+    <div class="page__bd">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__bd">
+                
+            </div>
+        </div>
+    </div>
+</div>

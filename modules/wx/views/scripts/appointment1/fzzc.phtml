@@ -1,0 +1,53 @@
+<?php $this->headTitle('分诊自测') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/fzzc.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/abouts/list.js') ?>
+
+<div class="mui-content">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__ft">
+            <a class="weui-form-preview__btn weui-form-preview__btn_default " href="/wx/appointment/yygh">医生</a>
+            <a class="weui-form-preview__btn weui-form-preview__btn_default active" href="/wx/appointment/fzzc">科室</a>
+        </div>
+    </div>
+    <p>如果病情加重，建议尽快到医院就诊</p>
+	<ul class="mui-table-view mui-table-view-chevron">
+	    <li class="tuijian">推荐科室1</li>
+        <li class="mui-table-view-cell mui-media">
+    		<div class="mui-media-body">
+        		<img class="mui-media-object mui-pull-left" src="/assets/wx/img/wei.png">
+        		<div class="mui-pull-left">
+        		    <p class="mui-ellipsis section"> 耳鼻喉科 </p>
+        		    <p class="mui-ellipsis"><i class="fa fa-map-marker"></i>&nbsp;门诊四楼东</p>
+        		</div>
+        		<div class=" mui-pull-right">
+    		        <p class="mui-ellipsis surplus"> 余&nbsp;<span>22</span></p>
+        		    <p class="mui-ellipsis"> 共50号源 </p>
+        		</div>  
+    		</div>
+    		<div class="btn">
+        		<button type="reset" onclick="location.href='/wx/appointment/ghcg'" class="weui-btn weui-btn_primary">预约挂号</button>
+                <button type="button" class="weui-btn weui-btn_warn">当天挂号</button>
+    		</div>
+        </li> 
+	</ul>
+	<ul class="mui-table-view mui-table-view-chevron">
+	    <li class="tuijian">推荐科室2</li>
+        <li class="mui-table-view-cell mui-media">
+    		<div class="mui-media-body">
+        		<img class="mui-media-object mui-pull-left" src="/assets/wx/img/wei.png">
+        		<div class="mui-pull-left">
+        		    <p class="mui-ellipsis section"> 耳鼻喉科 </p>
+        		    <p class="mui-ellipsis"><i class="fa fa-map-marker"></i>&nbsp;门诊四楼东</p>
+        		</div>
+        		<div class=" mui-pull-right">
+    		        <p class="mui-ellipsis surplus"> 余&nbsp;<span>22</span></p>
+        		    <p class="mui-ellipsis"> 共50号源 </p>
+        		</div>  
+    		</div>
+    		<div class="btn">
+        		<button type="reset" onclick="location.href=''" class="weui-btn weui-btn_primary">预约挂号</button>
+                <button type="button" class="weui-btn weui-btn_warn">当天挂号</button>
+    		</div>
+        </li> 
+	</ul>
+</div>

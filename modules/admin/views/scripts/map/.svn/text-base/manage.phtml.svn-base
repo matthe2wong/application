@@ -1,0 +1,128 @@
+<?php $this->headTitle('管理列表页') ?>
+<?php $this->headTitle('医院坐标') ?>
+<link rel="stylesheet" type="text/css" href=""/>
+<?php $this->headLink()->appendStylesheet('/libs/datatables/datatables.css') ?>
+<?php $this->headScript()->appendFile('/libs/datatables/datatables.js') ?>
+
+<?php $this->headScript()->appendFile('/assets/admin/common.manage.admin.szkj.js') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/map/manage.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/map/manage.js?t='.time()) ?>
+
+<div style="display: none">
+    <input type="hidden" id="current_base_url" value="/admin/map/manage" />
+    <input type="hidden" id="ajax_delete_url" value="/admin/map/delete" />
+    <input type="hidden" id="columns-sort-serialized" value='<?php echo $this->columnsSortSerialized ?>' />
+</div>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="javascript:;">医院坐标管理</a></li>
+        <li class="active"><a href="javascript:;">医院坐标列表</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-gear"></i> 医院坐标管理 
+        
+        <span class="pull-right">
+            <a href="/admin/map/add" id="add_button" 
+                szkj-resource="/admin/map/add" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-plus"></i> 添加</a>
+            <button id="edit_button" 
+                szkj-resource="/admin/map/edit" 
+                class="btn btn-primary szkj-acl disabled"><i class="fa fa-pencil"></i> 编辑</button>
+            <button id="view_button" 
+                szkj-resource="/admin/map/view" 
+                class="btn btn-primary szkj-acl disabled"><i class="fa fa-eye"></i> 详情</button>
+            <button id="delete_button" 
+                szkj-resource="/admin/map/delete" 
+                class="btn btn-danger szkj-acl disabled"><i class="fa fa-trash-o"></i> 删除</button>
+            <button id="toggle-search-panel" class="btn btn-primary">
+                <i class="fa fa-search"></i> 查询</button>
+            <a href="/admin/map/import" id="import_button"
+                szkj-resource="/admin/map/import" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-cloud-upload"></i> 导入</a>
+            <a href="/admin/map/export" id="export_button"
+                szkj-resource="/admin/map/export" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-cloud-download"></i> 导出</a>
+            <a href="/admin/map/statistics" id="statistics_button"
+                szkj-resource="/admin/map/statistics" 
+                class="btn btn-primary szkj-acl"><i class="fa fa-bar-chart-o"></i> 数据统计</a>
+        </span>
+    </h2>
+</div>
+
+<div class="container-fluid-md" style="display:none" id="search-panel">
+    <div class="panel panel-primary panel-sm">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-search"></i> 查询</h4>
+        </div>
+        <div class="panel-body">
+            <form class="form-inline" role="form" id="search_form">
+
+				<div class="form-group">
+					<label class="control-label" for="city_search">城市</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_city ?>"
+						name="city" id="city_search" placeholder="城市">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="name_search">医院名称</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_name ?>"
+						name="name" id="name_search" placeholder="医院名称">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="address_search">地址</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_address ?>"
+						name="address" id="address_search" placeholder="地址">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="lng_search">横坐标</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_lng ?>"
+						name="lng" id="lng_search" placeholder="横坐标">
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="lat_search">纵坐标</label>
+					<input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_lat ?>"
+						name="lat" id="lat_search" placeholder="纵坐标">
+				</div>
+
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
+                <button type="button" class="btn btn-primary" id="search_form_reset_btn"><i class="fa fa-times"></i> 重置</button>
+            </form>
+        </div><!-- END panel-body -->
+    </div><!-- END panel -->
+</div><!-- END container-fluid-md -->
+
+<div class="container-fluid-md">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table id="query-result-data-table" class="table table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th data-column="city">城市</th>
+                    <th data-column="name">医院名称</th>
+                    <th data-column="address">地址</th>
+                    <th data-column="lng">横坐标</th>
+                    <th data-column="lat">纵坐标</th>
+                </tr>
+                </thead>
+                <tbody>
+            <?php if ($this->data): $counter = 1; foreach($this->data as $d):?>
+                <tr data-id="<?php echo $d->id ?>">
+					<td><?php echo $d->city ?></td>
+					<td><?php echo $d->name ?></td>
+					<td><?php echo $d->address ?></td>
+					<td><?php echo $d->lng ?></td>
+					<td><?php echo $d->lat ?></td>
+                </tr>
+                <?php endforeach; endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div><!-- END container-fluid-md -->

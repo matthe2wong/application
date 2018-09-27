@@ -1,0 +1,66 @@
+<?php $this->headTitle('就诊记录') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/report-query/detail.css?t='.time()) ?>
+<?php $value = $this->data ?>
+
+<div class="page__bd">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item item">
+                <label class="weui-form-preview__label"><i class="fa fa-file-text-o"></i>&nbsp;CT</label>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd main" style="    height: 112px;">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">姓名:</label>
+                <span class="weui-form-preview__value">张三</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">年龄:</label>
+                <span class="weui-form-preview__value">2</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">性别:</label>
+                <span class="weui-form-preview__value">女</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">检查类型:</label>
+                <span class="weui-form-preview__value">CT</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">检查时间:</label>
+                <span class="weui-form-preview__value">2018-08-15</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">&nbsp;</label>
+                <span class="weui-form-preview__value">&nbsp;</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page__ft">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item" style="margin-left:5px;">
+                <label class="weui-form-preview__label result">报告结果</label>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd" style="height: 100%;padding:0">
+        	<div class="weui-panel weui-panel_access">
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_text">
+                        <h4 class="weui-media-box__title">检查所见：</h4>
+                        <p class="weui-media-box__desc"><?php echo $value[0]['examDescript'] ?></p>
+                    </div>
+                    <div class="weui-media-box weui-media-box_text">
+                        <h4 class="weui-media-box__title">影像诊断：</h4>
+                        <p class="weui-media-box__desc"><?php echo $value[0]['examDiagnosis'] ?></p>
+                    </div>
+                    <div class="weui-media-box weui-media-box_text">
+                        <h4 class="weui-media-box__title">建议：</h4>
+                        <p class="weui-media-box__desc"><?php echo $value[0]['suggestion'] == ""?"无":$value[0]['suggestion'] ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<!--
+See http://developer.yahoo.com/ypatterns/pattern.php?pattern=itempagination
+-->
+
+<div class="btn-group btn-group-xs btn-group-text-small">
+    <button data-toggle="dropdown" class="btn btn-white btn-no-border dropdown-toggle" type="button">
+        第 <?php echo $this->current ?> 页 / 共 <?php echo $this->pageCount ?> 页
+    </button>
+    <?php if ($this->pageCount): ?>
+    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+        <!-- Numbered page links -->
+        <?php foreach ($this->pagesInRange as $page): ?>
+            <?php if ($page != $this->current): ?>
+            <li>
+                <a href="<?php echo $this->url(array('page' => $page)); ?>">
+                第 <?php echo $page; ?> 页
+                </a>
+            </li>
+            <?php else: ?>
+            <li class="active">
+                <a href="<?php echo $this->url(array('page' => $page)); ?>">
+                第 <?php echo $page; ?> 页
+                </a>
+            </li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+</div>
+
+<div class="btn-group btn-group-xs btn-group-text-small">
+    <button class="btn btn-white" type="button" data-toggle="tooltip"
+        data-container="body" data-original-title="上一页"
+        <?php if (isset($this->previous)): ?>
+        onclick="location.href='<?php echo $this->url(array('page' => $this->previous)); ?>'"
+        <?php endif ?>>
+        <i class="fa fa-chevron-left"></i>
+    </button>
+    <button class="btn btn-white" type="button" data-toggle="tooltip"
+        data-container="body" data-original-title="下一页"
+        <?php if (isset($this->next)): ?>
+        onclick="location.href='<?php echo $this->url(array('page' => $this->next)); ?>'"
+        <?php endif ?>>
+        <i class="fa fa-chevron-right"></i>
+    </button>
+</div>

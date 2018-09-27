@@ -1,0 +1,8 @@
+<?php $this->headTitle('首页') ?>
+<?php $this->headLink()->appendStylesheet('/assets/default/index/index.css') ?>
+<?php $this->headScript()->appendFile('/assets/default/index/index.js') ?>
+
+<div class="starter-template">
+    <h1>山东舜知信息科技有限公司技术支持</h1>
+    <p class="lead">Supported By Shandong Shunzhi Information Technology Co., Ltd.</p>
+</div>

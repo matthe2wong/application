@@ -1,0 +1,86 @@
+<?php $this->headTitle('系统欢迎页') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/index/welcome.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/index/welcome.js') ?>
+
+<div class="page-subheading page-subheading-md">
+    <marquee scrollamount="5" scrolldelay="100" loop="-1" width="100%" direction="left" behavior="scroll"
+        onMouseOut="this.start()" onMouseOver="this.stop()">
+        <?php if ($this->noticeList): foreach ($this->noticeList as $d): ?>
+        <a href="/admin/sys-article/view/id/<?php echo $d->id ?>" 
+            style="margin-right:2em">
+            <?php echo $d->title ?>
+            (<?php echo date('Y-m-d', strtotime($d->create_time)) ?>)
+        </a>
+        <?php endforeach; endif; ?>
+    </marquee>
+</div>
+
+<div class="container-fluid-md">
+
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-bullhorn"></i> 通知公告
+    
+                <div class="panel-options">
+                    <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                    <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                    <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+                </div>
+            </div>
+            <div class="list-group">
+                <?php if ($this->noticeList): foreach ($this->noticeList as $d): ?>
+                <a href="/admin/sys-article/view/id/<?php echo $d->id ?>" class="list-group-item">
+                    <?php echo $d->title ?>
+                    <span class="pull-right"><?php echo date('Y-m-d', strtotime($d->create_time)) ?></span>
+                </a>
+                <?php endforeach; endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <i class="fa fa-download"></i> 文件下载
+    
+                <div class="panel-options">
+                    <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                    <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                    <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+                </div>
+            </div>
+            <div class="list-group">
+                <?php if ($this->downloadList): foreach ($this->downloadList as $d): ?>
+                <a href="/admin/sys-article/view/id/<?php echo $d->id ?>" class="list-group-item">
+                    <?php echo $d->title ?>
+                    <span class="pull-right"><?php echo date('Y-m-d', strtotime($d->create_time)) ?></span>
+                </a>
+                <?php endforeach; endif; ?>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <i class="fa fa-book"></i> 系统帮助
+    
+                <div class="panel-options">
+                    <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                    <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                    <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+                </div>
+            </div>
+            <div class="list-group">
+                <?php if ($this->helpList): foreach ($this->helpList as $d): ?>
+                <a href="/admin/sys-article/view/id/<?php echo $d->id ?>" class="list-group-item">
+                    <?php echo $d->title ?>
+                    <span class="pull-right"><?php echo date('Y-m-d', strtotime($d->create_time)) ?></span>
+                </a>
+                <?php endforeach; endif; ?>
+            </div>
+        </div>
+    </div>
+    
+</div>

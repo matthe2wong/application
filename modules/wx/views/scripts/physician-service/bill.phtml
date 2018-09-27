@@ -1,0 +1,54 @@
+<?php $this->headTitle('我的账单') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/outpatient-payment/index.css?t='.time()) ?>
+
+<div class="page badge js_show">
+    <div class="page__bd">
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <label class="weui-form-preview__label"><i class="gi gi-user"></i>&nbsp;张三</label><br>
+                    <p class="card">身份证：&emsp;124516196512154587</p>
+                    <p class="jzk"> 就诊卡：&emsp;123456789</p>
+                </div>
+            </div>
+        </div>
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">
+                       <input type="checkbox" />&nbsp;<span>药费</span>
+                    </label>
+                    <span class="weui-form-preview__value price">￥144</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">2018-01-25 16:10:12</label>
+                    <!-- <span class="weui-form-preview__value">>></span> -->
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">
+                       <input type="checkbox" />&nbsp;<span>检查费</span>
+                    </label>
+                    <span class="weui-form-preview__value price">￥144</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">2018-01-25 16:10:12</label>
+                    <!-- <span class="weui-form-preview__value">>></span> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="weui-tabbar">
+    <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+        <p class="weui-tabbar__label"><input type="checkbox" id="all" style="    margin-top: -5px;"/>&nbsp;全选</p>
+    </a>
+    <a href="javascript:;" class="weui-tabbar__item">
+        <p class="weui-tabbar__label">合计 <span class="price">256元</span></p>
+    </a>
+    <a href="javascript:;" class="weui-tabbar__item weui-btn weui-btn_primary" style="line-height: 3.5">
+        <p class="weui-tabbar__label">立即支付</p>
+    </a>
+</div>

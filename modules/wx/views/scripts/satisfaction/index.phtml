@@ -1,0 +1,13 @@
+<?php $this->headTitle('满意度调查') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/satisfaction/index.css?t='.time()) ?>
+<div class="page button js_show">
+    <div class="page__hd">
+        <p class="page__desc">尊敬的患者朋友：</p>
+        <p class="page__desc" style="text-indent:2em;line-height: 1.7;">首先感谢您选择我院就医，为提高医院门诊医疗服务质量，为您提供更好的就医服务，我们敬请您或您的亲友填写本问卷。根据您的意见，我们及时进行反馈、整改，进一步提升医院服务质量，感谢您的参与！</p>
+    </div>
+    <div class="page__bd">
+    <?php if($this->data): foreach ($this->data as $k=>$d): ++$k?>
+        <a href="/wx/satisfaction/list/id/<?php echo $d->id ?>" class="weui-btn weui-btn_primary">问卷<?php echo $k?>：<?php echo $d->title ?></a>
+    <?php endforeach;endif;?>
+    </div>
+</div> 

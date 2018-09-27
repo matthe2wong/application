@@ -1,0 +1,73 @@
+<?php $this->headTitle('取消预约') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/dzf.css?t='.time()) ?>
+<?php //$this->headScript()->appendFile('/assets/wx/abouts/list.js') ?>
+<?php $value = $this->data ?>
+<style>
+.weui-btn_default{
+    width: 90%;
+    font-size: 15px;
+}
+.weui-media-box__desc {
+    font-size: 14px !important;
+}.weui-btn{
+	width:90%;
+	margin-top:5%;
+}
+.item{
+   border-left: 5px solid #f76260 !important;
+}
+</style>
+<div class="weui-panel__bd">
+    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+            <i class="weui-icon-warn weui-icon_msg"></i>
+        </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title"  style="padding-top: 10px;">取消成功</h4>
+            <p class="weui-media-box__desc">您已成功取消预约！</p>
+        </div>
+    </a>
+</div>
+
+<div class="page__bd">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item item">
+                <label class="weui-form-preview__label">详细信息</label>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊时间</label>
+                <span class="weui-form-preview__value red"><?php echo $value->qssj ?></span>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医院名称</label>
+                <span class="weui-form-preview__value">济南市第三人民医院</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊科室</label>
+                <span class="weui-form-preview__value black"><?php echo $value->yyks ?></span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医生姓名</label>
+                <span class="weui-form-preview__value black"><?php echo $value->yyys ?></span>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊人</label>
+                <span class="weui-form-preview__value"><?php echo $value->brxm ?></span>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">取消时间</label>
+                <span class="weui-form-preview__value black"><?php echo date("Y-m-d H:i",strtotime($value->date)) ?></span>
+            </div>
+        </div>
+        <a href="/wx/appointment/my-reservation" class="weui-btn weui-btn_plain-default weui-btn_plain-disabled">返回</a>
+    </div>
+</div>

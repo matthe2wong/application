@@ -1,0 +1,66 @@
+<?php $this->headTitle('满意度调查') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/satisfaction/list.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/satisfaction/list.js?t='.time()) ?>
+
+<div class="page button js_show">
+    <div class="page__hd">
+        <h1 class="page__title"><?php echo $this->satisfaction->title ?></h1>
+    </div>
+    <form action="" method="post">
+    <?php if($this->data): foreach ($this->data as $k=>$d): ++$k?>
+        <div class="page__bd">
+            <div class="weui-cells__title">题<?php echo $k ?>：<?php echo $d->question ?></div>
+            <div class="weui-cells weui-cells_checkbox">
+                <label class="weui-cell weui-check__label">
+                    <input type="radio" id="" name="<?php echo $d->id?>" value="很满意" checked/>
+        			<label for="female">很满意</label>
+                </label>
+                <label class="weui-cell weui-check__label">
+                    <input type="radio" id="" name="<?php echo $d->id?>"  value="满意"/>
+        			<label for="female">满意</label>
+                </label>
+                <label class="weui-cell weui-check__label">
+                    <input type="radio" id="" name="<?php echo $d->id?>"  value="一般"/>
+        			<label for="female">一般</label>
+                </label>
+                <label class="weui-cell weui-check__label">
+                    <input type="radio" id="" name="<?php echo $d->id?>"  value="不满意"/>
+        			<label for="female">不满意</label>
+                </label>
+                <label class="weui-cell weui-check__label">
+                    <input type="radio" id="" name="<?php echo $d->id?>"  value="很不满意"/>
+        			<label for="female">很不满意</label>
+                </label>
+                <label class="weui-cell weui-check__label">
+                    <input type="radio" id="" name="<?php echo $d->id?>"  value="不了解"/>
+        			<label for="female">不了解</label>
+                </label>
+            </div>
+        </div>
+    <?php endforeach;else:?>
+    <div class="page__bd">
+    	<div class="weui-cells__title" style="text-align: center">暂无信息</div>
+    </div>
+    <?php endif;?>
+    <?php if($this->data):?>
+		<button type="submit" class="weui-btn weui-btn_primary">提交</button>
+	<?php endif;?>	
+    </form>
+<!--     <div class="page__ft">
+        <div class="weui-flex">
+            <div class="weui-flex__item">
+                <div class="placeholder">
+                    <a href="javascript:;" class="weui-btn weui-btn_primary">上一页</a>
+                </div>
+            </div>
+            <div class="weui-flex__item">
+            <div class="placeholder" style="margin-top:5%;">1/3</div>
+            </div>
+            <div class="weui-flex__item">
+                <div class="placeholder">
+                    <a href="javascript:;" class="weui-btn weui-btn_primary">下一页</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

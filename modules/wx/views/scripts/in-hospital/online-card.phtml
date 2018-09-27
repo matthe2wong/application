@@ -1,0 +1,22 @@
+<?php $this->headTitle('在线建卡') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/in-hospital/add.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/in-hospital/online-card.js') ?>
+
+<div class="page" id="data" style="opacity: 1;margin-top: 5px;">
+    <form>
+        <div>
+            <span><i class="gi gi-user"></i></span>
+            <input class="input" type="text" id="name" name="name" placeholder="就诊人姓名">
+        </div>
+        <div>
+            <span><i class="gi gi-credit-card"></i></span>
+            <input class="input" type="text" id="identityCard" name="identityCard"  placeholder="就诊人身份证号码">
+        </div>
+        <div>
+            <span><i class="gi gi-phone"></i></span>
+            <input class="input" type="text" id="phone" name="phone"  placeholder="就诊人手机号">
+        </div>
+        <p class="hospital">请您填写真实信息，以免影响您就诊</p>
+        <button type="button" class="weui-btn weui-btn_primary subAdd">确认添加</button>
+    </form>
+</div>

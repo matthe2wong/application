@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+table td, table th {
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+					<th>类型 type</th>
+					<th>标题 title</th>
+					<th>封面图 photo</th>
+					<th>内容 intro</th>
+					<th>日期 date</th>
+
+			</tr>
+		</thead>
+		<tbody>
+            <?php if ($this->data): foreach($this->data as $d):?>
+            <tr>
+					<td style="mso-number-format='\@'"><?php echo $d->type ?></td>
+					<td style="mso-number-format='\@'"><?php echo $d->title ?></td>
+					<td style="mso-number-format='\@'">
+                    <?php if ($d->photo): ?>
+                    <?php echo "http://".$_SERVER["HTTP_HOST"].$d->photo ?>
+                    <?php endif; ?>
+					</td>
+					<td style="mso-number-format='\@'"><?php echo $d->intro ?></td>
+					<td style="mso-number-format='yyyy-mm-dd h:i:s'"><?php echo $d->date ? date("Y-m-d H:i:s", strtotime($d->date)) : "" ?></td>
+			</tr>
+            <?php endforeach; endif; ?>
+        </tbody>
+	</table>
+</body>
+</html>

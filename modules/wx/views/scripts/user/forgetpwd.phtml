@@ -1,0 +1,27 @@
+<?php $this->headTitle('忘记密码') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/user/forgetpwd.css') ?>
+ 
+<div class="page" style="opacity: 1;">
+    <form>
+        <div  class="outside">
+            <input class="tel" type="text" placeholder="请填写注册的手机号" maxlength="11" data-input="nameTest" data-info="请输入正确的手机号码。">
+        </div>
+        <div>
+            <input class="code" type="text" data-index="1" placeholder="输入验证码" maxlength="" data-input="codeTest" data-info="请填写验证码。">
+            <button style="touch-action: manipulation; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                短信验证码
+            </button>
+        </div>
+    </form>
+    <div style="display: block;">
+        <p class="info">
+            为了您的的信息安全<br>
+            请填写社保卡尾数4位为持有人的身份证号码。
+        </p>
+        <div>
+            <input placeholder="输入身份证号" class="id" maxlength="18">
+        </div>
+        <button class="next" style="touch-action: manipulation; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">下一步
+        </button>
+    </div>
+</div>

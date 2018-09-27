@@ -1,0 +1,26 @@
+<?php $this->headTitle('医生介绍') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/website/doctor-intro.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/website/doctor-intro.js') ?>
+
+<header class="mui-bar mui-bar-nav">
+	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	<h1 class="mui-title">医生介绍</h1>
+</header>
+<div class="mui-content mui-row mui-fullscreen">
+	<div class="mui-col-xs-3">
+		<div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
+		 <?php if ($this->section):foreach ($this->section as $g):?>
+		 <a class="mui-control-item" href="#<?php echo $g->data_code;?>" data-code="<?php echo $g->data_code;?>"><?php echo $g->data_name;?></a>
+		 <?php endforeach;endif;?>
+		</div>
+	</div>
+	<div id="segmentedControlContents" class="mui-col-xs-9">
+	    <div id="" class="mui-control-content mui-active">
+    	     <ul class="mui-table-view">
+    	        <li class="table-view-cell" style="">
+    	           <a href="">哈哈哈</a>
+    	        </li>
+    	     </ul>
+	     </div>
+	</div>
+</div>

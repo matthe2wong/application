@@ -1,0 +1,91 @@
+<?php $this->headTitle('无卡预约') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/yygh-list.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/appointment/yygh-list.js?t='.time()) ?>
+<?php $value = $this->info ?>
+
+<input type="hidden" id="ysdm" value="<?php echo $this->ysdm ?>">
+<input type="hidden" id="ksdm" value="<?php echo $this->ksdm ?>">
+<div class="page__hd">
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <img src="/assets/wx/appointment/doctor.png" style="width: 50px;display: block">
+            </div>
+            <div class="weui-cell__bd">
+                <p style="font-size:16px;color:#39393a"><?php echo $value[0]['YSXM'] ?></p>
+                <p style="font-size: 13px;color: #888888;"><?php echo $value[0]['KSMC'] ?></p>
+                <p style="font-size: 13px;color: #888888;"></p>
+            </div>
+            <?php if($this->count > 0):?>
+            <div class="weui-cell__hd collect" style="text-align: center;margin-top: 5px;">
+                <img src="/assets/wx/appointment/collect.png" id="collect-img" width="29px">
+                <p class="collect-text" style="font-size:13px">已收藏</p>
+                <input type="hidden" id="collect" value="2">
+            </div>
+            <?php else:?>
+            <div class="weui-cell__hd collect" style="text-align: center;margin-top: 5px;">
+                <img src="/assets/wx/appointment/no-collect.png" id="collect-img" width="29px"/>
+                <p class="collect-text" style="font-size:13px">未收藏</p>
+                <input type="hidden" id="collect" value="1">
+            </div>
+            <?php endif;?>
+        </div>
+    </div>
+</div>
+<div class="page__bd">
+<!--     <div class="weui-flex"> -->
+<!--         <div class="weui-flex__item guahao"><div class="placeholder"><span class="active">挂号</span></div></div> -->
+<!--         <div class="weui-flex__item intro"><div class="placeholder"><span>介绍</span></div></div> -->
+<!--     </div> -->
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label"><?php echo Application_Model_PhysicianService::convertTime($value[0]['GZRQ']) ?></label>
+                <em class="weui-form-preview__value" style="display:none">更多日期&nbsp;<i class="fa fa-chevron-circle-up"></i></em>
+            </div>
+            <input type="hidden" id="status" value="1">
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-flex" style="border-bottom: 1px solid #eee">
+                <div class="weui-flex__item"><div class="placeholder">六</div></div>
+                <div class="weui-flex__item"><div class="placeholder">一</div></div>
+                <div class="weui-flex__item"><div class="placeholder">二</div></div>
+                <div class="weui-flex__item"><div class="placeholder">三</div></div>
+                <div class="weui-flex__item"><div class="placeholder">四</div></div>
+                <div class="weui-flex__item"><div class="placeholder">五</div></div>
+                <div class="weui-flex__item"><div class="placeholder">日</div></div>
+            </div>
+            <div class="weui-flex" style="line-height:1.5;margin: 5px;">
+                <div class="weui-flex__item"><div class="placeholder today"><p>12</p><p>有号</p></div></div>
+                <div class="weui-flex__item"><div class="placeholder"><p>13</p><p>无号</p></div></div>
+                <div class="weui-flex__item"><div class="placeholder"><p>14</p><p>无号</p></div></div>
+                <div class="weui-flex__item"><div class="placeholder"><p>15</p><p>有号</p></div></div>
+                <div class="weui-flex__item"><div class="placeholder"><p>16</p><p>无号</p></div></div>
+                <div class="weui-flex__item"><div class="placeholder"><p>17</p><p>无号</p></div></div>
+                <div class="weui-flex__item"><div class="placeholder"><p>18</p><p>有号</p></div></div>
+            </div>
+        </div>
+        <div class="weui-cells main">
+        <?php if($this->data): foreach ($this->data as $d): ?>
+            <a href="/wx/nocard-appointment/yygh-list-view/JLXH/<?php echo $d['JLXH'];?>">
+                <div class="weui-cell weui-cell_access">
+                    <div class="weui-cell__bd">
+                        <p><?php echo $d['ZBLB'] == 1 ? "上午" : "下午" ?></p>
+                        <p style="font-size: 14px;color: #888888;"><?php echo $d['KYYSJ'] ?></p>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </div>
+             </a>
+         <?php endforeach;endif;?>
+        </div>
+    </div>
+   
+    <article class="weui-article">
+        <h2>擅长</h2>
+        <section>
+            <p>
+                  
+            </p>
+        </section>
+    </article>
+</div>

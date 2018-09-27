@@ -1,0 +1,62 @@
+<?php $this->headTitle('预约挂号') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/yygh-list-view.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/appointment/yygh-list-view.js?t='.time()) ?>
+
+<div class="page__hd">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医生姓名</label>
+                <span class="weui-form-preview__value"><?php echo $this->name ?></span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医生职称</label>
+                <span class="weui-form-preview__value"><?php echo $this->profession ?></span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊科室</label>
+                <span class="weui-form-preview__value"><?php echo $this->section_name ?></span>
+            </div>
+            <div class="weui-form-preview__item" style="line-height: 2;">
+                <label class="weui-form-preview__label">就诊时段</label>
+                <span class="weui-form-preview__value red"><?php echo $this->date." ".$this->week ?><br><?php echo $this->duty_mae." ".$this->tn ?></span>
+            </div>
+        </div>
+    </div>
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">挂号金额</label>
+                <span class="weui-form-preview__value red">￥<?php echo $this->price ?></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page__bd">
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd">
+            <?php if($this->data): foreach ($this->data as $d): ?>
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg user">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="/assets/wx/appointment/icon.png" alt="">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title"><?php echo $d->name ?></h4>
+                    <p class="weui-media-box__desc">123456</p>
+                </div>
+                <img src="/assets/wx/appointment/dh.svg" class="duihao" style="width:24px;display:none">
+            </a>
+            <?php endforeach;endif;?>
+            <a href="/wx/user-info/related-card" class="weui-media-box weui-media-box_appmsg weui-cell_access">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb add" src="/assets/wx/appointment/jiahao.png" alt="">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">添加就诊人</h4>
+                </div>
+                <p class="numm">还可添加4人<i class="fa fa-angle-right"></i></p>
+            </a>
+        </div>
+    </div>
+    <a href="javascript:void()" class="weui-btn weui-btn_primary">确认预约</a>
+</div>

@@ -1,0 +1,15 @@
+<?php $this->headTitle('详情') ?>
+<?php $this->headTitle('院内新闻院内新闻') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/website/list-detail.css?t='.time()) ?>
+
+<div class="mui-content">
+	<?php $d = $this->data?>
+    <div class="title"><?php echo $d->title?></div>
+    <p>发布时间：<ld><?php echo date("Y-m-d",strtotime($d->date))?></ld></p>
+    <?php if(false && $d->photo): ?>
+    	<img class="mui-media-object" style="max-width:100%;" src="<?php echo $d->photo; ?>">
+    <?php endif; ?>
+    <div class="content" >
+       <?php echo $d->intro?>
+    </div>
+</div>

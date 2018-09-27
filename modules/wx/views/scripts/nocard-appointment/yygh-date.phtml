@@ -1,0 +1,43 @@
+<?php $this->headTitle('预约挂号') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/yygh-date.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/nocard-appointment/yygh-date.js?t='.time()) ?>
+
+<div class="page__bd">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label" style="padding-top: 6px;"><?php if(strtotime(date("H:i:s")) > strtotime(date("11:59:59"))){echo date("Y-m-d",strtotime("+1 day"));}else{echo date("Y-m-d",time());} ?>&nbsp;<i class="fa fa-caret-down"></i></label>
+                <em class="weui-form-preview__value">
+                    <div class="weui-flex sort">
+                        <div class="weui-flex__item select"><div class="placeholder">按日期挂号</div></div>
+                        <a href="/wx/nocard-appointment/yygh-doctor/pid/<?php echo $this->pid ?>/name/<?php echo $this->name ?>"><div class="weui-flex__item"><div class="placeholder">按医生挂号</div></div></a>
+                    </div>
+                </em>
+            </div>
+            <input type="hidden" id="status" value="1">
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-flex" style="border-bottom: 1px solid #eee">
+            <?php if($this->data): foreach ($this->data as $k=>$d): ?>
+                <div class="weui-flex__item"><div class="placeholder"><?php echo $d["week"] ?></div></div>
+            <?php endforeach;endif;?>
+            </div>
+            <div class="weui-flex date" style="line-height:1.5;margin: 5px 0px 5px 0px;">
+            <?php if($this->data): foreach ($this->data as $k=>$d): ?>
+                <div class="weui-flex__item" data-date="<?php echo $d["date"] ?>">
+                    <div class="placeholder">
+                        <p><?php echo $d["day"] ?></p>
+                        <p class="is_num" date="<?php echo $d["date"] ?>"><?php if($k==0){if(strtotime(date("H:i:s")) > strtotime(date("11:59:59"))){echo "无号";}}?></p>
+                    </div>
+                </div>
+            <?php endforeach;endif;?>
+            </div>
+        </div>
+        <div class="weui-cells">
+        </div>
+    </div>
+</div>
+<input type="hidden" id="mt_time" value="<?php echo date("Y-m-d",strtotime("+1 day")) ?>">
+<input type="hidden" id="pid" value="<?php echo $this->pid ?>">
+<input type="hidden" id="name" value="<?php echo $this->name ?>">
+<input type="hidden" id="time" value="<?php echo date('H:i:s') ?>">

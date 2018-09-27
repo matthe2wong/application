@@ -1,0 +1,153 @@
+<?php $this->headTitle('管理列表页') ?>
+<?php $this->headTitle('系统用户') ?>
+<?php $this->headScript()->appendFile('/template/dist/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') ?>
+<?php $this->headScript()->appendFile('/assets/admin/common.manage.admin.szkj.js') ?>
+<?php $this->headLink()->appendStylesheet('/assets/admin/sys-user/manage.css') ?>
+<?php $this->headScript()->appendFile('/assets/admin/sys-user/manage.js') ?>
+
+<div class="page-subheading page-subheading-md">
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">控制面板</a></li>
+        <li><a href="javascript:;">系统用户管理</a></li>
+        <li class="active"><a href="javascript:;">系统用户列表</a></li>
+    </ol>
+</div>
+<div class="page-heading page-heading-md">
+    <h2>
+        <i class="fa fa-gear"></i> 系统用户管理 
+        <a href="/admin/sys-user/add" id="add_button" class="btn btn-success"><i class="fa fa-plus"></i> 添加</a>
+        <a href="/admin/sys-user/export" id="export_button" class="btn btn-warning"><i class="fa fa-download"></i> 导出</a>
+    </h2>
+</div>
+
+<div style="display: none">
+    <input type="hidden" id="current_base_url" value="/admin/sys-user/manage" />
+</div>
+
+<div class="container-fluid-md">
+    <form role="form" id="search_form" load_datetimepicker="true">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><i class="fa fa-search"></i> 查询</h4>
+    
+                <div class="panel-options">
+                    <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                    <a href="" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                    <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+<div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="realname_search">显示名称</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_realname ?>"
+        	name="realname" id="realname_search" placeholder="显示名称">
+    </div>
+</div>
+
+<div class="col-sm-6 col-md-3 col-lg-2">
+    <div class="form-group">
+        <label class="control-label" for="username_search">用户账户</label>
+        <input type="text" class="form-control search-form-input" value="<?php echo $this->search_value_username ?>"
+        	name="username" id="username_search" placeholder="用户账户">
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 查询</button>
+                    <button type="button" id="search_form_reset_btn" class="btn btn-danger"><i class="fa fa-times"></i> 重置</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid-md" style="margin-bottom:1em">
+    <div role="toolbar" class="btn-toolbar pull-right">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+</div>
+
+<div class="container-fluid-md">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-list"></i> 系统用户列表</h4>
+            <div class="panel-options">
+                <a href="" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="query-result-data-table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>序号</th>
+					<th>显示名称</th>
+					<th>用户账户</th>
+					<th>创建时间</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if ($this->data): $counter = 1; foreach($this->data as $d):?>
+                <tr>
+                    <td><?php echo $counter++ ?></td>
+						<td><?php echo $d->realname ?></td>
+						<td><?php echo $d->username ?></td>
+						<td><?php echo date("Y-m-d", strtotime($d->create_time)) ?></td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="dropdown-toggle btn btn-link btn-link-dark no-padding" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li>
+                                    <a href="/admin/sys-user/view/id/<?php echo $d->id ?>">
+                                        <i class="fa fa-eye"></i> 详情
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/sys-user/edit/id/<?php echo $d->id ?>">
+            				            <i class="fa fa-edit"></i> 编辑
+            				        </a>
+            				    </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="btn-delete" data-id="<?php echo $d->id ?>" 
+                                        href="javascript:return false">
+            				            <i class="fa fa-trash-o"></i>&nbsp; 删除
+            				        </a>
+            				    </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <?php endforeach; endif; ?>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid-md">
+    <div role="toolbar" class="btn-toolbar pull-right">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+</div>

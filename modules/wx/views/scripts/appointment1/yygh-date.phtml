@@ -1,0 +1,87 @@
+<?php $this->headTitle('预约挂号') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment1/yygh-date.css?t='.time()) ?>
+<?php //$this->headScript()->appendFile('/assets/wx/appointment1/yygh-date.js?t='.time()) ?>
+
+<div class="page__bd">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label" style="padding-top: 6px;">2018-08-16&nbsp;<i class="fa fa-caret-down"></i></label>
+                <em class="weui-form-preview__value">
+                    <div class="weui-flex sort">
+                        <div class="weui-flex__item select"><div class="placeholder">按日期挂号</div></div>
+                        <a href="/wx/appointment1/yygh-doctor/pid/53/name/心血管内科门诊"><div class="weui-flex__item"><div class="placeholder">按医生挂号</div></div></a>
+                    </div>
+                </em>
+            </div>
+            <input type="hidden" id="status" value="1">
+        </div>
+        <div class="weui-form-preview__bd" style="display: block;">
+            <div class="weui-flex" style="border-bottom: 1px solid #eee">
+                            <div class="weui-flex__item"><div class="placeholder">三</div></div>
+                            <div class="weui-flex__item"><div class="placeholder">四</div></div>
+                            <div class="weui-flex__item"><div class="placeholder">五</div></div>
+                            <div class="weui-flex__item"><div class="placeholder">六</div></div>
+                            <div class="weui-flex__item"><div class="placeholder">日</div></div>
+                            <div class="weui-flex__item"><div class="placeholder">一</div></div>
+                            <div class="weui-flex__item"><div class="placeholder">二</div></div>
+                            <div class="weui-flex__item"><div class="placeholder">三</div></div>
+                        </div>
+            <div class="weui-flex date" style="line-height:1.5;margin: 5px 0px 5px 0px;">
+                            <div class="weui-flex__item" data-date="2018-08-15" style="pointer-events: none;">
+                    <div class="placeholder">
+                        <p class="no">15</p>
+                        <p class="is_num no" date="2018-08-15">有号</p>
+                    </div>
+                </div>
+                            <div class="weui-flex__item active" data-date="2018-08-16">
+                    <div class="placeholder">
+                        <p>16</p>
+                        <p class="is_num" date="2018-08-16">有号</p>
+                    </div>
+                </div>
+                            <div class="weui-flex__item" data-date="2018-08-17">
+                    <div class="placeholder">
+                        <p>17</p>
+                        <p class="is_num" date="2018-08-17">有号</p>
+                    </div>
+                </div>
+                            <div class="weui-flex__item" data-date="2018-08-18">
+                    <div class="placeholder">
+                        <p>18</p>
+                        <p class="is_num" date="2018-08-18">有号</p>
+                    </div>
+                </div>
+                            <div class="weui-flex__item" data-date="2018-08-19">
+                    <div class="placeholder">
+                        <p>19</p>
+                        <p class="is_num" date="2018-08-19">有号</p>
+                    </div>
+                </div>
+                            <div class="weui-flex__item" data-date="2018-08-20">
+                    <div class="placeholder">
+                        <p>20</p>
+                        <p class="is_num" date="2018-08-20">有号</p>
+                    </div>
+                </div>
+                            <div class="weui-flex__item" data-date="2018-08-21">
+                    <div class="placeholder">
+                        <p>21</p>
+                        <p class="is_num" date="2018-08-21">有号</p>
+                    </div>
+                </div>
+                            <div class="weui-flex__item" data-date="2018-08-22">
+                    <div class="placeholder">
+                        <p>22</p>
+                        <p class="is_num" date="2018-08-22">有号</p>
+                    </div>
+                </div>
+                        </div>
+        </div>
+        <div class="weui-cells"><div class="weui-cell"><div class="weui-cell__hd" style="position: relative;margin-right: 10px;"><img src="/assets/wx/appointment1/doctor.png" style="width: 35px;display: block"></div><div class="weui-cell__bd"><p class="name">陈广华</p><p class="position">主任医师</p></div><div class="weui-cell__ft"><a href="/wx/appointment1/yygh-list-doctor/pid/53/doctor_id/102" class="weui-btn weui-btn_primary">有号</a></div></div><div class="weui-cell"><div class="weui-cell__hd" style="position: relative;margin-right: 10px;"><img src="/assets/wx/appointment1/doctor.png" style="width: 35px;display: block"></div><div class="weui-cell__bd"><p class="name">刘良福</p><p class="position">主任医师</p></div><div class="weui-cell__ft"><a href="/wx/appointment1/yygh-list-doctor/pid/53/doctor_id/148" class="weui-btn weui-btn_primary">有号</a></div></div><div class="weui-cell"><div class="weui-cell__hd" style="position: relative;margin-right: 10px;"><img src="/assets/wx/appointment1/doctor.png" style="width: 35px;display: block"></div><div class="weui-cell__bd"><p class="name">石增成</p><p class="position">主任医师</p></div><div class="weui-cell__ft"><a href="/wx/appointment1/yygh-list-doctor/pid/53/doctor_id/171" class="weui-btn weui-btn_primary">有号</a></div></div><div class="weui-cell"><div class="weui-cell__hd" style="position: relative;margin-right: 10px;"><img src="/assets/wx/appointment1/doctor.png" style="width: 35px;display: block"></div><div class="weui-cell__bd"><p class="name">王玉琢</p><p class="position">主任医师</p></div><div class="weui-cell__ft"><a href="/wx/appointment1/yygh-list-doctor/pid/53/doctor_id/191" class="weui-btn weui-btn_primary">有号</a></div></div></div>
+    </div>
+</div>
+<input type="hidden" id="mt_time" value="<?php echo date("Y-m-d",strtotime("+1 day")) ?>">
+<input type="hidden" id="pid" value="<?php echo $this->pid ?>">
+<input type="hidden" id="name" value="<?php echo $this->name ?>">
+<input type="hidden" id="time" value="<?php echo date('H:i:s') ?>">

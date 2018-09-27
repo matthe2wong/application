@@ -1,0 +1,121 @@
+<?php $this->headTitle('详情页') ?>
+<?php $this->headTitle('预约挂号取消信息') ?>
+<?php $this->headLink()->appendStylesheet('/assets/default/registration-cancel/detail.css') ?>
+<?php $this->headScript()->appendFile('/assets/default/registration-cancel/detail.js') ?>
+
+<?php $d = $this->data ?>
+
+<div class="container" style="margin-top:40px">
+    
+    <div class="row">
+    
+        <div class="col-lg-9 col-lg-9 col-sm-12 col-xs-12">
+        
+            <div class="page-header">
+              <h1>预约挂号取消信息详情页 <small>Detail of RegistrationCancel</small></h1>
+            </div>
+        
+            <table class="table table-hover table-bordered table-rounded table-striped">
+				<tr>
+					<th>数据ID</th>
+					<td><?php echo $d->id ?></td>
+				</tr>
+				<tr>
+					<th>用户ID</th>
+					<td><?php echo $d->user_id ?></td>
+				</tr>
+				<tr>
+					<th>openid</th>
+					<td><?php echo $d->openid ?></td>
+				</tr>
+				<tr>
+					<th>就诊时段</th>
+					<td><?php echo $d->time ?></td>
+				</tr>
+				<tr>
+					<th>费用类型</th>
+					<td><?php echo $d->type ?></td>
+				</tr>
+				<tr>
+					<th>医院名称</th>
+					<td><?php echo $d->hospital_name ?></td>
+				</tr>
+				<tr>
+					<th>就诊科室</th>
+					<td><?php echo $d->department ?></td>
+				</tr>
+				<tr>
+					<th>科室位置</th>
+					<td><?php echo $d->address ?></td>
+				</tr>
+				<tr>
+					<th>医生姓名</th>
+					<td><?php echo $d->doctor_name ?></td>
+				</tr>
+				<tr>
+					<th>医生职称</th>
+					<td><?php echo $d->doctor_call ?></td>
+				</tr>
+				<tr>
+					<th>就诊人</th>
+					<td><?php echo $d->name ?></td>
+				</tr>
+				<tr>
+					<th>是否有就诊卡</th>
+					<td><?php echo $d->is_patient_card ?></td>
+				</tr>
+				<tr>
+					<th>医院单号</th>
+					<td><?php echo $d->hospital_number ?></td>
+				</tr>
+				<tr>
+					<th>平台单号</th>
+					<td><?php echo $d->platform_number ?></td>
+				</tr>
+				<tr>
+					<th>交易金额</th>
+					<td><?php echo $d->price ?></td>
+				</tr>
+				<tr>
+					<th>支付状态</th>
+					<td><?php echo $d->pay_status ?></td>
+				</tr>
+				<tr>
+					<th>预约时间</th>
+					<td><?php echo $d->appointment_time ?></td>
+				</tr>
+				<tr>
+					<th>取消时间</th>
+					<td><?php echo $d->cancel_time ?></td>
+				</tr>
+				<tr>
+					<th>取消原因</th>
+					<td><?php echo $d->cancel_cause ?></td>
+				</tr>
+            </table>
+        
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">[面板模板]</h3>
+                </div>
+                <div class="panel-body">
+                    ［面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容面板内容］
+                </div>
+            </div>
+        
+        </div>
+        
+        
+        <div class="col-lg-3 col-lg-3 col-sm-12 col-xs-12">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">其它预约挂号取消信息</a>
+                <?php if ($this->topData): foreach ($this->topData as $t): ?>
+                <a href="/registration-cancel/detail/id/<?php echo $t->id ?>" class="list-group-item">预约挂号取消信息<?php echo $t->id ?></a>
+                <?php endforeach; endif; ?>
+            </div>
+            
+        </div>
+    
+    </div>
+
+</div>

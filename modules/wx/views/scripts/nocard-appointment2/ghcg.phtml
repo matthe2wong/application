@@ -1,0 +1,70 @@
+<?php $this->headTitle('预约成功') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/dzf.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/appointment/my-reservation.js?t='.time()) ?>
+<?php $value = $this->data ?>
+<?php $d = $this->goDoctor ?>
+<style>
+.weui-btn_default{
+    width: 90%;
+    font-size: 15px;
+}
+</style>
+<div class="weui-panel__bd">
+    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+            <i class="weui-icon-success weui-icon_msg"></i>
+        </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title"  style="padding-top: 10px;">预约成功</h4>
+            <p class="weui-media-box__desc">请您在就诊当天携带身份证原件、就诊卡、病历本到医院直接就诊。</p>
+        </div>
+    </a>
+</div>
+
+<div class="page__bd">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item item">
+                <label class="weui-form-preview__label">详细信息</label>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊时段</label>
+                <span class="weui-form-preview__value red">2018-02-12</span>
+                <span class="weui-form-preview__value red">周二 上午8：00-9：00</span>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医院名称</label>
+                <span class="weui-form-preview__value">济南市立三院</span>
+            </div>
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊科室</label>
+                <span class="weui-form-preview__value black">消化内科门诊</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">科室位置</label>
+                <span class="weui-form-preview__value red">门诊二楼</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医生姓名</label>
+                <span class="weui-form-preview__value black">李弘基</span>
+            </div> <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">医生职称</label>
+                <span class="weui-form-preview__value">主任医师</span>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">就诊人</label>
+                <span class="weui-form-preview__value">张三</span>
+                <span class="weui-form-preview__value">无卡</span>
+            </div>
+        </div>
+        
+       <a href="/wx/nocard-appointment2/ghqx" class="weui-btn weui-btn_default">取消挂号</a>
+    </div>
+    
+</div>

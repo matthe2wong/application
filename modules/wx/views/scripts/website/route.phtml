@@ -1,0 +1,12 @@
+<?php $this->headTitle('来院导引') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/website/list-detail.css?t='.time()) ?>
+
+<div class="page__hd">
+    <h1 class="page__title">来院导引</h1>
+</div>
+<div class="mui-content">
+	<?php $d = $this->data?>
+    <div class="content" >
+       <?php echo $d->intro?>
+    </div>
+</div>

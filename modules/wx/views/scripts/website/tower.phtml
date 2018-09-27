@@ -1,0 +1,21 @@
+<?php $this->headTitle('楼群分布') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/website/map.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/website/tower.js?t='.time()) ?>
+
+<?php $this->headScript()->appendFile('http://api.map.baidu.com/api?v=2.0&ak=KVGi7wgBAqpAAzkuxpC8TfgU9wFpEvY6') ?>
+<?php $this->headScript()->appendFile('http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js') ?>
+
+
+ <?php 
+/**
+ * 使能微信JS调用
+ */
+// $jsApiList = array(
+//     'getLocation'
+// );
+// $debug = false;
+// echo Szkj_Helper_WXBiz::getJsConfigDefineScript($jsApiList, $debug);
+?>
+<div class="mui-content">
+	<div id="allmap"></div>
+</div>

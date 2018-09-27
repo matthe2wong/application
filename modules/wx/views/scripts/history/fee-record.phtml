@@ -1,0 +1,29 @@
+<?php $this->headTitle('住院充值记录') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/history/fee-record.css?t='.time()) ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/appointment/my-reservation.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/history/fee-record.js?t='.time()) ?>
+
+<div class="page badge js_show">
+    <div class="page__bd">
+        <div class="weui-cells__title">以下是您的住院充值记录</div>
+        <div class="weui-cells" style="    margin-bottom: 3px;">
+            <div class="weui-cell">
+                <label class="weui-form-preview__label" style="width: 5%;margin-top: 3px;"><i class="gi gi-user" style="color: #fc9953;"></i></label><br>
+                <div class="weui-cell__bd">
+                    <div class="weui-cell weui-cell_select">
+                        <div class="weui-cell__bd">
+                            <select class="weui-select" name="brid" id="select_user">
+                                <?php if($this->user): foreach ($this->user as $d):?>
+                                    <option value="<?php echo $d->hisid ?>"><?php echo $d->name ?>&emsp;<?php echo $d->identity_card ?></option>
+                                <?php endforeach;endif;?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+        </div>
+    </div>
+</div>
+

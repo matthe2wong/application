@@ -1,0 +1,51 @@
+<?php $this->headTitle('住院充值缴费') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/in-hospital/forward-cost.css') ?>
+<?php $this->headScript()->appendFile('/assets/wx/in-hospital-pay/pay.js?t='.time()) ?>
+<style>
+.active{background: #35c221;color: #fff;}
+select{margin-bottom:0px}
+.weui-select{line-height:21px}
+.weui-form-preview__label{min-width:0em;margin-right:0em}
+.weui-cell_select .weui-select {font-size: 15px;}
+</style>
+<div class="page badge js_show">
+    <div class="page__bd">
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <label class="weui-form-preview__label"><i class="gi gi-user"></i></label><br>
+                <div class="weui-cell__bd">
+                    <div class="weui-cell weui-cell_select">
+                        <div class="weui-cell__bd">
+                            <select class="weui-select" name="select_user" id="select_user">
+                                <option value="123456" data-name="哈哈">张三&emsp;370784199505214578</option>
+                                <option value="123456" data-name="哈哈">张三&emsp;370784199505214578</option>
+                                <option value="123456" data-name="哈哈">张三&emsp;370784199505214578</option>
+                                <option value="123456" data-name="哈哈">张三&emsp;370784199505214578</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item item">
+                <label class="weui-form-preview__label">住院充值缴费</label>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd main">
+            <div class="weui-form-preview__item">
+                <span style="text-align: left;color:#3b3b3b;font-size:14px;"><i class="fa fa-sun-o"></i>&nbsp;预缴金额：</span>
+                <input class="input" type="text" id="money" name="money" value=""  placeholder="请输入充值金额">
+                <div class="weui-flex">
+                    <div class="weui-flex__item" data-money="500"><div class="placeholder">500元</div></div>
+                    <div class="weui-flex__item" data-money="1000"><div class="placeholder">1000元</div></div>
+                    <div class="weui-flex__item" data-money="3000"><div class="placeholder">3000元</div></div>
+                </div>
+                <input type="hidden" id="price" value="">
+            </div>
+        </div><!-- payBtn -->
+        <a class="weui-btn weui-btn_primary">去支付（不支持医保）</a>
+    </div>
+</div>

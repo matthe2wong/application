@@ -1,0 +1,117 @@
+<?php $this->headTitle('就诊服务') ?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/treat-service/index/index.css?t='.time()) ?>
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script> 
+$(document).ready(function(){ 
+	$('#circleContent').carousel({interval:5000});//每隔5秒自动轮播 
+}); 
+</script>
+<style>
+.weui-flex{
+	position: fixed;
+    bottom: 0px;
+	width: 100%;
+    height: 55px;
+}
+.weui-flex__item {
+    text-align: center;
+}
+.container, .page {
+    bottom: inherit;
+}
+</style>
+<div class="page grid js_show">
+    <div class="page__hd">
+       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+        <!--   <ol class="carousel-indicators">
+             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          </ol> -->
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+             <div class="item active">
+                <img src="/assets/wx/treat-service/index/banner.jpg">
+             </div>
+             <div class="item">
+                <img src="/assets/wx/treat-service/index/banner.jpg">
+             </div>
+          </div>
+        </div>
+    </div>
+    <div class="weui-grids">
+        <a href="/wx/appointment1/section" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/yuyuelaizhen.svg">
+            </div>
+            <p class="weui-grid__label">有卡预约</p>
+        </a> 
+        <a href="/wx/nocard-appointment2/section" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/yuyuewuka.svg">
+            </div>
+            <p class="weui-grid__label">无卡预约</p>
+        </a> 
+        <!-- <a href="/wx/booking/index" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/yuyuejiancha.svg">
+            </div>
+            <p class="weui-grid__label">医技预约</p> 
+        </a> --> 
+        <a href="/wx/appointment/my-reservation" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/wodeyuyue.svg">
+            </div>
+            <p class="weui-grid__label">我的预约</p>
+        </a>
+        <a href="/wx/website/map" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/wodeguahao.svg">
+            </div>
+            <p class="weui-grid__label">就诊导诊</p>
+        </a>
+        <a href="/wx/user-info/often" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/xianshangyuyue.svg">
+            </div>
+            <p class="weui-grid__label">线上签约</p>
+        </a>
+        <a href="/wx/report-query/jyd-index" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/jianchadan.svg">
+            </div>
+            <p class="weui-grid__label">检验单</p>
+        </a>
+        <!-- <a href="/wx/physician-service/bill" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/wdzd.svg">
+            </div>
+            <p class="weui-grid__label">我的账单</p>
+        </a> -->
+        <a href="/wx/pay/pay" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/mzjf.svg">
+            </div>
+            <p class="weui-grid__label">门诊缴费</p> 
+        </a>
+        <a href="/wx/in-hospital-pay/pay" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/zycz.svg">
+            </div>
+            <p class="weui-grid__label">住院充值</p> 
+        </a>
+        <a href="/wx/satisfaction/index" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="/assets/wx/img/hospital-service/manyidu.svg">
+            </div>
+            <p class="weui-grid__label">满意度调查</p>
+        </a>
+    </div>
+</div>
+<!-- <div class="weui-flex">
+    <div class="weui-flex__item"><div class="placeholder">就诊服务</div></div>
+    <div class="weui-flex__item"><div class="placeholder">医院服务</div></div>
+    <div class="weui-flex__item"><div class="placeholder">个人中心</div></div>
+</div> -->

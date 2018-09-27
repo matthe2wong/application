@@ -1,0 +1,20 @@
+<?php $this->headTitle("院内新闻")?>
+<?php $this->headLink()->appendStylesheet('/assets/wx/website/list.css?t='.time()) ?>
+<?php $this->headScript()->appendFile('/assets/wx/website/list.js?t='.time()) ?>
+<style>
+</style>
+
+<div class="weui-flex">
+    <div class="weui-flex__item" data-type="健康宣教" style="border-right: 1px solid #e4e4e4;"><div class="placeholder">健康宣教</div></div>
+    <div class="weui-flex__item" data-type="医院动态"><div class="placeholder">医院动态</div></div>
+</div>
+  		
+<div class="mui-clearfix">
+	<div id="pullrefresh" class="mui-control-content mui-active">
+    	<div class="mui-content">
+        	<ul class="mui-table-view" id="mContent">
+    		</ul>
+    		<div class="more" id="moreBtn">点击加载</div>
+        </div>
+    </div>
+</div>

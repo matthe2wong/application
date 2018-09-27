@@ -1,0 +1,35 @@
+<?php $this->headTitle('列表页') ?>
+<?php $this->headTitle('数据字典表') ?>
+<?php $this->headLink()->appendStylesheet('/assets/default/dictionary/list.css') ?>
+<?php $this->headScript()->appendFile('/assets/default/dictionary/list.js') ?>
+
+
+<div class="container">
+    
+    <div class="page-header">
+    <h1>数据字典表列表页 <small>List of Dictionary</small></h1>
+    </div>
+    
+    <div class="list-group">
+        <?php if ($this->data): foreach ($this->data as $d): ?>
+        <a href="/dictionary/detail/id/<?php echo $d->id ?>" class="list-group-item">
+            <h4 class="list-group-item-heading">［此处填写数据标题］</h4>
+            <p class="list-group-item-text">
+					<span class="label label-default"><?php echo $d->id ?></span>
+					<span class="label label-default"><?php echo $d->data_code ?></span>
+					<span class="label label-default"><?php echo $d->parent_code ?></span>
+					<span class="label label-default"><?php echo $d->data_name ?></span>
+            </p>
+        </a>
+        <?php endforeach; endif; ?>
+    </div>
+    
+    <div class="col-xs-12">
+    <?php 
+    if (count($this->data)>1) {
+    	echo $this->paginationControl($this->data, 'Sliding', 'partials/pagination-control.phtml');
+    }
+    ?>
+    </div>
+    
+</div>
